@@ -1,5 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+
+import Navbar from "./Components/Navbar"
+import Footer from './Components/Footer';
+function App() {
+  return (
+    <div>
+       
+
 import MainRoutes from './Pages/MainRoutes';
 // import Address from './Components/Address'
 // import ShoppingBag from './Components/ShoppingBag'
@@ -10,9 +18,10 @@ function App() {
     <div className="App">
 
       <MainRoutes/>
-{/* comment below */}
+
       {/* <Address /> */}
       {/* <ShoppingBag /> */}
+
     </div>
   );
 }
