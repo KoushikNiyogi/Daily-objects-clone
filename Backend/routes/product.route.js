@@ -5,8 +5,50 @@ const { auth } = require("../middlewares/auth");
 
 const productRouter = express.Router()
 
-productRouter.get("/", async (req, res) => {
+productRouter.get("/search", async (req, res) => {
+    let query = req.query;
+    let queryobj ={};
+    const sortobj = {};
+    let $and = [];
+    if(query.sort){
+         sortobj["price"] = query.sort.split("#")[1] == "asc" ? 1 : -1; 
+    }
+    if(query.color){
+        queryobj["color"] = query.color;
+    }
+    if(query["price_gt"]!=undefined&&query["price_lt"]!=undefined){
+        $and.push({"$expr" : {"$gt" : [{"$toInt" :"$price"} , +query.price_gt]}})
+        $and.push({"$expr" : {"$lt" : [{"$toInt" :"$price"} , +query.price_lt]}})
+        queryobj["$and"] = $and;
+    }
+    if(query["q"]!=undefined){
+        queryobj.title = { $regex:`${query["q"]}`, $options: 'i' }
+    }
+    
+    try {
+        const data = await productModel.find(queryobj).sort(sortobj)
+        res.send({ Data: data,datalength : data.length});
+    } catch (e) {
+        res.send({msg:e.message})
+    }
+})
 
+productRouter.get("/", async (req, res) => {
+    let query = req.query;
+    let queryobj ={};
+    const sortobj = {};
+    let $and = [];
+    if(query.sort){
+         sortobj["price"] = query.sort.split("#")[1] == "asc" ? 1 : -1; 
+    }
+    if(query.color){
+        queryobj["color"] = query.color;
+    }
+    if(query["price_gt"]!=undefined&&query["price_lt"]!=undefined){
+        $and.push({"$expr" : {"$gt" : [{"$toInt" :"$price"} , +query.price_gt]}})
+        $and.push({"$expr" : {"$lt" : [{"$toInt" :"$price"} , +query.price_lt]}})
+        queryobj["$and"] = $and;
+    }
     try {
         const data = await productModel.find()
         res.send({ Data: data});
