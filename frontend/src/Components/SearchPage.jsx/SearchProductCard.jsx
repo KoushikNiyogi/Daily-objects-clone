@@ -10,12 +10,20 @@ import {
   Card,
   CardBody
 } from "@chakra-ui/react"
+import { useNavigate } from 'react-router-dom';
 const SearchProductCard = ({ item }) => {
   const image1 = item.images[0];
   const image2 = item.images[1];
   const [image, setImage] = React.useState(image1);
+  const Navigate = useNavigate();
+
+  const navigate = (id)=>{
+   Navigate(`/products/${id}`)
+  }
+
+
   return (
-    <Card maxW='sm'>
+    <Card maxW='sm' onClick={()=>navigate(item._id)}>
       <CardBody>
         <Flex justifyContent={"flex-end"}>
           <SlHeart />
@@ -28,15 +36,11 @@ const SearchProductCard = ({ item }) => {
           />
         </Box>
         <Stack mt='6' spacing='3'>
-          <Heading size='md'>Living room Sofa</Heading>
-          <Text>
-            This sofa is perfect for modern tropical spaces, baroque inspired
-            spaces, earthy toned spaces and for people who love a chic design with a
-            sprinkle of vintage design.
+          <Text fontSize={"sm"}>
+           {item.title}
           </Text>
-          <Text color='blue.600' fontSize='2xl'>
-            $450
-          </Text>
+          <Flex><Text fontSize={"md"} color={"black"}>Rs.{item.price}</Text> <Text ml={"10px"} textDecoration={"line-through"} fontSize={"sm"}>{item.discounted_price}</Text></Flex>
+          item.offer!=undefined&&<Text fontSize={"md"} color={"red"}>{item.offer}</Text>
         </Stack>
       </CardBody>
     </Card>

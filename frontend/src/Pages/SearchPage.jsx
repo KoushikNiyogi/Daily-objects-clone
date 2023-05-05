@@ -29,7 +29,12 @@ const SearchPage = () => {
   
 
   const handleSearch = () => {
-    console.log("Handle search called")
+    
+      setSearchparams({q:state});
+    
+   
+  }
+  useEffect(()=>{
     let param = {};
     if (searchparams.getAll("color").length != 0) {
       param["color"] = searchparams.getAll("color")
@@ -44,10 +49,11 @@ const SearchPage = () => {
     if (state != undefined) {
       param["q"] = state
     }
-    dispatch(getSearchProducts(param));
-  }
- 
-  console.log(products);
+    if(location.search!=""){
+      dispatch(getSearchProducts(param));
+    }
+  },[location.search])
+  console.log(location);
   return (
     <Box>
       <Stack width={"70%"} margin={"150px auto"} spacing={4}>
@@ -83,7 +89,7 @@ const SearchPage = () => {
               
             </Box>
         }
-
+      
       </Box>
     </Box>
   )
