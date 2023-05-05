@@ -17,7 +17,7 @@ const MainRoutes = () => {
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/products" element={<Categorypage/>} />
         <Route path="/products/:id" element={<ProductPage/>} />
-        <Route path="/SearchPage" element={<SearchPage/>} />
+        <Route path="/searchPage" element={<SearchPage/>} />
         <Route path="*" element={<div style={{width:"40%",margin:"auto"}}>
             <h1>ERROR 404</h1>
             <h1>Page Not Found</h1>
