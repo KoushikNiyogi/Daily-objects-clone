@@ -18,8 +18,8 @@ app.use("/user", userRouter)
 app.use("/admin",adminRouter)
 app.use("/product", productRouter)
 app.use("/wishlist",wishlistRoute)
-// app.use(auth)
-// app.use(Logger)
+app.use(auth)
+app.use(Logger)
 app.use("/cart",cartRoute)
 
 app.get("/", (req, res) => {
