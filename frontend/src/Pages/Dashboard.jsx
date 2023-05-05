@@ -6,6 +6,8 @@ import {RiArrowRightSFill} from "react-icons/ri"
 import {useNavigate, useSearchParams} from "react-router-dom"
 import DashboardDrawer from '../Components/Dashboard/Drwerresponsive'
 import Wishlist from "./Wishlist"
+import Navbar from "../Components/Navbar"
+import Footer from "../Components/Footer"
 const Dashboard = () => {
   const [state,setState] = React.useState(true);
   const [Data,setData] = React.useState("");
@@ -31,8 +33,10 @@ const Dashboard = () => {
   },[searchparams])
   
   return (
-    <Box >
-      <Text fontFamily={"Trade Gothic LT Pro, sans-serif"} fontSize='5xl' fontWeight={"bold"} textAlign={"center"}>MY ACCOUNT</Text>
+    <Box>
+    <Navbar/>
+    <Box mt={"150px"}>
+     <Text  fontFamily={"Trade Gothic LT Pro, sans-serif"} fontSize='5xl' fontWeight={"bold"} textAlign={"center"}>MY ACCOUNT</Text>
       <Flex direction={{base:"column", xl:"row"}} borderTop={"1px solid #ededed"} height={"100vh"}>
         <Hide below='xl'>
           {
@@ -69,6 +73,9 @@ const Dashboard = () => {
           }
         </Box>
       </Flex>
+      
+    </Box>
+    <Footer/>
     </Box>
   )
 }

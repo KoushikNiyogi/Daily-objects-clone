@@ -6,7 +6,8 @@ const { auth } = require("../middlewares/auth");
 const productRouter = express.Router()
 
 productRouter.get("/search", async (req, res) => {
-    let query = req.query;
+    console.log(req.query);
+    let query = await req.query;
     let queryobj ={};
     const sortobj = {};
     let $and = [];
@@ -22,9 +23,9 @@ productRouter.get("/search", async (req, res) => {
         queryobj["$and"] = $and;
     }
     if(query["q"]!=undefined){
-        queryobj.title = { $regex:`${query["q"]}`, $options: 'i' }
+        queryobj.title = { $regex:query["q"],$options: 'i' }
     }
-    
+    console.log(queryobj);
     try {
         const data = await productModel.find(queryobj).sort(sortobj)
         res.send({ Data: data,datalength : data.length});
