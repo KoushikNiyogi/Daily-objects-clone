@@ -11,7 +11,6 @@ import AdminAllroutes from "./Components/Admin/Routes/Admin.routes";
 function App() {
   return (
     <div className="App">
-      <AdminAllroutes />
       <MainRoutes />
     </div>
   );
