@@ -4,9 +4,10 @@ import HomePage from "./HomePage"
 import Signup from "./Signup"
 import Login from "./Login"
 import Dashboard from "./Dashboard"
-import Categorypage from "./Categorypage"
 import ProductPage from "./ProductPage"
 import SearchPage from "./SearchPage"
+import CategoryPage from './CategoryPage'
+
 
 const MainRoutes = () => {
   return (
@@ -15,7 +16,7 @@ const MainRoutes = () => {
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/products" element={<Categorypage/>} />
+        <Route path="/products" element={<CategoryPage/>} />
         <Route path="/products/:id" element={<ProductPage/>} />
         <Route path="/SearchPage" element={<SearchPage/>} />
         <Route path="*" element={<div style={{width:"40%",margin:"auto"}}>
