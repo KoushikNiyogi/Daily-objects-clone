@@ -1,0 +1,45 @@
+#flex{
+  width:80%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+#left, #right{
+  width:50%
+}
+#left{
+  padding-top: 25px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+form{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* #heading{
+  margin-bottom: 30px;
+  /* border: 2px solid green; 
+} */
+
+
+.summary{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: grid;
+  padding: 1rem;
+  border-radius: 10px;
+  /* border: 1px solid red; */
+}
+
+.summaryItem {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.summary p{
+  margin: 0.5rem 0;
+}
+
+
+
+
