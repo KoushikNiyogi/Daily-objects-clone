@@ -1,3 +1,9 @@
+h1{
+    font-family: 'TradeGothicLTStd-BdCn20', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+}
 #sidetoside {    
     margin-top: 30px;
     border: 2px solid red;
@@ -9,7 +15,7 @@
     width:50%;
 }
 #right {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     width:50%;
     overflow: scroll;
     scrollbar-color: red orange;
@@ -20,7 +26,7 @@
 }
 #rightInside{
     margin:auto;
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     width:65%;
     margin-top: 80px;
 }
@@ -38,7 +44,7 @@
 .icon{
     width:20px;
     height: 20px;
-    border: 1px solid green;
+    /* border: 1px solid green; */
     padding-top: 2px;
 }
 image{

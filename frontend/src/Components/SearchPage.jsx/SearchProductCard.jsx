@@ -21,12 +21,18 @@ const SearchProductCard = ({ item }) => {
    Navigate(`/products/${id}`)
   }
 
+const addToWishlist = ()=>{
+
+}
 
   return (
     <Card maxW='sm' onClick={()=>navigate(item._id)}>
       <CardBody>
         <Flex justifyContent={"flex-end"}>
-          <SlHeart />
+          <SlHeart onclick={(e)=>{
+              e.stopPropagation();
+              addToWishlist()
+          }}/>
         </Flex>
         <Box>
           <Image

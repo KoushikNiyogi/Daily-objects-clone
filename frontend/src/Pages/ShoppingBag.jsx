@@ -26,7 +26,7 @@ const ShoppingBag = () => {
                         <div className={styles.flexIt}>
                             <div class={styles.first}>
                                 <div className={styles.icon}><img src="https://images.dailyobjects.com/marche/assets/images/other/offers-icon-324-280px.png?tr=cm-pad_resize,v-2" alt="coupon" /></div>
-                                <div><h2>COUPONS & OFFERS</h2><p style="display:inline">SUMMERSALE</p><p>Coupon Applied</p></div>
+                                <div><h2>COUPONS & OFFERS</h2><p style={{display:"inline"}}>SUMMERSALE</p><p>Coupon Applied</p></div>
                             </div>
                             <div><select name="" id=""><option value=""></option></select></div>
                         </div>

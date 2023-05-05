@@ -10,12 +10,12 @@ userRouter.get("/", auth, async (req, res) => {
     try {
         let User = await UserModel.find()
         if (User.length > 0) {
-            res.send({ users: User });
+            res.status(200).send({ users: User });
         } else {
-            res.send({ msg: `No user found` })
+            res.status(404).send({ msg: `No user found` })
         }
     } catch (e) {
-        res.send({ msg: "Error", reason: e })
+        res.status(404).send({ msg: "Error", reason: e.message })
     }
 })
 
@@ -26,18 +26,18 @@ userRouter.post("/register", async (req, res) => {
     try {
         let ExistingUser = await UserModel.findOne({ email: email })
         if (ExistingUser) {
-            res.send({ msg: "User Already Exists, Try Login" })
+            res.status(404).send({ msg: "User Already Exists, Try Login" })
         } else {
             bcrypt.hash(password, 5, async (err, hash) => {
                 if (err) throw err
                 let newUser = new UserModel({ name, email, phone_number, password: hash, })
                 await newUser.save();
-                res.send({ msg: "New User Added", user: newUser })
+                res.status(200).send({ msg: "Your account has been created", user: newUser })
             })
         }
     } catch (e) {
         console.log(e)
-        res.send(`Registration Error: - ${e}`)
+        res.status(404).send(`Registration Error: - ${e.message}`)
     }
 })
 
@@ -51,16 +51,16 @@ userRouter.post("/login", async (req, res) => {
             bcrypt.compare(password, User[0].password, (err, result) => {
                 if (result) {
                     let token = jwt.sign({ userId: User[0]._id }, "tough-requestUYJHMN¥");
-                    res.send({ msg: `Login Success ! WelcomeBack ${User[0].name}`, token: token });
+                    res.status(200).send({ msg: `Login Success ! WelcomeBack ${User[0].name}`, token: token,user:User});
                 } else {
-                    res.send({ msg: "Wrong Password" })
+                    res.status(404).send({ msg: "Wrong Password" })
                 }
             })
         } else {
-            res.send({ msg: `Email ${email} does not Exist. Try Registring` })
+            res.status(404).send({ msg: `Email ${email} does not Exist. Try Registring` })
         }
     } catch (e) {
-        res.send({ msg: "Error", reason: e })
+        res.status(404).send({ msg: "Error", reason: e.message })
     }
 })
 
