@@ -36,6 +36,7 @@ const Sort = () => {
           <Radio value='price#desc'>PRICE HIGH TO LOW</Radio>
         </VStack>
       </RadioGroup>
+      
     </Box>
   )
 }
