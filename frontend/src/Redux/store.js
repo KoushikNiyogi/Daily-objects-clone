@@ -1,7 +1,7 @@
 import { legacy_createStore } from "redux";
 import { combineReducers } from "redux";
 import { applyMiddleware } from "redux";
-import { Reducer as SearchReducer } from "./Wishlist/Reducer";
+import { Reducer as SearchReducer } from "./SearchPageReducer/Reducer";
 import { Loginreducer } from "./UserLogin/userloginreducer";
 import usersignupreducer from "./UserSignup/usersignupreducer";
 import thunk from "redux-thunk";

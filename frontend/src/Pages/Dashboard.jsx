@@ -8,20 +8,26 @@ import DashboardDrawer from '../Components/Dashboard/Drwerresponsive'
 import Wishlist from "./Wishlist"
 import Navbar from "../Components/Navbar"
 import Footer from "../Components/Footer"
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUser } from '../Redux/UserLogin/userloginaction'
 const Dashboard = () => {
-  const [state,setState] = React.useState(true);
+  const dispatch = useDispatch();
+  const {token,isAuth} = useSelector(store => store.Loginreducer)
+  const store = useSelector(store => store.Loginreducer)
   const [Data,setData] = React.useState("");
   const [searchparams,setSearchparams] = useSearchParams();
   const navigate = useNavigate();
 
 
   const handleLogout =()=>{
-    setSearchparams("")
-    setState(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    searchparams.delete("page")
+    dispatch(logoutUser);
   }
 
   const handleRoute = (path)=>{
-   navigate(path);
+   navigate(path,{replace:true,state:"/dashboard"});
   }
 
   const handlesearch = (data)=>{
@@ -31,7 +37,6 @@ const Dashboard = () => {
   useEffect(()=>{
    console.log("Running useeffect",searchparams.get("page"))
   },[searchparams])
-  
   return (
     <Box>
     <Navbar/>
@@ -40,7 +45,7 @@ const Dashboard = () => {
       <Flex direction={{base:"column", xl:"row"}} borderTop={"1px solid #ededed"} height={"100vh"}>
         <Hide below='xl'>
           {
-            state ? 
+            token ? 
            <Box w={"20%"} padding={"10px"} borderRight={"1px solid #ededed"}>
              <Text textAlign={"left"} fontSize={"2xl"} fontWeight={"bold"}>DAILYESSENTIAL USER</Text>
              <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>Koushik 9380135532</Text>

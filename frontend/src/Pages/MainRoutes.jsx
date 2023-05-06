@@ -27,9 +27,9 @@ const MainRoutes = () => {
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/products" element={<Categorypage/>} />
         <Route path="/products/:id" element={<ProductPage/>} />
-        <Route path="/SearchPage" element={<SearchPage/>} />
-        <Route path="/ShoppingBagPage" element={<ShoppingBag />} />
-        <Route path="/CheckoutPage" element={<Checkout />} />
+        <Route path="/searchPage" element={<SearchPage/>} />
+        <Route path="/shoppingBagPage" element={<ShoppingBag />} />
+        <Route path="/checkoutPage" element={<Checkout />} />
         <Route path="/payments" element={<Payments />} />
         <Route path="/admindashboard" element={<Admin />}></Route>
         <Route path="/allproducts" element={<Products />}></Route>

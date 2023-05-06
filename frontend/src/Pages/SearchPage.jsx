@@ -14,7 +14,7 @@ import {
 import { useDispatch, useSelector } from "react-redux"
 import { BiSearch } from "react-icons/bi"
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { getSearchProducts } from '../Redux/Wishlist/Action';
+import { getSearchProducts } from '../Redux/SearchPageReducer/Action';
 import SearchProductCard from '../Components/SearchPage.jsx/SearchProductCard';
 import CombinedFilter_sort from '../Components/SearchPage.jsx/CombinedFilter_sort';
 
@@ -25,15 +25,23 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { isLoading, isError, products } = useSelector(store => store.SearchReducer);
-
+  const [dummy,setdummy] = useState(false);
   
 
   const handleSearch = () => {
-    
+     
+     if(state!=""){
       setSearchparams({q:state});
-    
-   
+     }
   }
+
+  useEffect(()=>{
+    console.log("useeffect is running at lin 39")
+    localStorage.removeItem("searchpage");
+    setdummy(!dummy);
+    console.log(dummy,"line42")
+  },[])
+
   useEffect(()=>{
     let param = {};
     if (searchparams.getAll("color").length != 0) {
@@ -46,14 +54,14 @@ const SearchPage = () => {
       param["price_gt"] = searchparams.get("price_gt")
       param["price_lt"] = searchparams.get("price_lt")
     }
-    if (state != undefined) {
+    if (state != "") {
       param["q"] = state
     }
-    if(location.search!=""){
+    if(location.search!=""&&Object.keys(param).length!=0){
+      console.log("im running")
       dispatch(getSearchProducts(param));
     }
   },[location.search])
-  console.log(location);
   return (
     <Box>
       <Stack width={"70%"} margin={"150px auto"} spacing={4}>
@@ -76,8 +84,8 @@ const SearchPage = () => {
               <Flex justifyContent={"flex-end"} marginRight={"20px"}>
                 <Button onClick={()=>setFilter(prev=>!prev)}>Filter </Button>
               </Flex>
-              <Flex>
-              <SimpleGrid w={filter ? "80%" : "100%"} transition={"0.5s"} id='product_grid' columns={{ base: 1, md: 2, lg: 4 }} gap={"10px"} padding={"10px"}>
+              <Flex direction={{base:"column-reverse",lg:"row"}}>
+              <SimpleGrid w={{base:"100%",lg:filter ? "80%" : "100%"}} transition={"0.5s"} id='product_grid' columns={{ base: 1, md: 2, lg: 4 }} gap={"10px"} padding={"10px"}>
                 {
                   products.length != 0 && products.map((item) => {
                     return <SearchProductCard key={item.id} item={item} />
