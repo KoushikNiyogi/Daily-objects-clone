@@ -92,6 +92,7 @@ const Navbar = () => {
         position="fixed"
         width={"100%"}
         zIndex="100"
+        mb={"30"}
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={8} alignItems={"center"}>
