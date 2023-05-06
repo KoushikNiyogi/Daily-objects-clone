@@ -1,33 +1,43 @@
-import { FormControl, Input, Button, Spinner, useToast, Box, Heading, FormLabel } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
+import {
+  FormControl,
+  Input,
+  Button,
+  Spinner,
+  useToast,
+  Box,
+  Heading,
+  FormLabel,
+} from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import "./Signup.css"
 
 // import { getbanuserdata } from '../Redux/Admin/userauthaction'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import Navbar from '../Components/Navbar'
-import { getlogindata } from '../Redux/UserLogin/userloginaction'
 
 const LoginPage = () => {
   const init = {
     email: "",
     password: "",
-  }
+
+  };
+
+ 
   const location = useLocation();
   const [data, setData] = useState(init)
   const toast = useToast()
   const dispatch = useDispatch()
   const isloading = useSelector(store => store.Loginreducer.isloading)
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setData({ ...data, [name]: value })
-  }
-  let tokendata = JSON.parse(localStorage.getItem("token")) || []
-  let userId = JSON.parse(localStorage.getItem("userid")) || ""
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+  let tokendata = JSON.parse(localStorage.getItem("token")) || [];
+  let userId = JSON.parse(localStorage.getItem("userid")) || "";
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const onSubmit = (e, data) => {
-    e.preventDefault()
+    e.preventDefault();
+
 
     dispatch(getlogindata(data)).then((res)=>{
       console.log(res);
@@ -45,8 +55,8 @@ const LoginPage = () => {
       else{
         toast({
           position: "center",
-          title: `${res.payload.msg}`,
-          status: 'success',
+          title: `${err}`,
+          status: "warning",
           duration: 9000,
           isClosable: true,
         })
@@ -93,5 +103,19 @@ const LoginPage = () => {
   </Box>
   )
 
-}
-export default LoginPage 
+          <Box width="100%" marginTop="50px">
+            <p>
+              Don't have an account{" "}
+              <Link to="/signup">
+                <p style={{ color: "blue", textDecoration: "underline" }}>
+                  Create here
+                </p>
+              </Link>
+            </p>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+export default LoginPage;
