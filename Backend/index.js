@@ -14,13 +14,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/user", userRouter);
-app.use("/admin", adminRouter);
-app.use("/product", productRouter);
-app.use(auth);
-app.use(Logger);
-app.use("/cart", cartRoute);
-app.use("/wishlist", wishlistRoute);
+app.use("/user", userRouter)
+app.use("/admin",adminRouter)
+app.use("/product", productRouter)
+app.use(auth)
+app.use(Logger)
+app.use("/cart",cartRoute)
+app.use("/wishlist",wishlistRoute)
+
 app.get("/", (req, res) => {
   res.status(200).send("Home page");
 });
