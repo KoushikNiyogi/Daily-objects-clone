@@ -3,8 +3,10 @@ import * as types from "./userloginactiontype"
 
 const initlogin ={
     isError:false,
-    isLoading:false,
-    token:null
+    isloading:false,
+    isAuth:false,
+    token:JSON.parse(localStorage.getItem("token"))||null,
+    user:JSON.parse(localStorage.getItem("user"))||{}
 }
 export const Loginreducer = (state = initlogin,action)=>{
      
@@ -21,8 +23,9 @@ export const Loginreducer = (state = initlogin,action)=>{
                 ...state,
                 isError:false,
                 isloading:false,
-                token:action.payload
-                
+                isAuth:true,
+                token:action.payload.token,
+                user:action.payload.user
             }
          }
          case types.GETLOGINDATAFALIURE:{
@@ -31,7 +34,14 @@ export const Loginreducer = (state = initlogin,action)=>{
                 isError:true,
                 isloading:false,      
             }
-         }
+        }
+        case types.LOGOUTUSER:{
+            return{
+                ...state,
+                token:null,
+                isAuth:false
+            }
+        }
           default: return state
     }
    

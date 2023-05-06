@@ -1,4 +1,6 @@
-import "./App.css";
+import './App.css';
+
+import MainRoutes from './Pages/MainRoutes';
 
 import MainRoutes from "./Pages/MainRoutes";
 

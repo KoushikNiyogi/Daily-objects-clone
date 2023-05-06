@@ -18,7 +18,7 @@ adminRouter.get("/", auth, async (req, res) => {
             res.send({ msg: `No user found` })
         }
     } catch (e) {
-        res.send({ msg: "Error", reason: e })
+        res.send({ msg: "Error", reason: e.message })
     }
 })
 
@@ -40,7 +40,7 @@ adminRouter.post("/register", async (req, res) => {
         }
     } catch (e) {
         console.log(e)
-        res.send(`Registration Error: - ${e}`)
+        res.send({ msg: "Error", reason: e.message })
     }
 })
 adminRouter.post("/login", async (req, res) => {
@@ -53,7 +53,7 @@ adminRouter.post("/login", async (req, res) => {
             bcrypt.compare(password, User[0].password, (err, result) => {
                 if (result) {
                     let token = jwt.sign({ userId: User[0]._id }, "tough-request");
-                    res.send({ msg: `Login Success ! WelcomeBack ${User[0].name}`, token: token });
+                    res.send({ msg: `Login Success ! WelcomeBack ${User[0].name}`, token: token,admin:User });
                 } else {
                     res.send({ msg: "Wrong Password" })
                 }
@@ -62,7 +62,7 @@ adminRouter.post("/login", async (req, res) => {
             res.send({ msg: `Email ${email} does not Exist. Try Registring` })
         }
     } catch (e) {
-        res.send({ msg: "Error", reason: e })
+        res.send({ msg: "Error", reason: e.message })
     }
 })
 
