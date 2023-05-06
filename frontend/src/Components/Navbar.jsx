@@ -9,6 +9,7 @@ import {
     Button,
     Box,
     Heading,
+    
 } from '@chakra-ui/react'
 import { CloseIcon, HamburgerIcon, Search2Icon, } from "@chakra-ui/icons";
 import { CgShoppingCart } from "react-icons/cg"
@@ -22,7 +23,7 @@ const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
     const navmenu = ["Men", "Women", "Kids", "Home & Living", "Studio"]
-    return (<Box className='main-navstack' display="flex" height={{ base: "8vh", md: "8vh", lg: "12vh" }} position="fixed" overflow="hidden" justifyContent={["space-between", "space-between", "space-between", "space-around"]}>
+    return (<Box className='main-navstack' bgColor={"white"}  zIndex={5} display="flex" height={{ base: "8vh", md: "8vh", lg: "12vh" }} position="fixed" overflow="hidden" justifyContent={["space-between", "space-between", "space-between", "space-around"]} top={"0"}>
         <HStack width={{ base: "20%", md: "8%", lg: "6%" }}>
             <Link to="/">
                 <Image src="https://images.dailyobjects.com/marche/icons/logo_named.png?tr=cm-pad_resize,v-2,w-135,h-27,dpr-1" />

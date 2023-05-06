@@ -7,6 +7,9 @@
    align-items: center;
   z-index: 1;
 }
+.App{
+text-align: center;
+}
 .nav-menu{
    justify-content: space-around;
    align-items: center;
