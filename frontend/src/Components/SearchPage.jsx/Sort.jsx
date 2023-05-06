@@ -17,7 +17,7 @@ const Sort = () => {
     searchparams.getAll("color").length!=0&&(params["color"] = searchparams.getAll("color"));
     searchparams.get("q")!=undefined&&(params["q"] = searchparams.get("q"));
     value!=""&&(params["sort"] = value);
-    setSearchparams(params);
+    setSearchparams(params)
   },[value])
   return (
     <Box mt={"50px"}>
