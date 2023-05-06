@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 // import "./Signup.css"
 
 // import { getbanuserdata } from '../Redux/Admin/userauthaction'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../Components/Navbar'
 import { getlogindata } from '../Redux/UserLogin/userloginaction'
 
@@ -13,7 +13,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   }
-
+  const location = useLocation();
   const [data, setData] = useState(init)
   const toast = useToast()
   const dispatch = useDispatch()
@@ -29,8 +29,8 @@ const LoginPage = () => {
   const onSubmit = (e, data) => {
     e.preventDefault()
 
-    dispatch(getlogindata(data))
-    .then((res)=>{
+    dispatch(getlogindata(data)).then((res)=>{
+      console.log(res);
       if(res.payload.token){
         toast({
           position: "center",
@@ -39,7 +39,7 @@ const LoginPage = () => {
           duration: 9000,
           isClosable: true,
         })
-        navigate("/")
+        navigate(location.state,{replace:true})
         localStorage.setItem("token",JSON.stringify(res.payload.token))
       }
       else{
@@ -53,6 +53,7 @@ const LoginPage = () => {
       }
     })
     .catch((err)=>{
+      console.log(err);
       toast({
         position: "center",
         title: `${err}`,
@@ -63,7 +64,7 @@ const LoginPage = () => {
     })
     setData(init)
   }
-
+ console.log(location)
   return (<Box>
     <Navbar/>
   <Box width="100vw"   paddingTop={{ base: "8vh", md: "8vh", lg: "15vh" }} display="flex" justifyContent="center">

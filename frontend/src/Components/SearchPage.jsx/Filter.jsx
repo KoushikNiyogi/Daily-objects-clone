@@ -28,23 +28,21 @@ const Filter = () => {
   }
   
   const handlePrice = ()=>{
-    if(price_lt!=0&&price_gt!=0){
+    if(price_lt!=null&&price_gt!=null){
       setFilter({...filter,price_lt,price_gt});
     }
-    console.log((price_lt,price_gt))
   }
 
   useEffect(()=>{
     let params = {};
-    price_gt!=null&&(params["price_gt"] = filter["price_gt"]);
-    price_lt!=null&&(params["price_lt"] = filter["price_lt"]);
+    filter.price_gt!=null&&(params["price_gt"] = filter["price_gt"]);
+    filter.price_lt!=null&&(params["price_lt"] = filter["price_lt"]);
     filter.color.length!=0&&(params["color"] = filter["color"]);
+    searchparams.get("sort")!=undefined&&(params["sort"] = searchparams.get("sort"))
     searchparams.get("q")!=undefined&&(params["q"] = searchparams.get("q"))
     setSearchparams(params);
-    console.log("useeffect line 43",params,filter);
 
   },[filter])
-
   return (
     <Box transition={"0.5s"}>
       <Box mt={"50px"}>
