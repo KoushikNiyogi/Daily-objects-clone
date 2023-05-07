@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from  'react'
 import styles from "../Styling/bag.module.css"
+
 import {
     Input,
     Button,
@@ -17,13 +18,15 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux'
 import { addAddressAction } from "../Redux/AddressReducer/action"
+import { useNavigate } from 'react-router-dom'
 
-  
+
 
 const ShoppingBag = () => {
 
     const {user} = useSelector(store=>store.Loginreducer)
     const id = user._id
+    const userAddress = user.address
 
     
 
@@ -31,7 +34,7 @@ const ShoppingBag = () => {
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
     const dispatch = useDispatch()
-
+    const Navigate = useNavigate()
 
     const [address, setaddress] = useState({})
     
@@ -52,10 +55,20 @@ const ShoppingBag = () => {
     const[totaldiscount, settotaldiscount] = useState(0)
     const[grandtotal, setgrandtotal] = useState(0)
     const[priceWODiscount, setpriceWODiscount] = useState(0)
-   
+
+
+    const HandleCheckout=()=>{
+      if(!userAddress){
+        onOpen() 
+      }
+      else{
+        Navigate("/CheckoutPage")
+      }
+    }
 
     const PostIt = () =>{
         dispatch(addAddressAction(address, id)) 
+        // Navigate()
     }
 
     // change below later
@@ -259,7 +272,7 @@ const ShoppingBag = () => {
                                 <p style={{color:"rgb(231, 125, 143)"}}>{`You Saved Rs.${totaldiscount}`}</p>
                             </div>
                         </div>
-                        <Button mt={3} ref={btnRef} onClick={onOpen} style={{backgroundColor:"#20a87e"}}>
+                        <Button mt={3} ref={btnRef} onClick={HandleCheckout} style={{backgroundColor:"#20a87e"}}>
                             CHECKOUT
                         </Button>
 

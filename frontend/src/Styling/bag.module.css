@@ -6,12 +6,12 @@ h1{
 }
 #sidetoside {    
     margin-top: 30px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     height: 500px; 
     display: flex;
 }
 #left {
-    border: 2px solid blue;
+    border: 1px solid rgb(190, 189, 189);
     width:50%;
     overflow: scroll;
     scrollbar-color: red orange;
@@ -36,7 +36,7 @@ h1{
 
 
 #right {
-    /* border: 2px solid green; */
+    border: 1px solid rgb(190, 189, 189);
     width:50%;
     overflow: scroll;
     scrollbar-color: red orange;
@@ -47,7 +47,7 @@ h1{
 }
 #leftInside, #rightInside{
     margin:auto;
-    border: 2px solid pink;
+    /* border: 2px solid pink; */
     width:65%;
     margin-top: 80px;
 }
