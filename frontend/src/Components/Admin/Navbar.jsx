@@ -18,11 +18,13 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-
+import { UilSignOutAlt } from "@iconscout/react-unicons";
 import { SidebarData } from "./AdminData/adminData";
-
-import { Link as RouterLink } from "react-router-dom";
+import { useToast } from "@chakra-ui/toast";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import Logo from "./images/daily_e.png";
+import AdminHamMenu from "./AdminComponents/AdminDrawer/AdminDrawer";
+import { useSelector } from "react-redux";
 const Links = [""];
 
 const NavLink = ({ children }) => (
@@ -49,8 +51,22 @@ const Navbar = () => {
   const [text, setText] = useState("");
   const [page, setPage] = useState(1);
   const [count, setCount] = useState();
+  const toast = useToast();
+
+  const nevigate = useNavigate();
+  const logout = () => {
+    localStorage.setItem("isAuth", false);
+    toast({
+      title: "Logout successful",
+      status: "success",
+      position: "top",
+    });
+    nevigate("/login");
+  };
 
   //   https://awful-pear-bedclothes.cyclic.app/
+
+  const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
 
   const getData = (page) => {
     setStatus(false);
@@ -81,7 +97,7 @@ const Navbar = () => {
   };
 
   let last = Math.ceil(total / count);
-  console.log(last);
+  // console.log(last);
 
   Links[0] = `Total_${total}`;
   return (
@@ -92,7 +108,6 @@ const Navbar = () => {
         position="fixed"
         width={"100%"}
         zIndex="100"
-        mb={"30"}
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <HStack spacing={8} alignItems={"center"}>
@@ -121,7 +136,7 @@ const Navbar = () => {
                 <FaSearch width={"20px"} />
               </Button>
             </Box>
-            <Flex gap={"10"}>
+            <Flex gap={"6"} display={["none", "none", "none", "flex"]}>
               {SidebarData.map((item, index) => {
                 return (
                   <Flex key={index}>
@@ -152,18 +167,22 @@ const Navbar = () => {
                 />
               </MenuButton>
             </Menu>
+
+            {isAuthadmin ? (
+              <RouterLink onClick={logout} to={"/adminlogin"}>
+                <Flex p={"2"} className="menuItem">
+                  <Text>signout</Text> <UilSignOutAlt />
+                </Flex>
+              </RouterLink>
+            ) : (
+              ""
+            )}
+
+            <Box display={["flex", "flex", "flex", "none"]}>
+              <AdminHamMenu />
+            </Box>
           </Flex>
         </Flex>
-
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
-            </Stack>
-          </Box>
-        ) : null}
       </Box>
     </div>
   );
