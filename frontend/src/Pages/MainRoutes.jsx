@@ -7,7 +7,6 @@ import Login from "./Login"
 import Dashboard from "./Dashboard"
 import ProductPage from "./ProductPage"
 import SearchPage from "./SearchPage"
-import CategoryPage from './CategoryPage'
 import ShoppingBag from './ShoppingBag'
 import Checkout from './Checkout'
 import Payments from './Payments'
@@ -16,6 +15,7 @@ import Products from '../Components/Admin/AdminComponents/ProductRoute/Products'
 import AddProduct from '../Components/Admin/AdminComponents/FormForAddProduct/AddProduct'
 import Users from '../Components/Admin/AdminComponents/Allusers/Users'
 import OrderPage from '../Components/Admin/AdminComponents/OrderPage/OrderPage'
+import { Categorypage } from './Categorypage'
 
 const MainRoutes = () => {
   return (
@@ -25,7 +25,7 @@ const MainRoutes = () => {
         <Route path="/signup" element={<Signup/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/products" element={<CategoryPage/>} />
+        <Route path="/products" element={<Categorypage/>} />
         <Route path="/products/:id" element={<ProductPage/>} />
         <Route path="/SearchPage" element={<SearchPage/>} />
         <Route path="/ShoppingBagPage" element={<ShoppingBag />} />
