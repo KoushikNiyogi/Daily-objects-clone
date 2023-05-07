@@ -64,6 +64,11 @@ const ShoppingBag = () => {
       else{
         Navigate("/CheckoutPage")
       }
+      const orderSummary = {
+        totalqty, totaldiscount, grandtotal,priceWODiscount
+      }
+
+      localStorage.setItem("orderSummary", JSON.stringify(orderSummary));
     }
 
     const PostIt = () =>{

@@ -7,6 +7,9 @@ import { useEffect, useState } from 'react';
 
 const Checkout = () => {
 
+  var orderSummary = JSON.parse(localStorage.getItem("orderSummary"))
+  const {totalqty, totaldiscount, grandtotal, priceWODiscount} = orderSummary
+
   const {address} = useSelector(store=>store.AddressReducer)
   const {user} = useSelector(store=>store.Loginreducer)
   const navigate = useNavigate();
@@ -51,34 +54,37 @@ const Checkout = () => {
     const[gstin, setgstin] = useState("") */}
 
 
-
-   <Box  w={{ lg: "100%", md: "100%", base:"100%"}} boxSizing="border-box" className={styles.summary} id={styles.right}>
-      <Box  w={{ lg: "100%", md: "100%", base:"100%"}} >
-        <p style={{ fontSize: "1rem", fontWeight: "bold" }}>ORDER SUMMARY</p>
-        <Box className={styles.summaryItem}>
-        <p>Item Total (--- Items)</p> <p>Rs ---</p>
-        </Box>
-        <Box className={styles.summaryItem}>
-          <p>Discount</p> <p>Rs ---</p>
-        </Box>
-        <Box className={styles.summaryItem}>
-          <p>Shipping</p> <p>Free</p>
-        </Box>
-        <hr />
-        <Box className={styles.summaryItem}>
-          <Box>
-            <p>Grand Total</p>
-            <p>(Inclusive of Taxes)</p>
-          </Box>
-          <Box style={{ textAlign: "right" }}>
-            <p>Rs.---</p>
-            <p>You Saved Rs.----</p>
-          </Box>
-        </Box>
-      
-        <Button width={"100%"} style={{ margin: "1rem 0", backgroundColor: "#20a87e"}} size='lg' onClick={() => navigate("/payments")}>CHECKOUT</Button>
-      </Box>
-    </Box>
+                    <div id={styles.summary}>
+                        <div>
+                            <h2>ORDER SUMMARY</h2>
+                            <div className={styles.flexIt}> {/* flex */}
+                                <p>{`Item Total (${totalqty} Items)`}</p>
+                                <p>{`Rs. ${priceWODiscount}`}</p>
+                            </div>
+                            <div className={styles.flexIt} style={{color:"rgb(231, 125, 143)"}}> {/* flex */}
+                                <p>Discount</p>
+                                <p>{`Rs. ${totaldiscount}`}</p>
+                            </div>
+                            <div className={styles.flexIt}> {/* flex */}
+                                <p>Shipping</p>
+                                <p style={{color:"rgb(231, 125, 143)"}}>FREE</p>
+                            </div>
+                        </div>
+                        <div>
+                            <div className={styles.flexIt}> {/* flex */}
+                                <p>Grand Total</p>
+                                <p>{`Rs. ${grandtotal}`}</p>
+                            </div>
+                            <div className={styles.flexIt}> {/* flex */}
+                                <p>(Inclusive of Taxes)</p>
+                                <p style={{color:"rgb(231, 125, 143)"}}>{`You Saved Rs.${totaldiscount}`}</p>
+                            </div>
+                        </div>
+                        <Button mt={3} style={{backgroundColor:"#20a87e"}}>
+                            CONTINUE
+                        </Button>
+                    </div>
+                    
 
     </Flex>
 
