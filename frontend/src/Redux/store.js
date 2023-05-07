@@ -5,11 +5,11 @@ import { Reducer as SearchReducer } from "./SearchPageReducer/Reducer";
 import { Loginreducer } from "./UserLogin/userloginreducer";
 import usersignupreducer from "./UserSignup/usersignupreducer";
 import thunk from "redux-thunk";
-
+import { ProductReducer } from "./CategoryPage/Reducer";
 
 const RootReducer = combineReducers({
     SearchReducer : SearchReducer,
-    Loginreducer,usersignupreducer
+    Loginreducer,usersignupreducer,ProductReducer
   });
   
 export const store = legacy_createStore(RootReducer, applyMiddleware(thunk));
