@@ -79,8 +79,15 @@ const AddProduct = () => {
   };
   // https://pajamas-bonobo.cyclic.app/product/add
   const submitData = () => {
-    axios
-      .post(`https://pajamas-bonobo.cyclic.app/product/add`, products)
+    console.log(products);
+    axios({
+      method: "post",
+      url: `https://pajamas-bonobo.cyclic.app/product/add`,
+      data: JSON.stringify(products),
+      headers: {
+        Authorization: `${localStorage.getItem("adminToken")}`,
+      },
+    })
       .then((res) => {
         console.log(res);
         if (res.success == true) {

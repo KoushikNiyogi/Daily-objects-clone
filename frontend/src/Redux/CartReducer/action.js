@@ -8,13 +8,14 @@ import{
 
 
 export const getSingleProduct =(id)=>(dispatch)=>{
-   
+      console.log("im called")
       dispatch({ type: CART_REQUEST });
       axios({
         method: 'get',
         url: `http://localhost:${process.env.REACT_APP_BASE_URL}/product/singleproduct/${id}`,
       })
         .then((res) => {
+          console.log(res)
           dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: res.data.Data })
           localStorage.setItem("singleproduct", JSON.stringify(res.data.Data))
         })

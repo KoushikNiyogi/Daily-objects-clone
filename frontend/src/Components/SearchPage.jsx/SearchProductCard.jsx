@@ -24,6 +24,8 @@ const SearchProductCard = ({ item }) => {
   const toast = useToast()
   const handleAddToWishlist = (item) => {
     let obj = {...item}
+    obj["productId"] = item["_id"];
+    console.log(obj);
     delete obj["_id"];
     if(token){
       dispatch(addToWishlist(token,obj,toast))

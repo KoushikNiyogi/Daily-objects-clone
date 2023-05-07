@@ -36,11 +36,16 @@ const handleClick = (singleProduct)=>{
 }
 
 useEffect(() => {
+  console.log("useeffect is running")
   dispatch(getSingleProduct(id))
+  console.log("useeffect ended");
 }, [])
-
+ console.log(singleProduct)
   return (
     <Box mt={"50px"}>
+      {
+
+      singleProduct["_id"] != undefined ? <Box>
       <Flex direction={{ base: "column", lg: "row" }} width={"80%"} margin={"auto"}>
         <Box backgroundColor={"#f7f7f7"}>
           <Box width="700px" height="650px">
@@ -99,7 +104,7 @@ useEffect(() => {
       <Box m={"50px 0"}>
         <Text textAlign={"center"} fontSize={"5xl"} fontWeight={"bold"}>DETAILS</Text>
         {
-          singleProduct.details.map((item,i)=>{
+          singleProduct.details.length!=0&&singleProduct.details.map((item,i)=>{
                if(i%2 == 0){
                 return <Flex w={"80%"} m={"auto"}>
                    <Flex padding={"0 10px"} width={"60%"} h={"500px"} justifyContent={"center"} alignItems={"center"} bgColor={"#f7f7f7"} color={"black"}>
@@ -127,6 +132,8 @@ useEffect(() => {
       <Box m={"50px 0"} w={"100%"} h={"600px"}>
        <ImageSliderAuto images={Images}/>
       </Box>
+      </Box> : <Box></Box>
+     }
     </Box>
   )
 }

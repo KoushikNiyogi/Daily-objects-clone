@@ -18,7 +18,7 @@ const WishListCard = ({product}) => {
     const navigate = useNavigate();
     const {token,user} = useSelector(store => store.Loginreducer);
     const handleClick = ()=>{
-       navigate("/products/1")
+       navigate(`/products/${product.productId}`)
     }
 
     const handleDelete = (id)=>{

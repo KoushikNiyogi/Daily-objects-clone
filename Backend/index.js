@@ -1,8 +1,8 @@
 const express = require("express");
 const connection = require("./config/db");
 const cors = require("cors");
-const userRouter = require("./routes/user.route")
-const productRouter = require("./routes/product.route")
+const userRouter = require("./routes/user.route");
+const productRouter = require("./routes/product.route");
 const adminRouter = require("./routes/admin.route");
 const cartRoute = require("./routes/cart.route");
 const { Logger } = require("./middlewares/logger");
@@ -20,6 +20,7 @@ app.use("/product", productRouter)
 app.use(auth)
 app.use("/cart",cartRoute)
 app.use("/wishlist",wishlistRoute)
+
 app.get("/", (req, res) => {
   res.status(200).send("Home page");
 });
@@ -29,7 +30,7 @@ app.listen(8076, async () => {
     await connection;
     console.log("Connected to Mongo Atlas");
   } catch (err) {
-    console.log(err)
+    console.log(err);
     console.log("Couldn't connect to Mongo Atlas");
   }
   console.log(`Server started on port 5050`);

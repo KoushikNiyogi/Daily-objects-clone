@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 import {
   WISHLIST_REQUEST,
   WISHLIST_FAILURE,

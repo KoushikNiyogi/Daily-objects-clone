@@ -18,26 +18,24 @@ import Navbar from "../Components/Navbar";
 
 // import { getbanuserdata } from '../Redux/Admin/userauthaction'
 
+
 const LoginPage = () => {
   const init = {
     email: "",
     password: "",
-
   };
 
- 
-  const location = useLocation();
-  const [data, setData] = useState(init)
-  const toast = useToast()
-  const dispatch = useDispatch()
-  const isloading = useSelector(store => store.Loginreducer.isloading)
+  const [data, setData] = useState(init);
+  const toast = useToast();
+  const dispatch = useDispatch();
+  const isloading = useSelector((store) => store.Loginreducer.isloading);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
   let tokendata = JSON.parse(localStorage.getItem("token")) || [];
   let userId = JSON.parse(localStorage.getItem("userid")) || "";
-
+  const location  = useLocation();
   const navigate = useNavigate();
   const onSubmit = (e, data) => {
     e.preventDefault();
