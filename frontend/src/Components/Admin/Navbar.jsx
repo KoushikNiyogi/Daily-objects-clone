@@ -61,7 +61,8 @@ const Navbar = () => {
       status: "success",
       position: "top",
     });
-    nevigate("/login");
+    localStorage.setItem("adminToken", "");
+    nevigate("/adminlogin");
   };
 
   //   https://awful-pear-bedclothes.cyclic.app/

@@ -23,10 +23,11 @@ export const login = (userData) => (dispatch) => {
   dispatch(loginRequest());
 
   return axios
-    .post(`https://reqres.in/api/login`, userData)
+    .post(`https://pajamas-bonobo.cyclic.app/admin/login`, userData)
     .then((res) => {
+      console.log(res);
       dispatch(loginSuccess(res.data.token));
-      console.log(res)
+      localStorage.setItem("adminToken", res.data.token);
     })
     .catch((err) => {
       dispatch(loginFailure());
