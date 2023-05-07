@@ -10,6 +10,10 @@ import {
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getlogindata } from "../Redux/UserLogin/userloginaction";
+import Navbar from "../Components/Navbar";
+
 // import "./Signup.css"
 
 // import { getbanuserdata } from '../Redux/Admin/userauthaction'
@@ -51,11 +55,12 @@ const LoginPage = () => {
         })
         navigate(location.state,{replace:true})
         localStorage.setItem("token",JSON.stringify(res.payload.token))
+        localStorage.setItem("user",JSON.stringify(res.payload.user));
       }
       else{
         toast({
           position: "center",
-          title: `${err}`,
+          title: `Login Failure`,
           status: "warning",
           duration: 9000,
           isClosable: true,
@@ -74,7 +79,6 @@ const LoginPage = () => {
     })
     setData(init)
   }
- console.log(location)
   return (<Box>
     <Navbar/>
   <Box width="100vw"   paddingTop={{ base: "8vh", md: "8vh", lg: "15vh" }} display="flex" justifyContent="center">
@@ -102,20 +106,5 @@ const LoginPage = () => {
   </Box>
   </Box>
   )
-
-          <Box width="100%" marginTop="50px">
-            <p>
-              Don't have an account{" "}
-              <Link to="/signup">
-                <p style={{ color: "blue", textDecoration: "underline" }}>
-                  Create here
-                </p>
-              </Link>
-            </p>
-          </Box>
-        </Box>
-      </Box>
-    </Box>
-  );
 };
 export default LoginPage;

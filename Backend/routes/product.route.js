@@ -58,6 +58,16 @@ productRouter.get("/", async (req, res) => {
     }
 })
 
+productRouter.get("/singleproduct/:id", async (req, res) => {
+    const id = req.params.id
+      try {
+          const data = await productModel.findById(id)
+          res.send({ Data: data});
+      } catch (e) {
+          res.send({msg:e.message})
+      }
+  })
+
 productRouter.post("/add",auth,async (req, res) => {
     const payload = req.body
     try {

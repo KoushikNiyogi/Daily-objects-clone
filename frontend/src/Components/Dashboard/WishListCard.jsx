@@ -11,17 +11,26 @@ import {
     Button,
     Flex
 } from "@chakra-ui/react"
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteWishlistItem, getWishListItems } from '../../Redux/WishlistReducer/action'
 const WishListCard = ({product}) => {
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const {token,user} = useSelector(store => store.Loginreducer);
     const handleClick = ()=>{
        navigate("/products/1")
+    }
+
+    const handleDelete = (id)=>{
+     dispatch(deleteWishlistItem(token,id))
+     .then(res=>dispatch(getWishListItems(token,user.userId)))
     }
   return (
     <Card
   direction={{ base: 'column', sm: 'row' }}
   overflow='hidden'
   variant='outline'
-  onClick={()=>handleClick()}
+ 
 >
   <Image
     objectFit='cover'
@@ -38,8 +47,11 @@ const WishListCard = ({product}) => {
     </CardBody>
 
     <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+      <Button variant='solid' colorScheme='blue' mr={"30px"}  onClick={()=>handleClick()}>
         Add to Cart
+      </Button>
+      <Button variant='solid' colorScheme='blue' onClick={()=>handleDelete(product["_id"])}>
+        Remove
       </Button>
     </CardFooter>
    </Stack>

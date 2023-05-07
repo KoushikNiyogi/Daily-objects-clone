@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../Redux/UserLogin/userloginaction'
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const {token,isAuth} = useSelector(store => store.Loginreducer)
+  const {token,isAuth,user} = useSelector(store => store.Loginreducer)
   const store = useSelector(store => store.Loginreducer)
   const [Data,setData] = React.useState("");
   const [searchparams,setSearchparams] = useSearchParams();
@@ -37,6 +37,7 @@ const Dashboard = () => {
   useEffect(()=>{
    console.log("Running useeffect",searchparams.get("page"))
   },[searchparams])
+  console.log(user);
   return (
     <Box>
     <Navbar/>
@@ -48,7 +49,7 @@ const Dashboard = () => {
             token ? 
            <Box w={"20%"} padding={"10px"} borderRight={"1px solid #ededed"}>
              <Text textAlign={"left"} fontSize={"2xl"} fontWeight={"bold"}>DAILYESSENTIAL USER</Text>
-             <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>Koushik 9380135532</Text>
+             <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>{user[0].name} {user[0].email}</Text>
              <Box>
               <Flex onClick={()=>handlesearch("user")} cursor={"pointer"} fontSize={"2xl"} borderBottom={"1px solid #ededed"}  w={"90%"} margin={"auto"} justifyContent={"space-between"} padding={"20px 0"}>Personal Info<Text  fontSize={"xl"} ></Text><RiArrowRightSFill/></Flex>
               <Flex onClick={()=>handlesearch("order")} cursor={"pointer"} fontSize={"2xl"} borderBottom={"1px solid #ededed"}  w={"90%"} margin={"auto"} justifyContent={"space-between"} padding={"20px 0"}>My Orders<Text  fontSize={"xl"} ></Text><RiArrowRightSFill/></Flex>
@@ -80,7 +81,6 @@ const Dashboard = () => {
       </Flex>
       
     </Box>
-    <Footer/>
     </Box>
   )
 }

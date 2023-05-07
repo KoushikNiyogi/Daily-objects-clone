@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { AiOutlineHeart } from "react-icons/ai";
 import {
   Flex,
@@ -13,24 +13,32 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {addToWishlist} from "../../Redux/WishlistReducer/action"
+import { useToast } from '@chakra-ui/react'
 const SearchProductCard = ({ item }) => {
-  const {isAuth,token} = useSelector(store => store.Loginreducer)
+  const {isAuth,token,user} = useSelector(store => store.Loginreducer)
   const image1 = item.images[0];
   const image2 = item.images[1];
   const [image, setImage] = React.useState(image1);
   const Navigate = useNavigate();
   const dispatch = useDispatch();  
-
+  const toast = useToast()
   const handleAddToWishlist = (item) => {
+    let obj = {...item}
+    delete obj["_id"];
     if(token){
-     dispatch(addToWishlist(token,item))
+      dispatch(addToWishlist(token,obj,toast))
     }else{
       Navigate("/login",{replace:true,state:"/searchpage"})
     }
   }
-
+  useEffect(()=>{
+    //dispatch(getWishListData(user));
+  },[])
+  
   return (
-    <Card maxW='sm' onClick={() =>  Navigate(`/products/${item.id}`)}>
+    <Card maxW='sm' onClick={() =>{  
+      Navigate(`/products/${item["_id"]}`)
+    }}>
       <CardBody>
         <Flex justifyContent={"flex-end"} padding={"10px"}><AiOutlineHeart className ='button' onClick={(e) => {
           e.stopPropagation();
