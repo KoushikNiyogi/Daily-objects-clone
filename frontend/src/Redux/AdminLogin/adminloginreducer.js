@@ -12,7 +12,6 @@ let initialState = {
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
-  console.log({ type, payload });
   switch (type) {
     case LOGIN_REQUEST:
       return { ...state, isLoading: true };
