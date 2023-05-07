@@ -36,7 +36,7 @@ const MainRoutes = () => {
         <Route path="/addproduct" element={<AddProduct />}></Route>
         <Route path="/allusers" element={<Users />}></Route>
         <Route path="/orderpage" element={<OrderPage />}></Route>
-        <Route path="*" element={<div style={{width:"40%",margin:"auto"}}>
+        
 
       {/* ALL ADMIN ROUTES ARE HERE  */}
       <Route path="/admindashboard" element={<Admin />} />
