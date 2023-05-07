@@ -33,20 +33,16 @@ const AddProduct = () => {
   const [color, setColor] = useState("");
 
   const [price, setPrice] = useState(0);
-  const [stock, setStock] = useState(0);
+
   const [Heading1, setHeading1] = useState("");
   const [Heading2, setHeading2] = useState("");
 
   const [Content1, setContent1] = useState("");
   const [Content2, setContent2] = useState("");
 
-  const [dis_Price, setDisPrice] = useState();
-  const [discount, setDiscount] = useState();
-  const [status, setStatus] = useState("");
-
-  const [ratings, setRatings] = useState(0);
-  const [reviews, setReviews] = useState(0);
-
+  const [dis_Price, setDisPrice] = useState(0);
+  const [discount, setDiscount] = useState(0);
+  const [brand, setBrand] = useState(0);
   const toast = useToast();
 
   const products = {
@@ -54,8 +50,7 @@ const AddProduct = () => {
     description: description,
     category: category,
     color: color,
-    ratings: ratings,
-    reviews: reviews,
+    brand: brand,
     images: [
       {
         url: url1,
@@ -78,20 +73,14 @@ const AddProduct = () => {
       },
     ],
     price: +price,
-    stock: +stock,
+
     discounted_price: +dis_Price,
     discount: +discount,
-    status: status,
   };
-
+  // https://pajamas-bonobo.cyclic.app/product/add
   const submitData = () => {
     axios
-      .post(`https://pajamas-bonobo.cyclic.app/product/add`, {
-        body: JSON.stringify(products),
-        headers: {
-          "Content-type": "application/json",
-        },
-      })
+      .post(`https://pajamas-bonobo.cyclic.app/product/add`, products)
       .then((res) => {
         console.log(res);
         if (res.success == true) {
@@ -216,16 +205,10 @@ const AddProduct = () => {
                   placeholder="Content2"
                   onChange={(e) => setContent2(e.target.value)}
                 />
-
                 <Input
-                  type="number"
-                  placeholder="ratings"
-                  onChange={(e) => setRatings(e.target.value)}
-                />
-                <Input
-                  type="number"
-                  placeholder="reviews"
-                  onChange={(e) => setReviews(e.target.value)}
+                  type="text"
+                  placeholder="Brand"
+                  onChange={(e) => setBrand(e.target.value)}
                 />
               </Stack>
               <Stack>
@@ -263,32 +246,6 @@ const AddProduct = () => {
                     children={<CheckIcon color="green.500" />}
                   />
                 </InputGroup>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    color="gray.300"
-                    fontSize="1.2em"
-                    children="$"
-                  />
-                  <Input
-                    type={"number"}
-                    placeholder="Discount"
-                    onChange={(e) => setDiscount(e.target.value)}
-                  />
-                  <InputRightElement
-                    children={<CheckIcon color="green.500" />}
-                  />
-                </InputGroup>
-                <Input
-                  type="number"
-                  placeholder="Stock"
-                  onChange={(e) => setStock(e.target.value)}
-                />
-                <Input
-                  type="text"
-                  placeholder="Status"
-                  onChange={(e) => setStatus(e.target.value)}
-                />
               </Stack>
             </Grid>
             <Button

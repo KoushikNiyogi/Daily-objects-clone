@@ -14,22 +14,27 @@ import {
 } from "@chakra-ui/react"
 import { RiArrowRightSFill } from "react-icons/ri"
 import { useNavigate,useSearchParams } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUser } from '../../Redux/UserLogin/userloginaction'
 
 export default function DashboardDrawer() {
-  const [state, setState] = React.useState(true);
   const [Data, setData] = React.useState("");
   const navigate = useNavigate();
   const [searchparams, setSearchparams] = useSearchParams();
-
+  const store = useSelector(store => store.Loginreducer)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [placement, setPlacement] = React.useState('left')
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    searchparams("") 
-    setState(false);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    searchparams.delete("page")
+    dispatch(logoutUser);
   }
 
   const handleRoute = (path) => {
-    navigate(path);
+    navigate(path,{replace:true,state:"/dashboard"});
   }
 
   const handlesearch = (data) => {
@@ -45,7 +50,7 @@ export default function DashboardDrawer() {
         <DrawerContent>
           <DrawerBody>
             {
-              state ?
+              store.token!=null?
                 <Box w={"100%"} padding={"10px"} >
                   <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>DAILYESSENTIAL USER</Text>
                   <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>Koushik 9380135532</Text>
