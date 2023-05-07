@@ -14,6 +14,7 @@ const cartSchema = mongoose.Schema({
     userId:String,
     payment:Boolean,
     dispatch:Boolean,
+    quantity:Number
 })
 
 const cartModel = mongoose.model("cartItem", cartSchema)

@@ -44,7 +44,7 @@ userRouter.post("/register", async (req, res) => {
 
 userRouter.post("/login", async (req, res) => {
     const { email, password } = req.body
-
+    
     try {
         let User = await UserModel.find({ email: email })
         if (User.length > 0) {
