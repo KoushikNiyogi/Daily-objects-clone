@@ -45,7 +45,7 @@ const MainRoutes = () => {
       <Route path="/allusers" element={<Users />} />
 
       <Route path="/orderpage" element={<OrderPage />} />
-      <Route path="/adminlogin" element={<AdminLogin />} />
+      {/* <Route path="/adminlogin" element={<AdminLogin />} /> */}
       <Route
         path="*"
         element={
