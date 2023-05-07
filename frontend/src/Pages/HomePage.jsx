@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <Box>
       <Navbar />
-      <Box width="90%" margin="auto" paddingTop={{ base: "8vh", md: "8vh", lg: "10vh" }}>
+      <Box width="90%" margin="auto">
         <Image src="https://images.dailyobjects.com/marche/assets/images/other/offer-baners-updated-homepage-desktop.jpg?tr=cm-pad_crop,v-2,dpr-1" />
       </Box>
       <Box width="100%">

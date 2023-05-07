@@ -2,7 +2,8 @@ import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, Draw
 import React, { useRef } from 'react'
 import { CloseIcon, HamburgerIcon, Search2Icon, } from "@chakra-ui/icons";
 import Submenu from './Submenu';
-const HamMenu = () => {
+const HamMenu = (props) => {
+  const techarr = props.techarr
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
 
@@ -25,12 +26,13 @@ const HamMenu = () => {
         <DrawerHeader backgroundColor="white"></DrawerHeader>
         <DrawerBody backgroundColor="white">
           <VStack alignItems="center" className="left">
-              <Submenu title="jeans"/>
-              <Submenu title="jeans"/>
-              <Submenu title="jeans"/>
-              <Submenu title="jeans"/>
-              <Submenu title="jeans"/>
-              <Submenu title="jeans"/>
+              <Submenu title="TECH" techarr={techarr}/>
+              <Submenu title="BAGS & WALLETS" techarr={techarr}/>
+              <Submenu title="WORK & ESSENTIALS" techarr={techarr}/>
+              <Submenu title="GIFTING" techarr={techarr}/>
+              <Submenu title="COLLECTION" techarr={techarr}/>
+              <Submenu title="SHOP BY APPLE" techarr={techarr}/>
+              <Submenu title="NEW ARRIVAL" techarr={techarr}/>
           </VStack>
         </DrawerBody>
       </DrawerContent>

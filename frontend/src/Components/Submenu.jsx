@@ -1,10 +1,12 @@
-import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box } from '@chakra-ui/react'
+import { Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Image } from '@chakra-ui/react'
 import React from 'react'
 import Grandmenu from './Grandmenu'
+import DrawerSubmenu from './DrawerSubmenu'
+import HoverCardSubMenu from './HoverCardSubMenu'
 
-const Submenu = ({title}) => {
+const Submenu = ({ title, techarr }) => {
 
-    const submenu = ["Topwear","Indian","Bottomwear","Footwear"]
+
   return (<Accordion allowToggle width="100%">
     <AccordionItem width="100%" border="1px solid black">
       <h2>
@@ -16,6 +18,17 @@ const Submenu = ({title}) => {
         </AccordionButton>
       </h2>
       <AccordionPanel pb={4} >
+
+        <Box>
+          {
+            techarr.map(ele=><Box > 
+            <Image src={ele.imgurl} width="50%" />
+            <HoverCardSubMenu menuarr={ele.item}/>
+           </Box>)
+          }
+        </Box>
+
+
       </AccordionPanel>
     </AccordionItem>
   </Accordion>
