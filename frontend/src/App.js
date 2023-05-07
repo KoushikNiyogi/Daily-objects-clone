@@ -12,8 +12,8 @@ import { Categorypage } from './Pages/Categorypage';
 function App() {
   return (
     <div className="App">
-      {/* <MainRoutes /> */}
-    < Categorypage/>
+       <MainRoutes /> 
+    {/* < Categorypage/>*/}
    
     </div>
   );
