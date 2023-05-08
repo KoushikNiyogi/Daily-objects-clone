@@ -42,6 +42,7 @@ useEffect(() => {
 }, [])
  console.log(singleProduct)
   return (
+
     <Box mt={"50px"}>
       {
 
@@ -135,6 +136,7 @@ useEffect(() => {
       </Box> : <Box></Box>
      }
     </Box>
+
   )
 }
 

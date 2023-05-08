@@ -16,6 +16,7 @@ const Sort = () => {
     searchparams.get("price_lt")!=undefined&&(params["price_lt"] = searchparams.get("price_lt"));
     searchparams.getAll("color").length!=0&&(params["color"] = searchparams.getAll("color"));
     searchparams.get("q")!=undefined&&(params["q"] = searchparams.get("q"));
+    searchparams.get("category") != undefined && (params["category"] = searchparams.get("category"))
     value!=""&&(params["sort"] = value);
     setSearchparams(params)
   },[value])
