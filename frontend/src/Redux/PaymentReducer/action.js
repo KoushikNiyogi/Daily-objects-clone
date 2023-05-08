@@ -3,19 +3,22 @@ import{
   EDIT_PAYMENT_REQUEST,EDIT_PAYMENT_SUCCESS,EDIT_PAYMENT_FAILURE
 } from "./actionTypes"
 
-export const UpdatePaymentAction = (token,dataobj, id)=>(dispatch)=>{
+export const UpdatePaymentAction = (token, id)=>(dispatch)=>{
   console.log("UpdatePaymentAction called");
   const headers = {
     Authorization: `${token}`
   };
   dispatch({type:  EDIT_PAYMENT_REQUEST})
   return axios({
-    method: 'PATCH',
+    method: 'patch',
     url: `https://pajamas-bonobo.cyclic.app/cart/update/${id}`,
-    data: dataobj,
+    data: {
+      payment : true
+    },
     headers: headers
   })
   .then((res)=>{
+    console.log(res);
     dispatch({type: EDIT_PAYMENT_SUCCESS})
     console.log(res);
   })

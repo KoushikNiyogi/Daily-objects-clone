@@ -34,7 +34,7 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
   };
   const data = item;
   console.log(data)
-  dispatch({ type: CART_REQUEST });
+  dispatch({ type: CART_REQUEST});
   axios({
     method: 'post',
     url: `https://pajamas-bonobo.cyclic.app/cart/add`,
@@ -43,7 +43,7 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
   })
     .then((res) => {
       console.log(res);
-      dispatch({ type: ADD_CART_SUCCESS })
+      dispatch({ type: ADD_CART_SUCCESS,payload : res.data.newProduct  })
       toast({
         title: res.data.msg,
         status: 'success',
