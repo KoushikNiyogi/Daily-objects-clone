@@ -1,43 +1,33 @@
-import React from 'react'
-import "./Styles/CategoryPage.css"
+import react, { useState, useEffect } from "react"
+import { CategoryNav } from "../Components/CategoryNav"
+// import ProductList from "../Components/ProductList"
+import Productcard from "../Components/Admin/AdminComponents/Card/Productcard"
+import { ProductList } from "../Components/ProductList"
+import CombinedFilter_sort from "../Components/SearchPage.jsx/CombinedFilter_sort"
+import { Button } from "@chakra-ui/react"
+import {useDispatch, useSelector} from "react-redux";
+import { getProducts } from '../Redux/CategoryPage/Action';
 
 
-const CategoryPage = () => {
 
+export const Categorypage = ()=> {
+  const dispatch=useDispatch();
 
+ 
 
-  return (
+  useEffect(() => {
+    dispatch(getProducts({category: []}))
+  }, []);
 
-    <div className='category-main'>
+  return(
+    <div>
+       <CategoryNav/>
 
-      <div>
-        <img src="https://images.dailyobjects.com/marche/assets/images/other/old-arrival-page-catagory-icon.jpg?tr=cm-pad_crop,v-2,w-160,h-160,dpr-1" alt="" />
-        <h3>DESKS</h3>
-      </div>
-
-      <div>
-        <img src="https://images.dailyobjects.com/marche/assets/images/other/old-arrival-page-catagory-icon.jpg?tr=cm-pad_crop,v-2,w-160,h-160,dpr-1" alt="" />
-        <h3>DESKS</h3>
-      </div>
-
-      <div>
-        <img src="https://images.dailyobjects.com/marche/icons/sub-category/tote-bags.png?tr=cm-pad_resize,v-2,w-160,h-160,dpr-1" alt="" />
-        <h3>MESSENGER BAG</h3>
-      </div>
-
-      <div>
-        <img src="https://images.dailyobjects.com/marche/icons/sub-category/wallets.png?tr=cm-pad_resize,v-2,w-160,h-160,dpr-1" alt="" />
-        <h3>WALLETS</h3>
-      </div>
-
-      <div>
-        <img src="https://images.dailyobjects.com/marche/icons/sub-category/backpacks.png?tr=cm-pad_resize,v-2,w-160,h-160,dpr-1" alt="" />
-        <h3>BACKPACKS</h3>
-      </div>
+      <ProductList/>
     </div>
+   
+
+
   )
+
 }
-
-
-export default CategoryPage
-

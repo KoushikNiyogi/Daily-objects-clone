@@ -143,7 +143,11 @@ const Footer = () => {
 
     ]
     return (
+<<<<<<< HEAD
         <Box >
+=======
+        <Box mt={"20px"}>
+>>>>>>> f215c5968109f0612070bf6515384ffe637df8fd
             <Flex border="0.1px solid gray" flexDirection={["column", "column", "row", "row"]}>
                 <Box display="flex" gap={["5%", "5%", "0", "0"]} width={["100%", "100%", "60%", "60%"]} height={["280px", "280px", "300px", "300px"]} justifyContent="space-around" paddingTop="5%">
                     <Ftable title="KNOW US" item={knowus} />

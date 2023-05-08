@@ -6,16 +6,37 @@ h1{
 }
 #sidetoside {    
     margin-top: 30px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     height: 500px; 
     display: flex;
 }
 #left {
-    border: 2px solid blue;
+    border: 1px solid rgb(190, 189, 189);
     width:50%;
+    overflow: scroll;
+    scrollbar-color: red orange;
+    scrollbar-width: thin;
+    font-family: 'TradeGothicLTStd-BdCn20', sans-serif;
+    font-size: 15px;
 }
+
+#indiDiv{
+    display: flex;
+}
+#imageDiv{
+    width: 20%;
+}
+#left img{
+    width : 100%;
+}
+
+#ProdDeets{
+    width: 80%;
+}
+
+
 #right {
-    /* border: 2px solid green; */
+    border: 1px solid rgb(190, 189, 189);
     width:50%;
     overflow: scroll;
     scrollbar-color: red orange;
@@ -24,7 +45,7 @@ h1{
     font-size: 15px;
     font-weight: bold;
 }
-#rightInside{
+#leftInside, #rightInside{
     margin:auto;
     /* border: 2px solid pink; */
     width:65%;
