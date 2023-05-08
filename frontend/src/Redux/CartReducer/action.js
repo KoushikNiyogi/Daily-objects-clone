@@ -33,10 +33,11 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
     Authorization: `${token}`
   };
   const data = item;
+  console.log(data)
   dispatch({ type: CART_REQUEST });
   axios({
     method: 'post',
-    url: `https://pajamas-bonobo.cyclic.app/product/cart/add`,
+    url: `https://pajamas-bonobo.cyclic.app/cart/add`,
     data: data,
     headers: headers
   })
@@ -58,21 +59,27 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
 
 
 export const GetAllCartProductsAction = (token,id) => (dispatch)  => {
-  console.log("GetAllCartProductsAction called");
+
+  console.log("GetAllCartProductsAction called");  
+  const userId = id;
   const headers = {
-    Authorization: `${token}`
-  };  
+    Authorization : `${token}` 
+  }
+
   dispatch({ type: CART_REQUEST });
-  const userId = id
   axios({
     method: 'GET',
     url: `https://pajamas-bonobo.cyclic.app/cart`,
-    data: {userId},
-    headers: headers
+    data:{
+      userId
+    },
+    headers
   })
   .then((res) => {
-                  console.log(res)
-                  dispatch({ type: GET_CART_PRODUCTS_SUCCESS,  payload: res.data.Data})})
+                  if(res.data.Data==undefined){
+                    dispatch({ type: GET_CART_PRODUCTS_SUCCESS,  payload: []})
+                  }else{
+                  dispatch({ type: GET_CART_PRODUCTS_SUCCESS,  payload: res.data.Data})}})
   .catch((err) => {
                 dispatch({ type: CART_FAILURE })
                 console.log(err)
@@ -80,14 +87,17 @@ export const GetAllCartProductsAction = (token,id) => (dispatch)  => {
 
 }
 
-export const deleteCartProductAction =(token, id)=>(dispatch)=>{
-  console.log("deleteCartProductAction called");
+
+export const deleteCartProductAction =(token,id)=>(dispatch)=>{
+  console.log("deleteCartProductAction called");  
   const headers = {
-    Authorization: `${token}`
-  };  
+    Authorization : `${token}` 
+  }
+
   dispatch({ type: CART_REQUEST });
-  axios({
-    method: 'DELETE',
+
+  return axios({
+    method: 'delete',
     url: `https://pajamas-bonobo.cyclic.app/cart/delete/${id}`,
     headers: headers
   })
@@ -101,21 +111,26 @@ export const deleteCartProductAction =(token, id)=>(dispatch)=>{
     });
 }
 
-export const UpdateCartProductAction = (token, dataobj, id)=>(dispatch)=>{
+
+export const UpdateCartProductAction = (token,val, id)=>(dispatch)=>{
   console.log("UpdateCartProductAction called"); 
   const headers = {
-    Authorization: `${token}`
-  }; 
+    Authorization : `${token}` 
+  }
+  const data = {
+    quantity : val
+  }
+  console.log(headers,data);
   dispatch({type:  CART_REQUEST})
   return axios({
-    method: 'PATCH',
+    method: 'patch',
     url: `https://pajamas-bonobo.cyclic.app/cart/update/${id}`,
-    data: dataobj,
+    data: data,
     headers: headers
   })
   .then((res)=>{
-    dispatch({type: UPDATE_CART_PRODUCT_SUCCESS})
     console.log(res);
+    dispatch({type: UPDATE_CART_PRODUCT_SUCCESS})
   })
   .catch((err)=>{
     dispatch({type: CART_FAILURE})

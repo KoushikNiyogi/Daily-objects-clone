@@ -48,30 +48,24 @@ function UpdateProduct({ id, getData }) {
   const toast = useToast();
 
   const newData = {
-    title: title,
-    description: description,
-    category: category,
-    images: [
-      {
-        url: url,
-      },
-    ],
+    title,
+    description,
+    category,
+    images: [url],
     price: +price,
     stock: +stock,
   };
   // https://pajamas-bonobo.cyclic.app/product/delete/${_id}
   const Update = (_id) => {
     console.log(id);
-    axios
-      .patch(
-        `https://pajamas-bonobo.cyclic.app/product/update/${_id}`,
-        newData,
-        {
-          headers: {
-            Authorization: localStorage.getItem("token"),
-          },
-        }
-      )
+    axios({
+      method: "PATCH",
+      url: `https://pajamas-bonobo.cyclic.app/product/update/${_id}`,
+      data: newData,
+      headers: {
+        Authorization: `${localStorage.getItem("adminToken")}`,
+      },
+    })
       .then((res) => {
         console.log(res);
         getData();

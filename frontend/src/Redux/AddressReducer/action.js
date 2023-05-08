@@ -8,12 +8,14 @@ export const addAddressAction = (token,address, id) => (dispatch) =>{
         Authorization: `${token}`
       }; 
     dispatch({type : ADDRESS_REQUEST_PENDING})
+
     return axios({
         method: 'PATCH',
         url: `https://pajamas-bonobo.cyclic.app/user/update/${id}`,
         data: address,
         headers: headers
       })
+
     .then((res)=>{
         dispatch({type: POST_ADDRESS_SUCCESS})
         console.log(res)

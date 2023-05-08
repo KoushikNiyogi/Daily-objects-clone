@@ -39,43 +39,42 @@ function DeleteProduct({ id, getData }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = React.useState(<OverlayOne />);
 
-  const Delete = (_id) => {
+  const Delete = async (_id) => {
     console.log(_id, "update data");
-    axios
-      .delete(`https://pajamas-bonobo.cyclic.app/product/delete/${_id}`)
-      .then((res) => {
-        // console.log(res)
-        if (res.data.success == true) {
-          getData();
-          toast({
-            title: "Data deleted successful",
-            position: "top",
-            status: "success",
-            isClosable: true,
-            duration: 5000,
-          });
-        } else {
-          toast({
-            title: "Error",
-            position: "top",
-            status: "error",
-            isClosable: true,
-            duration: 5000,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log("error", error);
-        if (error) {
-          toast({
-            title: "Something went wrong",
-            status: "error",
-            position: "top",
-            isClosable: true,
-            duration: 5000,
-          });
-        }
+    try {
+      const config = {
+        headers: {
+          Authorization: `${localStorage.getItem("adminToken")}`,
+        },
+      };
+
+      const response = await axios.delete(
+        `https://pajamas-bonobo.cyclic.app/product/delete/${_id}`,
+        config
+      );
+
+      getData();
+
+      toast({
+        title: "Data deleted successful",
+        position: "top",
+        status: "success",
+        isClosable: true,
+        duration: 5000,
       });
+
+      console.log(response.data); // the deleted post data
+    } catch (error) {
+      console.error(error);
+
+      toast({
+        title: "Something went wrong",
+        status: "error",
+        position: "top",
+        isClosable: true,
+        duration: 5000,
+      });
+    }
   };
 
   return (

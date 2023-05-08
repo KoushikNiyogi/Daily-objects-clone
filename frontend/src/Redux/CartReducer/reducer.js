@@ -18,7 +18,6 @@ import{
 }
 
 export const reducer = (state = initialState,{type,payload})=>{
-  console.log(payload)
   switch(type){
     case CART_REQUEST : return {
         ...state,

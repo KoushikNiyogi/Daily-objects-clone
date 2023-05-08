@@ -16,19 +16,24 @@ const Users = () => {
 
   // https://pajamas-bonobo.cyclic.app/
 
-  const getData = () => {
+  const getData = async () => {
     setStatus(false);
-    axios
-      .get(`https://pajamas-bonobo.cyclic.app/user`)
-      .then((res) => {
-        console.log(res);
-        setData(res.data.users);
-        setStatus(true);
-      })
-      .catch((error) => {
-        setStatus(false);
-        console.log("error", error);
+
+    try {
+      let res = await axios({
+        method: "GET",
+        url: `https://pajamas-bonobo.cyclic.app/user/`,
+        headers: {
+          Authorization: `${localStorage.getItem("adminToken")}`,
+        },
       });
+      console.log(res);
+      setData(res.data.users);
+      setStatus(true);
+    } catch (error) {
+      setStatus(false);
+      console.log("error", error);
+    }
   };
 
   useEffect(() => {
