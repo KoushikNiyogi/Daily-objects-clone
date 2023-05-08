@@ -23,6 +23,7 @@ function Payments() {
   
 
   const {products} = useSelector(store=>store.CartReducer) //[{},{}]
+  const {user,token} = useSelector(store=>store.Loginreducer)
     
     const[number, setnumber] = useState("")
     const[valid, setvalid] = useState("")
@@ -38,7 +39,7 @@ function Payments() {
     const updatePayment = ()=>{
       for(let i=0; i<products.length; i++){
         let updatedCartItem = {...products[i], payment:true}
-        dispatch(UpdatePaymentAction(updatedCartItem, products[i]._id)) 
+        dispatch(UpdatePaymentAction(token, updatedCartItem, products[i]._id)) 
       }
     }
 

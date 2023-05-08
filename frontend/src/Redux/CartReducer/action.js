@@ -59,11 +59,13 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
 
 
 export const GetAllCartProductsAction = (token,id) => (dispatch)  => {
+
   console.log("GetAllCartProductsAction called");  
   const userId = id;
   const headers = {
     Authorization : `${token}` 
   }
+
   dispatch({ type: CART_REQUEST });
   axios({
     method: 'GET',
@@ -72,7 +74,6 @@ export const GetAllCartProductsAction = (token,id) => (dispatch)  => {
       userId
     },
     headers
-    
   })
   .then((res) => {
                   if(res.data.Data==undefined){
@@ -86,11 +87,13 @@ export const GetAllCartProductsAction = (token,id) => (dispatch)  => {
 
 }
 
+
 export const deleteCartProductAction =(token,id)=>(dispatch)=>{
   console.log("deleteCartProductAction called");  
   const headers = {
     Authorization : `${token}` 
   }
+
   dispatch({ type: CART_REQUEST });
 
   return axios({
@@ -107,6 +110,7 @@ export const deleteCartProductAction =(token,id)=>(dispatch)=>{
       console.log(err);
     });
 }
+
 
 export const UpdateCartProductAction = (token,val, id)=>(dispatch)=>{
   console.log("UpdateCartProductAction called"); 

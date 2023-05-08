@@ -28,7 +28,9 @@ const ShoppingBag = () => {
     const dispatch = useDispatch()
     const Navigate = useNavigate()
 
-    const {token,user} = useSelector(store=>store.Loginreducer)
+
+    const {user,token} = useSelector(store=>store.Loginreducer)
+
     const userID = user._id
     const userAddress = user.address
 
@@ -72,21 +74,21 @@ const ShoppingBag = () => {
     }
 
     
+    
     useEffect(()=>{
       dispatch(GetAllCartProductsAction(token,userID))
     },[])              
 
     const HandleQty = (id, val)=>{
-            
             console.log(val)
             dispatch(UpdateCartProductAction(token,val, id))
             .then((res)=>dispatch(GetAllCartProductsAction(token,userID)))
-
     }
 
     const HandleDelete = (id)=>{
             dispatch(deleteCartProductAction(token,id))
             .then((res)=>dispatch(GetAllCartProductsAction(token,userID)))
+
     }
 
       
@@ -111,7 +113,7 @@ const ShoppingBag = () => {
     
        
     const PostIt = () =>{
-        dispatch(addAddressAction(address, userID)) 
+        dispatch(addAddressAction(token,address, userID)) 
     }
   
   
