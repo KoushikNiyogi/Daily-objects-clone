@@ -51,15 +51,7 @@ const AddProduct = () => {
     category: category,
     color: color,
     images: [
-      {
-        url: url1,
-      },
-      {
-        url: url2,
-      },
-      {
-        url: url3,
-      },
+      url1,url2,url3
     ],
     details: [
       {

@@ -53,7 +53,7 @@ export default function DashboardDrawer() {
               store.token!=null?
                 <Box w={"100%"} padding={"10px"} >
                   <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>DAILYESSENTIAL USER</Text>
-                  <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>Koushik 9380135532</Text>
+                  <Text textAlign={"left"} fontSize={"xl"} fontWeight={"bold"}>{store.user[0].name} {store.user[0].email}</Text>
                   <Box>
                     <Flex onClick={() => handlesearch("user")} cursor={"pointer"} fontSize={"xl"} borderBottom={"1px solid #ededed"} w={"90%"} margin={"auto"} justifyContent={"space-between"} padding={"20px 0"}>Personal Info<Text fontSize={"xl"} ></Text><RiArrowRightSFill /></Flex>
                     <Flex onClick={() => handlesearch("order")} cursor={"pointer"} fontSize={"xl"} borderBottom={"1px solid #ededed"} w={"90%"} margin={"auto"} justifyContent={"space-between"} padding={"20px 0"}>My Orders<Text fontSize={"xl"} ></Text><RiArrowRightSFill /></Flex>

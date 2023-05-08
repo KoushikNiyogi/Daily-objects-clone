@@ -36,12 +36,10 @@ const SearchPage = () => {
   }
 
   useEffect(()=>{
-    console.log("useeffect is running at lin 39")
     localStorage.removeItem("searchpage");
     setdummy(!dummy);
-    console.log(dummy,"line42")
   },[])
-
+  console.log(process.env.REACT_APP_BASE_URL)
   useEffect(()=>{
     let param = {};
     if (searchparams.getAll("color").length != 0) {

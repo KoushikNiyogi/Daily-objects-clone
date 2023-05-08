@@ -3,20 +3,75 @@ import {
   WISHLIST_REQUEST,
   WISHLIST_FAILURE,
   ADD_WISHLIST_SUCCESS,
-} from "./actionTypes";
+  GET_WISHLIST_SUCCESS
+} from "./actionTypes"
 
-export const addToWishlist = (token, item) => (dispatch) => {
+export const addToWishlist = (token, item, toast) => (dispatch) => {
+  const headers = {
+    Authorization: `${token}`
+  };
+  const data = item;
   dispatch({ type: WISHLIST_REQUEST });
   axios({
-    method: "post",
-    url: `http://localhost:8080/wishlist/add`,
-    data: item,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    method: 'post',
+    url: `https://pajamas-bonobo.cyclic.app/wishlist/add`,
+    data: data,
+    headers: headers
   })
     .then((res) => {
+      dispatch({ type: ADD_WISHLIST_SUCCESS })
+      toast({
+        title: res.data.msg,
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: WISHLIST_FAILURE })
+    });
+}
+
+
+export const getWishListItems = (token, item) => (dispatch) => {
+  const headers = {
+    Authorization: `${token}`
+  };
+  const data = {
+    userId: item
+  };
+  dispatch({ type: WISHLIST_REQUEST });
+  axios({
+    method: 'get',
+    url: `https://pajamas-bonobo.cyclic.app/wishlist/`,
+    data: data,
+    headers: headers
+  })
+    .then((res) => {
+      dispatch({ type: GET_WISHLIST_SUCCESS, payload: res.data.Data })
+      localStorage.setItem("wishlist", JSON.stringify(res.data.Data))
       console.log(res);
     })
-    .catch((err) => dispatch({ type: WISHLIST_FAILURE }));
-};
+    .catch((err) => {
+      dispatch({ type: WISHLIST_FAILURE });
+      console.log(err);
+    });
+}
+
+
+export const deleteWishlistItem = (token, id) => (dispatch) => {
+  let data = {
+    _id: id
+  }
+  return axios({
+    method: "delete",
+    url: `https://pajamas-bonobo.cyclic.app/wishlist/delete/${id}`,
+    headers: {
+      Authorization: token
+    },
+    data: data
+  })
+    .then(res => console.log(res))
+    .catch(res => console.log(res))
+}
