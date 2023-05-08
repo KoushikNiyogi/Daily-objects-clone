@@ -2,11 +2,18 @@ import { ADDRESS_REQUEST_FAILURE, ADDRESS_REQUEST_PENDING, POST_ADDRESS_SUCCESS 
 import axios from 'axios'
 //put the url
 
-export const addAddressAction = (address, id) => (dispatch) =>{
+export const addAddressAction = (token,address, id) => (dispatch) =>{
     console.log("addAddressAction called");
+    const headers = {
+        Authorization: `${token}`
+      }; 
     dispatch({type : ADDRESS_REQUEST_PENDING})
-
-    return axios.patch(`https://pajamas-bonobo.cyclic.app/user          /${id}`, address)
+    return axios({
+        method: 'PATCH',
+        url: `https://pajamas-bonobo.cyclic.app/user/update/${id}`,
+        data: address,
+        headers: headers
+      })
     .then((res)=>{
         dispatch({type: POST_ADDRESS_SUCCESS})
         console.log(res)

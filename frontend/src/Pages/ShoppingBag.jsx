@@ -28,7 +28,7 @@ const ShoppingBag = () => {
     const dispatch = useDispatch()
     const Navigate = useNavigate()
 
-    const {user} = useSelector(store=>store.Loginreducer)
+    const {user,token} = useSelector(store=>store.Loginreducer)
     const userID = user._id
     const userAddress = user.address
 
@@ -73,18 +73,19 @@ const ShoppingBag = () => {
     }
 
     
+    
     useEffect(()=>{
-      dispatch(GetAllCartProductsAction(userID))
+      dispatch(GetAllCartProductsAction(token,userID))
     },[])              
 
     const HandleQty = (id, val)=>{
             const neededProd = allcartProducts.find((item)=>item._id ==id)
             neededProd.quantity = neededProd.quantity + val
-            dispatch(UpdateCartProductAction(neededProd, id))                
+            dispatch(UpdateCartProductAction(token,neededProd, id))                
     }
 
     const HandleDelete = (id)=>{
-            dispatch(deleteCartProductAction(id)).finally(()=>dispatch(GetAllCartProductsAction(userID)))
+            dispatch(deleteCartProductAction(token,id)).finally(()=>dispatch(GetAllCartProductsAction(token,userID)))
     }
 
       
@@ -110,7 +111,7 @@ const ShoppingBag = () => {
     
        
     const PostIt = () =>{
-        dispatch(addAddressAction(address, userID)) 
+        dispatch(addAddressAction(token,address, userID)) 
     }
   
   
