@@ -24,14 +24,24 @@ h1{
     display: flex;
 }
 #imageDiv{
-    width: 20%;
+    width: 30%;
 }
 #left img{
     width : 100%;
 }
 
 #ProdDeets{
+    padding-top: 40px;
+    padding-left: 30px;
     width: 80%;
+    text-align: justify;
+}
+#left button{
+    width: 25px;
+    height: 25px;
+    border: 1px solid grey;
+    margin: 1px;
+    border-radius: 5px;
 }
 
 

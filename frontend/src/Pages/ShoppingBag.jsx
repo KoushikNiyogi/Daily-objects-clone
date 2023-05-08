@@ -19,22 +19,25 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import { addAddressAction } from "../Redux/AddressReducer/action"
 import { useNavigate } from 'react-router-dom'
+import { GetAllCartProductsAction, UpdateCartProductAction, deleteCartProductAction } from '../Redux/CartReducer/action'
 
 
 
 const ShoppingBag = () => {
+  
+    const dispatch = useDispatch()
+    const Navigate = useNavigate()
 
     const {user} = useSelector(store=>store.Loginreducer)
-    const id = user._id
+    const userID = user._id
     const userAddress = user.address
 
-    
+    const {allcartProducts} = useSelector(store=>store.CartReducer)
+    console.log(allcartProducts)   
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
-    const dispatch = useDispatch()
-    const Navigate = useNavigate()
 
     const [address, setaddress] = useState({})
     
@@ -49,7 +52,6 @@ const ShoppingBag = () => {
     const[area, setarea] = useState("")
     const[landmark, setlandmark] = useState("")
     const[gstin, setgstin] = useState("")
-    const [myprods, setmyprods] = useState([])
     
     const[totalqty, settotalqty] = useState(0)
     const[totaldiscount, settotaldiscount] = useState(0)
@@ -61,135 +63,71 @@ const ShoppingBag = () => {
       if(!userAddress){
         onOpen() 
       }
-      else{
+      else{        
         Navigate("/CheckoutPage")
       }
       const orderSummary = {
         totalqty, totaldiscount, grandtotal,priceWODiscount
       }
-
       localStorage.setItem("orderSummary", JSON.stringify(orderSummary));
     }
 
-    const PostIt = () =>{
-        dispatch(addAddressAction(address, id)) 
-        // Navigate()
+    
+    useEffect(()=>{
+      dispatch(GetAllCartProductsAction(userID))
+    },[])              
+
+    const HandleQty = (id, val)=>{
+            const neededProd = allcartProducts.find((item)=>item._id ==id)
+            neededProd.quantity = neededProd.quantity + val
+            dispatch(UpdateCartProductAction(neededProd, id))                
     }
 
-    // change below later
-
-    const prods = [{
-        "_id":1,
-        "images": ["https://images.dailyobjects.com/marche/product-images/1801/black-rugged-series-apple-watchband-with-protective-bumper-case-42-44-45mm-images/Black-Rugged-Series-Apple-WatchBand-with-Protective-Bumper-Case-2n.png?tr=cm-pad_resize,v-2,w-316,h-535,dpr-1","https://images.dailyobjects.com/marche/product-images/1801/black-rugged-series-apple-watchband-with-protective-bumper-case-42-44-45mm-images/Black-Rugged-Series-Apple-WatchBand-with-Protective-Bumper-Case-1ST.jpg?tr=cm-pad_crop,v-2,w-316,h-535,dpr-1", "https://images.dailyobjects.com/marche/product-images/1801/black-rugged-series-apple-watchband-with-protective-bumper-case-42-44-45mm-images/Black-Rugged-Series-Apple-WatchBand-with-Protective-Bumper-Case-4t.png?tr=cm-pad_resize,v-2,w-316,h-535,dpr-1"],
-          "title": "Black Rugged Series Apple WatchBand with Protective Bumper Case (44mm)",
-          "price": 2499,
-          "description": "Complement your active lifestyle with the stylish, flexible and widely adjustable Ridge Loop Apple WatchBand. Crafted with durable yarns, this dual-layered, single strap makes for a must-wear accessory for every place you go- from adventurous trips to your daily runs. The G-hook closure of the watchband easily slides in the loop and offers a secure fit along with dependable protection. Compatible with Apple Watch Series 1-8 & SE (38/40/41 & 42/44/45), it is made of a material that�s flexible ensuring easy installation and removal.",
-          "discounted_price": 3699,
-          "offer": "FREE DUFFLE BAG / WALLET*",
-          "category": "Watch",
-          "details": [
-            {
-              "heading": "PULL TAB NYLON WEAVE APPLE WATCHBAND",
-              "content": "A new style band, made to offer soft-cushioning and enhanced protection to your watch, Pull Tab Nylon Weave Apple Watchband is sweat-absorbent, infinitely adjustable and is made to effortlessly get through your everyday wear and tear."
-            },
-            {
-              "heading": "DEPENDABLE TACTICAL PROTECTION",
-              "content": "The pull tab closure with velcro strap makes it a universal fit and offers infinite adjustability. Additionally, the breathable material keeps the watch secure on your wrist during your daily swings between places."
-            }
-          ],
-          "color": "black"
-        },{
-            "_id":2,
-          "images": ["https://images.dailyobjects.com/marche/product-images/1801/green-black-dual-lock-apple-watchband-with-protective-bumper-case-44mm-images/Green-Black-Dual-Lock-Apple-WatchBand-with-Protective-Bumper-Case-2n.png?tr=cm-pad_resize,v-2,w-316,h-535,dpr-1","https://images.dailyobjects.com/marche/product-images/1801/green-black-dual-lock-apple-watchband-with-protective-bumper-case-44mm-images/Green-Black-Dual-Lock-Apple-WatchBand-with-Protective-Bumper-Case-4t.png?tr=cm-pad_resize,v-2,w-316,h-535,dpr-1","https://images.dailyobjects.com/marche/product-images/1801/green-black-dual-lock-apple-watchband-with-protective-bumper-case-44mm-images/Green-Black-Dual-Lock-Apple-WatchBand-with-Protective-Bumper-Case-3r.jpg?tr=cm-pad_crop,v-2,w-316,h-535,dpr-1"],
-          "title": "Green-Black Dual Lock Apple WatchBand with Protective Bumper Case (44mm)",
-          "price": 1699,
-          "description": "Complement your active lifestyle with the stylish, flexible and widely adjustable Ridge Loop Apple WatchBand. Crafted with durable yarns, this dual-layered, single strap makes for a must-wear accessory for every place you go- from adventurous trips to your daily runs. The G-hook closure of the watchband easily slides in the loop and offers a secure fit along with dependable protection. Compatible with Apple Watch Series 1-8 & SE (38/40/41 & 42/44/45), it is made of a material that�s flexible ensuring easy installation and removal.",
-          "discounted_price": 2499,
-          "offer": "BUY ANY 3 @ 2499 ONLY",
-          "category": "Watch",
-          "details": [
-            {
-              "heading": "PULL TAB NYLON WEAVE APPLE WATCHBAND",
-              "content": "A new style band, made to offer soft-cushioning and enhanced protection to your watch, Pull Tab Nylon Weave Apple Watchband is sweat-absorbent, infinitely adjustable and is made to effortlessly get through your everyday wear and tear."
-            },
-            {
-              "heading": "DEPENDABLE TACTICAL PROTECTION",
-              "content": "The pull tab closure with velcro strap makes it a universal fit and offers infinite adjustability. Additionally, the breathable material keeps the watch secure on your wrist during your daily swings between places."
-            }
-          ],
-          "color": "green"
-        },{
-            "_id":3,
-          "images": ["https://images.dailyobjects.com/marche/product-images/1801/black-ribbed-silicone-apple-watchband-38-40-41mm-images/Black-Ribbed-Silicone-Apple-Watchband-VW.png?tr=cm-pad_resize,v-2,w-316,h-535,dpr-1","https://images.dailyobjects.com/marche/product-images/1801/black-ribbed-silicone-apple-watchband-38-40-41mm-images/Black-Ribbed-Silicone-Apple-Watchband-2nd.jpg?tr=cm-pad_crop,v-2,w-316,h-535,dpr-1","https://images.dailyobjects.com/marche/product-images/1801/black-ribbed-silicone-apple-watchband-38-40-41mm-images/Black-Ribbed-Silicone-Apple-Watchband-5th.png?tr=cm-pad_resize,v-2,w-316,h-535,dpr-1"],
-          "title": "Black Ribbed Silicone Apple WatchBand (38/40/41mm)",
-          "price": 1699,
-          "description": "Complement your active lifestyle with the stylish, flexible and widely adjustable Ridge Loop Apple WatchBand. Crafted with durable yarns, this dual-layered, single strap makes for a must-wear accessory for every place you go- from adventurous trips to your daily runs. The G-hook closure of the watchband easily slides in the loop and offers a secure fit along with dependable protection. Compatible with Apple Watch Series 1-8 & SE (38/40/41 & 42/44/45), it is made of a material that�s flexible ensuring easy installation and removal.",
-          "discounted_price": 2199,
-          "offer": "BUY ANY 3 @ 2499 ONLY",
-          "category": "Watch",
-          "details": [
-            {
-              "heading": "PULL TAB NYLON WEAVE APPLE WATCHBAND",
-              "content": "A new style band, made to offer soft-cushioning and enhanced protection to your watch, Pull Tab Nylon Weave Apple Watchband is sweat-absorbent, infinitely adjustable and is made to effortlessly get through your everyday wear and tear."
-            },
-            {
-              "heading": "DEPENDABLE TACTICAL PROTECTION",
-              "content": "The pull tab closure with velcro strap makes it a universal fit and offers infinite adjustability. Additionally, the breathable material keeps the watch secure on your wrist during your daily swings between places."
-            }
-          ],
-          "color": "black"
-        }]
-
-        useEffect(()=>{
-            let prodWithqty = prods.map((item)=>({...item, qty:1}))
-            setmyprods(prodWithqty) 
-        },[])
-
-        const HandleQty = (id, val)=>{
-                let updateddata= myprods.filter((item)=>item._id == id? item.qty +=val:item)
-                setmyprods(updateddata)
-        }
-
-        const HandleDelete = (id)=>{
-              let updateddata= myprods.filter((item)=>item._id !== id)
-              setmyprods(updateddata)
-        }
-
-        useEffect(()=>{
-            let Qty=0
-            let disc=0
-            let grand=0
-            let WODiscount = 0
-            for(let i=0; i<myprods.length; i++){
-                Qty+=myprods[i].qty
-                disc+= (myprods[i].discounted_price * myprods[i].qty) - (myprods[i].price * myprods[i].qty)
-                grand += myprods[i].price * myprods[i].qty
-                WODiscount += myprods[i].discounted_price * myprods[i].qty
-            }
-            settotalqty(Qty)
-            settotaldiscount(disc)
-            setgrandtotal(grand)
-            setpriceWODiscount(WODiscount)
-        },[myprods])      
-       
-    
-  
-      const HandleSubmit =(e)=>{
-          e.preventDefault()
-          if(name!=="" && mobile!=="" && email!=="" && pin!=="" && city!=="" && state!==""  && country!=="" && building!=="" && area!==""){
-            setaddress({name, mobile, email, pin, city, state, country, building, area, landmark, gstin})
-            PostIt()
-
-            // localStorage.setItem()
-          }
-          else{
-            alert("Please fill all the details")
-          }                  
-      }
+    const HandleDelete = (id)=>{
+            dispatch(deleteCartProductAction(id)).finally(()=>dispatch(GetAllCartProductsAction(userID)))
+    }
 
       
+        
+
+    useEffect(()=>{
+        let Qty=0
+        let disc=0
+        let grand=0
+        let WODiscount = 0
+        for(let i=0; i<allcartProducts.length; i++){
+            Qty+=allcartProducts[i].quantity
+            disc+= (allcartProducts[i].discounted_price * allcartProducts[i].quantity) - (allcartProducts[i].price * allcartProducts[i].quantity)
+            grand += allcartProducts[i].price * allcartProducts[i].quantity
+            WODiscount += allcartProducts[i].discounted_price * allcartProducts[i].quantity
+        }
+        settotalqty(Qty)
+        settotaldiscount(disc)
+        setgrandtotal(grand)
+        setpriceWODiscount(WODiscount)
+    },[allcartProducts])
+    
+    
+       
+    const PostIt = () =>{
+        dispatch(addAddressAction(address, userID)) 
+    }
+  
+  
+    const HandleSubmit =(e)=>{
+        e.preventDefault()
+        if(name!=="" && mobile!=="" && email!=="" && pin!=="" && city!=="" && state!==""  && country!=="" && building!=="" && area!==""){
+          setaddress({name, mobile, email, pin, city, state, country, building, area, landmark, gstin})
+          PostIt()
+        }
+        else{
+          alert("Please fill all the details")
+        }                  
+    }     
 
     const btnRef = React.useRef(null)
+
+
   return (
     <div>
         <div>
@@ -202,24 +140,24 @@ const ShoppingBag = () => {
             <div id={styles.sidetoside}>  {/* flex */}
                 <div id={styles.left}>
                     <div id={styles.leftInside}>
-                        {myprods.map((item)=><div key={item._id} id={styles.indiDiv}> {/* flex */}
+                        {allcartProducts.map((item)=><div key={item._id} id={styles.indiDiv}> {/* flex */}
                                     <div id={styles.imageDiv}>
                                         <img src={item.images[0]} alt="ProdImage" />
                                     </div>
                                     <div id={styles.ProdDeets}>
                                         <p>{item.title}</p>
-                                        <div style={{display:"flex", justifyContent:"space-evenly"}}>
-                                            <p>{`Rs. ${item.price * item.qty}`}</p>
-                                            <p style={{textDecoration: "line-through"}}>{item.discounted_price * item.qty}</p>
+                                        <div style={{display:"flex", justifyContent:"space-between", width:"50%", marginTop:"10px"}}>
+                                            <p>{`Rs. ${item.price * item.quantity}`}</p>
+                                            <p style={{textDecoration: "line-through"}}>{item.discounted_price * item.quantity}</p>
                                         </div>
-                                        <div style={{display:"flex",width: "70%", justifyContent:"spaceBetween"}}>
+                                        <div style={{display:"flex",justifyContent:"space-between", marginTop:"10px"}}>
                                           <div>
-                                            <button disabled={item.qty==1} onClick={()=>HandleQty(item._id, -1)}>-</button>
-                                            <button>{item.qty}</button>
+                                            <button disabled={item.quantity==1} onClick={()=>HandleQty(item._id, -1)}>-</button>
+                                            <button>{item.quantity}</button>
                                             <button  onClick={()=>HandleQty(item._id, 1)}>+</button>
                                           </div>
                                           <div>
-                                            <button onClick={()=>HandleDelete(item._id)}><img src="https://images.dailyobjects.com/marche/icons/bin.png?tr=cm-pad_resize,v-2,w-20,dpr-1" alt="delete" /></button>
+                                            <button style={{border:"none"}} onClick={()=>HandleDelete(item._id)}><img src="https://images.dailyobjects.com/marche/icons/bin.png?tr=cm-pad_resize,v-2,w-20,dpr-1" alt="delete" /></button>
                                           </div>
                                         </div>
                                     </div>

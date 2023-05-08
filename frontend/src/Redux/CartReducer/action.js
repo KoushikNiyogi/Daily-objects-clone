@@ -3,7 +3,10 @@ import{
     CART_FAILURE,
     CART_REQUEST,
     GET_SINGLE_PRODUCT_SUCCESS,
-    ADD_CART_SUCCESS
+    ADD_CART_SUCCESS,
+    GET_CART_PRODUCTS_SUCCESS,
+    DELETE_CART_PRODUCT_SUCCESS,
+    UPDATE_CART_PRODUCT_SUCCESS
 } from "./actionTypes" 
 
 
@@ -52,3 +55,58 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
       dispatch({ type: CART_FAILURE })
     });
 }
+
+
+export const GetAllCartProductsAction = (id) => (dispatch)  => {
+  console.log("GetAllCartProductsAction called");  
+  dispatch({ type: CART_REQUEST });
+  const userId = id
+  axios({
+    method: 'GET',
+    url: `https://pajamas-bonobo.cyclic.app/cart`,
+    data: userId,
+  })
+  .then((res) => {
+                  console.log(res)
+                  dispatch({ type: GET_CART_PRODUCTS_SUCCESS,  payload: res.data.Data})})
+  .catch((err) => {
+                dispatch({ type: CART_FAILURE })
+                console.log(err)
+  });
+
+}
+
+export const deleteCartProductAction =(id)=>(dispatch)=>{
+  console.log("deleteCartProductAction called");  
+  dispatch({ type: CART_REQUEST });
+  axios({
+    method: 'DELETE',
+    url: `https://pajamas-bonobo.cyclic.app/cart/delete/${id}`,
+  })
+    .then((res) => {
+      dispatch({ type: DELETE_CART_PRODUCT_SUCCESS})
+      console.log(res);
+    })
+    .catch((err) => {
+      dispatch({ type: CART_FAILURE });
+      console.log(err);
+    });
+}
+
+export const UpdateCartProductAction = (dataobj, id)=>(dispatch)=>{
+  console.log("UpdateCartProductAction called"); 
+  dispatch({type:  CART_REQUEST})
+  return axios.patch(`https://pajamas-bonobo.cyclic.app/cart/update/${id}`, dataobj)
+  .then((res)=>{
+    dispatch({type: UPDATE_CART_PRODUCT_SUCCESS})
+    console.log(res);
+  })
+  .catch((err)=>{
+    dispatch({type: CART_FAILURE})
+    console.log(err);
+  })
+  
+}
+
+
+// https://pajamas-bonobo.cyclic.app/cart

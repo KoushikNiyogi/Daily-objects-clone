@@ -9,6 +9,8 @@ import {reducer as CartReducer} from "./CartReducer/reducer"
 import { reducer as adminloginReducer } from "./AdminLogin/adminloginreducer";
 import { ProductReducer } from "./CategoryPage/Reducer";
 import {reducer as AddressReducer} from "./AddressReducer/reducer"
+import {reducer as CheckoutReducer} from "./CheckoutReducer/reducer"
+import {reducer as PaymentReducer} from "./PaymentReducer/reducer"
 
 import thunk from "redux-thunk";
 const RootReducer = combineReducers({
@@ -18,7 +20,10 @@ const RootReducer = combineReducers({
     wishlistReducer,
     CartReducer,
     adminloginReducer,
-    ProductReducer
+    ProductReducer,
+    AddressReducer,
+    CheckoutReducer,
+    PaymentReducer
   });
   
 

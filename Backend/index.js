@@ -33,5 +33,5 @@ app.listen(8076, async () => {
     console.log(err);
     console.log("Couldn't connect to Mongo Atlas");
   }
-  console.log(`Server started on port 5050`);
+  console.log(`Server started on port 8076`);
 });
