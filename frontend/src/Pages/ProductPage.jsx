@@ -46,7 +46,7 @@ useEffect(() => {
     <Box mt={"50px"}>
       {
 
-      singleProduct["_id"] != undefined ? <Box>
+      singleProduct ? <Box>
       <Flex direction={{ base: "column", lg: "row" }} width={"80%"} margin={"auto"}>
         <Box backgroundColor={"#f7f7f7"}>
           <Box width="700px" height="650px">

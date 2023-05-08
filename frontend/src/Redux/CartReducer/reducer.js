@@ -9,7 +9,7 @@ import{
   const initialState = {
     isLoading : false,
     products : JSON.parse(localStorage.getItem("cart"))||[],
-    singleProduct : JSON.parse(localStorage.getItem("singleproduct"))||{},
+    singleProduct : JSON.parse(localStorage.getItem("singleproduct"))||null,
     isError : false
 }
 
