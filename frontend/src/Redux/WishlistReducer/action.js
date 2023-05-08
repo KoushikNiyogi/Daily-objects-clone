@@ -14,7 +14,7 @@ export const addToWishlist = (token, item, toast) => (dispatch) => {
   dispatch({ type: WISHLIST_REQUEST });
   axios({
     method: 'post',
-    url: `http://localhost:${process.env.REACT_APP_BASE_URL}/wishlist/add`,
+    url: `https://pajamas-bonobo.cyclic.app/wishlist/add`,
     data: data,
     headers: headers
   })
@@ -44,7 +44,7 @@ export const getWishListItems = (token, item) => (dispatch) => {
   dispatch({ type: WISHLIST_REQUEST });
   axios({
     method: 'get',
-    url: `http://localhost:${process.env.REACT_APP_BASE_URL}/wishlist/`,
+    url: `https://pajamas-bonobo.cyclic.app/wishlist/`,
     data: data,
     headers: headers
   })
@@ -66,7 +66,7 @@ export const deleteWishlistItem = (token, id) => (dispatch) => {
   }
   return axios({
     method: "delete",
-    url: `http://localhost:${process.env.REACT_APP_BASE_URL}/wishlist/delete/${id}`,
+    url: `https://pajamas-bonobo.cyclic.app/wishlist/delete/${id}`,
     headers: {
       Authorization: token
     },

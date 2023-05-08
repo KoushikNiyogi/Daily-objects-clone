@@ -52,15 +52,7 @@ const AddProduct = () => {
     color: color,
     brand: brand,
     images: [
-      {
-        url: url1,
-      },
-      {
-        url: url2,
-      },
-      {
-        url: url3,
-      },
+      url1,url2,url3
     ],
     details: [
       {
@@ -82,7 +74,7 @@ const AddProduct = () => {
     console.log(products);
     axios({
       method: "post",
-      url: `https://pajamas-bonobo.cyclic.app/product/add`,
+      url: `http://localhost:9090/product/add`,
       data: JSON.stringify(products),
       headers: {
         Authorization: `${localStorage.getItem("adminToken")}`,
