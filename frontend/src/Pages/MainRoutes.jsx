@@ -16,6 +16,8 @@ import AddProduct from '../Components/Admin/AdminComponents/FormForAddProduct/Ad
 import Users from '../Components/Admin/AdminComponents/Allusers/Users'
 import OrderPage from '../Components/Admin/AdminComponents/OrderPage/OrderPage'
 import { Categorypage } from './Categorypage'
+import AdminLogin from "./AdminLogin"
+import CombinedFilter_sort from '../Components/SearchPage.jsx/CombinedFilter_sort'
 
 const MainRoutes = () => {
   return (
@@ -36,14 +38,16 @@ const MainRoutes = () => {
         <Route path="/addproduct" element={<AddProduct />}></Route>
         <Route path="/allusers" element={<Users />}></Route>
         <Route path="/orderpage" element={<OrderPage />}></Route>
-        <Route path="*" element={<div style={{width:"40%",margin:"auto"}}>
+        <Route path='/combinefilter_sort' element={<CombinedFilter_sort/>}></Route>
+        {/* <Route path="*" element={
+        <div style={{width:"40%",margin:"auto"}}> */}
 
       {/* ALL ADMIN ROUTES ARE HERE  */}
       <Route path="/admindashboard" element={<Admin />} />
       <Route path="/allproducts" element={<Products />} />
       <Route path="/addproduct" element={<AddProduct />} />
       <Route path="/allusers" element={<Users />} />
-
+        
       <Route path="/orderpage" element={<OrderPage />} />
       <Route path="/adminlogin" element={<AdminLogin />} />
       <Route
