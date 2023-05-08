@@ -6,7 +6,7 @@ export const addAddressAction = (address, id) => (dispatch) =>{
     console.log("addAddressAction called");
     dispatch({type : ADDRESS_REQUEST_PENDING})
 
-    return axios.patch(`https://pajamas-bonobo.cyclic.app/user          /${id}`, address)
+    return axios.patch(`https://pajamas-bonobo.cyclic.app/user/${id}`, address)
     .then((res)=>{
         dispatch({type: POST_ADDRESS_SUCCESS})
         console.log(res)

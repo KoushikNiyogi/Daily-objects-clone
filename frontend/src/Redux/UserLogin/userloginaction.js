@@ -1,4 +1,4 @@
-
+import axios from "axios"
 
 import * as types from "./userloginactiontype"
 
@@ -11,4 +11,10 @@ import * as types from "./userloginactiontype"
     .catch(e=>dispatch({type:types.GETLOGINDATAFALIURE}))
     }
    
+
+    
+    export const logoutUser = (dispatch)=>{
+      localStorage.removeItem("token");
+      dispatch({type:types.LOGOUTUSER})
+    }
 

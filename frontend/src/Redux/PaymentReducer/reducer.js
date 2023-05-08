@@ -8,7 +8,6 @@ import{
 }
 
 export const reducer = (state = initialState,{type,payload})=>{
-  console.log(payload)
   switch(type){
     case EDIT_PAYMENT_REQUEST : return {
         ...state,

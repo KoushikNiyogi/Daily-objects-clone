@@ -28,12 +28,11 @@ const ShoppingBag = () => {
     const dispatch = useDispatch()
     const Navigate = useNavigate()
 
-    const {user} = useSelector(store=>store.Loginreducer)
+    const {token,user} = useSelector(store=>store.Loginreducer)
     const userID = user._id
     const userAddress = user.address
 
     const {allcartProducts} = useSelector(store=>store.CartReducer)
-    console.log(allcartProducts)   
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
@@ -74,22 +73,24 @@ const ShoppingBag = () => {
 
     
     useEffect(()=>{
-      dispatch(GetAllCartProductsAction(userID))
+      dispatch(GetAllCartProductsAction(token,userID))
     },[])              
 
     const HandleQty = (id, val)=>{
-            const neededProd = allcartProducts.find((item)=>item._id ==id)
-            neededProd.quantity = neededProd.quantity + val
-            dispatch(UpdateCartProductAction(neededProd, id))                
+            
+            console.log(val)
+            dispatch(UpdateCartProductAction(token,val, id))
+            .then((res)=>dispatch(GetAllCartProductsAction(token,userID)))
+
     }
 
     const HandleDelete = (id)=>{
-            dispatch(deleteCartProductAction(id)).finally(()=>dispatch(GetAllCartProductsAction(userID)))
+            dispatch(deleteCartProductAction(token,id))
+            .then((res)=>dispatch(GetAllCartProductsAction(token,userID)))
     }
 
       
-        
-
+      console.log(allcartProducts)  
     useEffect(()=>{
         let Qty=0
         let disc=0
@@ -140,7 +141,7 @@ const ShoppingBag = () => {
             <div id={styles.sidetoside}>  {/* flex */}
                 <div id={styles.left}>
                     <div id={styles.leftInside}>
-                        {allcartProducts.map((item)=><div key={item._id} id={styles.indiDiv}> {/* flex */}
+                        {allcartProducts.length!=0&&allcartProducts.map((item)=><div key={item._id} id={styles.indiDiv}> {/* flex */}
                                     <div id={styles.imageDiv}>
                                         <img src={item.images[0]} alt="ProdImage" />
                                     </div>
@@ -152,9 +153,9 @@ const ShoppingBag = () => {
                                         </div>
                                         <div style={{display:"flex",justifyContent:"space-between", marginTop:"10px"}}>
                                           <div>
-                                            <button disabled={item.quantity==1} onClick={()=>HandleQty(item._id, -1)}>-</button>
+                                            <button disabled={item.quantity==1} onClick={()=>HandleQty(item._id, item.quantity-1)}>-</button>
                                             <button>{item.quantity}</button>
-                                            <button  onClick={()=>HandleQty(item._id, 1)}>+</button>
+                                            <button  onClick={()=>HandleQty(item._id, item.quantity+1)}>+</button>
                                           </div>
                                           <div>
                                             <button style={{border:"none"}} onClick={()=>HandleDelete(item._id)}><img src="https://images.dailyobjects.com/marche/icons/bin.png?tr=cm-pad_resize,v-2,w-20,dpr-1" alt="delete" /></button>
