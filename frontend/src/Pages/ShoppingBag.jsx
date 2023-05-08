@@ -31,8 +31,8 @@ const ShoppingBag = () => {
 
     const {user,token} = useSelector(store=>store.Loginreducer)
 
-    const userID = user._id
-    const userAddress = user.address
+    const userID = user[0]._id
+    const userAddress = user[0].address
 
     const {allcartProducts} = useSelector(store=>store.CartReducer)
 
@@ -40,7 +40,6 @@ const ShoppingBag = () => {
     const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 
 
-    const [address, setaddress] = useState({})
     
     const[name, setname] = useState("")
     const[mobile, setmobile] = useState("")
@@ -92,7 +91,6 @@ const ShoppingBag = () => {
     }
 
       
-      console.log(allcartProducts)  
     useEffect(()=>{
         let Qty=0
         let disc=0
@@ -112,16 +110,17 @@ const ShoppingBag = () => {
     
     
        
-    const PostIt = () =>{
-        dispatch(addAddressAction(token,address, userID)) 
+    const PostIt = (address) =>{
+        dispatch(addAddressAction(token,address, user[0]._id))
+        .then((res)=>Navigate("/CheckoutPage"))
     }
   
   
     const HandleSubmit =(e)=>{
         e.preventDefault()
         if(name!=="" && mobile!=="" && email!=="" && pin!=="" && city!=="" && state!==""  && country!=="" && building!=="" && area!==""){
-          setaddress({name, mobile, email, pin, city, state, country, building, area, landmark, gstin})
-          PostIt()
+          const address = {name, mobile, email, pin, city, state, country, building, area, landmark, gstin}
+          PostIt(address)
         }
         else{
           alert("Please fill all the details")
@@ -130,7 +129,7 @@ const ShoppingBag = () => {
 
     const btnRef = React.useRef(null)
 
-
+    console.log(userID,user)
   return (
     <div>
         <div>
@@ -240,7 +239,7 @@ const ShoppingBag = () => {
             <ModalBody>
               
       <form onSubmit={HandleSubmit}>      
-      <Input variant = 'flushed' label='' m = {3} id='first-name' placeholder='Full name *' onChange={(e)=>setname(e.target.value)}/>
+      <Input variant = 'flushed' label=''  m = {3} id='first-name' placeholder='Full name *' onChange={(e)=>setname(e.target.value)}/>
       <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Mobile *'  onChange={(e)=>setmobile(e.target.value)}/>
       <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Email Address *'  onChange={(e)=>setemail(e.target.value)}/>
       <Box display='flex' justifyContent="space-evenly">

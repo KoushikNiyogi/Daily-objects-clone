@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styles from '../Styling/payment.module.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,18 +13,18 @@ import {
   } from '@chakra-ui/react'  
 
 import {UpdatePaymentAction} from "../Redux/PaymentReducer/action"
+import { GetAllCartProductsAction } from "../Redux/CartReducer/action";
   
 
 function Payments() {
 
   var orderSummary = JSON.parse(localStorage.getItem("orderSummary"))
   const {totalqty, totaldiscount, grandtotal, priceWODiscount} = orderSummary
+  const [cart,setCart] = useState([]);
 
-  
-
-  const {products} = useSelector(store=>store.CartReducer) //[{},{}]
   const {user,token} = useSelector(store=>store.Loginreducer)
-    
+  const {allcartProducts} = useSelector(store=>store.CartReducer)
+ 
     const[number, setnumber] = useState("")
     const[valid, setvalid] = useState("")
     const[cvv, setcvv] = useState("")
@@ -36,11 +36,10 @@ function Payments() {
     const toast = useToast()
 
 
-    const updatePayment = ()=>{
-      for(let i=0; i<products.length; i++){
-        let updatedCartItem = {...products[i], payment:true}
-        dispatch(UpdatePaymentAction(token, updatedCartItem, products[i]._id)) 
-      }
+    const updatePayment = async()=>{
+      await allcartProducts.length!=0&&allcartProducts.map((item)=>{
+        dispatch(UpdatePaymentAction(token,item._id))
+      })
     }
 
     
@@ -62,12 +61,15 @@ function Payments() {
             duration: 9000,
             isClosable: true,
           })
-          Navigate("/")
-          updatePayment()          
+          updatePayment()  
+          Navigate("/")        
         }                
     }
 
-    
+    useEffect(()=>{
+      dispatch(GetAllCartProductsAction(token,user[0]._id))
+    },[])
+    console.log(allcartProducts)
     return (
       
         <Box>

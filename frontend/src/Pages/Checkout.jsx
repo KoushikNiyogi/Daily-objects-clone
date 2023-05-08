@@ -16,25 +16,12 @@ const Checkout = () => {
   
   const Navigate = useNavigate();
   
-  const [userAddress, setuserAddress] = useState("")
-
   
-  useEffect(()=>{
-    if(!address){      
-      setuserAddress(user.address)
-    }
-    else{
-      setuserAddress(address)
-    }
-
-  }, [])
-  
-  const{name, city,area, state, pin} = userAddress
+  const{name, city,area, state, pin} = user.address.address;
   
   const HandleContinue=()=>{    
       Navigate("/payments")    
   }
-
   return <Box>
   <h1 id={styles.heading}>CHECKOUT</h1> 
   <Flex id={styles.flex}>
