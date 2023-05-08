@@ -11,7 +11,7 @@ const productSchema = mongoose.Schema({
   discounted_price: String,
   description: String,
   price: String,
-  adminId: String,
+  userId: String,
 });
 
 const productModel = mongoose.model("product", productSchema);

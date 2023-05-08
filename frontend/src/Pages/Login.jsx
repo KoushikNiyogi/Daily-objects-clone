@@ -1,36 +1,48 @@
-import { FormControl, Input, Button, Spinner, useToast, Box, Heading, FormLabel } from '@chakra-ui/react'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
+import {
+  FormControl,
+  Input,
+  Button,
+  Spinner,
+  useToast,
+  Box,
+  Heading,
+  FormLabel,
+} from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { getlogindata } from "../Redux/UserLogin/userloginaction";
+import Navbar from "../Components/Navbar";
+
 // import "./Signup.css"
 
 // import { getbanuserdata } from '../Redux/Admin/userauthaction'
-import { Link, useNavigate } from 'react-router-dom'
-import Navbar from '../Components/Navbar'
-import { getlogindata } from '../Redux/UserLogin/userloginaction'
+
 
 const LoginPage = () => {
   const init = {
     email: "",
     password: "",
-  }
+  };
 
-  const [data, setData] = useState(init)
-  const toast = useToast()
-  const dispatch = useDispatch()
-  const isloading = useSelector(store => store.Loginreducer.isloading)
+  const [data, setData] = useState(init);
+  const toast = useToast();
+  const dispatch = useDispatch();
+  const isloading = useSelector((store) => store.Loginreducer.isloading);
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setData({ ...data, [name]: value })
-  }
-  let tokendata = JSON.parse(localStorage.getItem("token")) || []
-  let userId = JSON.parse(localStorage.getItem("userid")) || ""
-
-  const navigate = useNavigate()
+    const { name, value } = e.target;
+    setData({ ...data, [name]: value });
+  };
+  let tokendata = JSON.parse(localStorage.getItem("token")) || [];
+  let userId = JSON.parse(localStorage.getItem("userid")) || "";
+  const location  = useLocation();
+  const navigate = useNavigate();
   const onSubmit = (e, data) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    dispatch(getlogindata(data))
-    .then((res)=>{
+
+    dispatch(getlogindata(data)).then((res)=>{
+      console.log(res);
       if(res.payload.token){
         toast({
           position: "center",
@@ -39,20 +51,22 @@ const LoginPage = () => {
           duration: 9000,
           isClosable: true,
         })
-        navigate("/")
+        navigate(location.state,{replace:true})
         localStorage.setItem("token",JSON.stringify(res.payload.token))
+        localStorage.setItem("user",JSON.stringify(res.payload.user));
       }
       else{
         toast({
           position: "center",
-          title: `${res.payload.msg}`,
-          status: 'success',
+          title: `Login Failure`,
+          status: "warning",
           duration: 9000,
           isClosable: true,
         })
       }
     })
     .catch((err)=>{
+      console.log(err);
       toast({
         position: "center",
         title: `${err}`,
@@ -63,7 +77,6 @@ const LoginPage = () => {
     })
     setData(init)
   }
-
   return (<Box>
     <Navbar/>
   <Box width="100vw"   paddingTop={{ base: "8vh", md: "8vh", lg: "15vh" }} display="flex" justifyContent="center">
@@ -91,6 +104,5 @@ const LoginPage = () => {
   </Box>
   </Box>
   )
-
-}
-export default LoginPage
+};
+export default LoginPage;
