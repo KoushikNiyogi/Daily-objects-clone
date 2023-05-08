@@ -21,6 +21,7 @@ import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
 import Navbar from "../../Navbar";
+import { useSelector } from "react-redux";
 
 const AddProduct = () => {
   const [title, setTitle] = useState("");
@@ -32,17 +33,16 @@ const AddProduct = () => {
   const [url3, setUrl3] = useState("");
   const [color, setColor] = useState("");
 
-  const [price, setPrice] = useState(0);
-
   const [Heading1, setHeading1] = useState("");
   const [Heading2, setHeading2] = useState("");
 
   const [Content1, setContent1] = useState("");
   const [Content2, setContent2] = useState("");
 
+  const [price, setPrice] = useState(0);
   const [dis_Price, setDisPrice] = useState(0);
-  const [discount, setDiscount] = useState(0);
-  const [brand, setBrand] = useState(0);
+
+  const [stock, setStock] = useState(0);
   const toast = useToast();
 
   const products = {
@@ -50,7 +50,6 @@ const AddProduct = () => {
     description: description,
     category: category,
     color: color,
-    brand: brand,
     images: [
       {
         url: url1,
@@ -75,15 +74,18 @@ const AddProduct = () => {
     price: +price,
 
     discounted_price: +dis_Price,
-    discount: +discount,
+    stock: stock,
   };
   // https://pajamas-bonobo.cyclic.app/product/add
+
+  // const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
+
   const submitData = () => {
     console.log(products);
     axios({
-      method: "post",
+      method: "POST",
       url: `https://pajamas-bonobo.cyclic.app/product/add`,
-      data: JSON.stringify(products),
+      data: products,
       headers: {
         Authorization: `${localStorage.getItem("adminToken")}`,
       },
@@ -212,11 +214,6 @@ const AddProduct = () => {
                   placeholder="Content2"
                   onChange={(e) => setContent2(e.target.value)}
                 />
-                <Input
-                  type="text"
-                  placeholder="Brand"
-                  onChange={(e) => setBrand(e.target.value)}
-                />
               </Stack>
               <Stack>
                 <Heading>Price & Status</Heading>
@@ -253,6 +250,11 @@ const AddProduct = () => {
                     children={<CheckIcon color="green.500" />}
                   />
                 </InputGroup>
+                <Input
+                  type="Number"
+                  placeholder="Stock"
+                  onChange={(e) => setStock(e.target.value)}
+                />
               </Stack>
             </Grid>
             <Button

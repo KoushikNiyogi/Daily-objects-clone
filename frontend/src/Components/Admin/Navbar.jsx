@@ -68,7 +68,7 @@ const Navbar = () => {
   //   https://awful-pear-bedclothes.cyclic.app/
 
   const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
-
+  console.log(isAuthadmin);
   const getData = (page) => {
     setStatus(false);
     axios
