@@ -10,7 +10,7 @@ import axios from "axios"
     return axios({
       method: 'GET',
       url: `https://pajamas-bonobo.cyclic.app//user/`,
-      data: userId,
+      data: {userId},
       headers: headers
     })
     .then((res)=>{

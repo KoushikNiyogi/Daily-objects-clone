@@ -67,7 +67,7 @@ export const GetAllCartProductsAction = (token,id) => (dispatch)  => {
   axios({
     method: 'GET',
     url: `https://pajamas-bonobo.cyclic.app/cart`,
-    data: userId,
+    data: {userId},
     headers: headers
   })
   .then((res) => {
