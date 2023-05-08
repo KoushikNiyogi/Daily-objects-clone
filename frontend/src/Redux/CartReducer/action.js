@@ -15,7 +15,7 @@ export const getSingleProduct =(id)=>(dispatch)=>{
       dispatch({ type: CART_REQUEST });
       axios({
         method: 'get',
-        url: `http://localhost:${process.env.REACT_APP_BASE_URL}/product/singleproduct/${id}`,
+        url: `https://pajamas-bonobo.cyclic.app/product/singleproduct/${id}`,
       })
         .then((res) => {
           console.log(res)
@@ -36,7 +36,7 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
   dispatch({ type: CART_REQUEST });
   axios({
     method: 'post',
-    url: `http://localhost:${process.env.REACT_APP_BASE_URL}/cart/add`,
+    url: `https://pajamas-bonobo.cyclic.app/product/cart/add`,
     data: data,
     headers: headers
   })

@@ -40,6 +40,7 @@ const Filter = () => {
     filter.color.length!=0&&(params["color"] = filter["color"]);
     searchparams.get("sort")!=undefined&&(params["sort"] = searchparams.get("sort"))
     searchparams.get("q")!=undefined&&(params["q"] = searchparams.get("q"))
+    searchparams.get("category") != undefined && (params["category"] = searchparams.get("category"))
     setSearchparams(params);
 
   },[filter])
