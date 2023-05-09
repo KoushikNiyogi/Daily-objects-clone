@@ -9,6 +9,7 @@ h1{
     /* border: 2px solid red; */
     height: 500px; 
     display: flex;
+    font-size: medium;
 }
 #left {
     border: 1px solid rgb(190, 189, 189);
@@ -89,3 +90,88 @@ image{
 #blueBox{
     background-color: #cfebe1;
 }
+
+
+
+
+@media screen and (max-width: 1020px) {    
+    #leftInside, #rightInside{
+        width:90%;
+    }
+    
+}
+
+@media screen and (max-width: 912px) {    
+    #sidetoside{
+        display: block;        
+    }
+    #left, #right{
+        margin: auto;
+        width:70%;
+        overflow:hidden;
+    }
+    #leftInside, #rightInside{
+        width:90%;
+    }
+    
+}
+
+
+@media screen and (max-width: 820px) {
+    
+    #sidetoside{
+        display: block;       
+    }
+    #left, #right{
+        margin: auto;
+        width:80%;
+        overflow:hidden;
+    }
+    #leftInside, #rightInside{
+        width:90%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    
+    #sidetoside{
+        display: block;  
+            
+    }
+    #left, #right{
+        margin: auto;
+        width:100%;
+        overflow:hidden;
+    }
+    #leftInside, #rightInside{
+        width:90%;
+    }
+    
+}
+
+@media screen and (max-width: 350px) {
+    #sidetoside{
+        display: block; 
+              
+    }
+    #left, #right{
+        margin: auto;
+        width:100%;
+        overflow:hidden;
+    }
+    #left{
+        padding-right: 10px;
+    }
+    #leftInside, #rightInside{
+        width:100%;
+    }
+}
+
+
+
+
+
+
+
+
+

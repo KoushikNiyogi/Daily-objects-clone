@@ -17,8 +17,10 @@ const Checkout = () => {
   const Navigate = useNavigate();
   
   
+
   const{name, city,area, state, pin} = user[0].address;
   
+
   const HandleContinue=()=>{    
       Navigate("/payments")    
   }
@@ -27,11 +29,11 @@ const Checkout = () => {
   <h1 id={styles.heading}>CHECKOUT</h1> 
   <Flex id={styles.flex}>
 
-<Box  w={["100%","100%","70%"]} borderRadius="10px" p="3vh" fontSize={{lg:"20px",md:"10px",base:"20px"} }fontWeight={500} id={styles.left}>
-          <p style={{ fontSize: "1rem", fontWeight: "bold" }}>SHIPPING ADDRESS</p>
-          <Text as="p">{name}</Text>
-          <Text as="p">{`${area}, ${city}`}</Text>          
-          <Text as="p">{`${city}, ${state} ${pin} `}</Text>
+<Box id={styles.left}>
+          <p id={styles.shipping}>SHIPPING ADDRESS</p>
+          <Text>{name}</Text>
+          <Text>{`${area}, ${city}`}</Text>          
+          <Text>{`${city}, ${state} ${pin} `}</Text>
           <Button width="80%" style={{ margin: "1rem 0",backgroundColor: "#20a87e" }} size='lg'  >Change</Button>
     </Box>
    

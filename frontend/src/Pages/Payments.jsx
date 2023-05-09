@@ -73,7 +73,7 @@ function Payments() {
     return (
       
         <Box>
-            <Center><Text id={styles.heading} fontSize={{ base: '24px', md: '40px', lg: '40px' }}  mb={5}>CHECKOUT</Text></Center>
+            <Center><Text id={styles.heading} fontSize={{ base: '25px', md: '35px', lg: '35px' }} fontWeight={"bold"}  mb={5}>CHECKOUT</Text></Center>
         <Flex id={styles.flex}>
               
       <form onSubmit={HandleSubmit} id={styles.left}> 
@@ -97,7 +97,7 @@ function Payments() {
 
     <div id={styles.summary}>
                         <div>
-                            <h2>ORDER SUMMARY</h2>
+                            <h2 style={{ fontSize: "1rem", fontWeight: "bold" }}>ORDER SUMMARY</h2>
                             <div className={styles.flexIt}> {/* flex */}
                                 <p>{`Item Total (${totalqty} Items)`}</p>
                                 <p>{`Rs. ${priceWODiscount}`}</p>
