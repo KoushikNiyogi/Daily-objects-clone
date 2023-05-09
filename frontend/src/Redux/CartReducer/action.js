@@ -12,6 +12,8 @@ import{
 
 export const getSingleProduct =(id)=>(dispatch)=>{
       console.log("im called")
+
+      
       dispatch({ type: CART_REQUEST });
       axios({
         method: 'get',

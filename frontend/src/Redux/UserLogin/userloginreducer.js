@@ -6,7 +6,7 @@ const initlogin ={
     isloading:false,
     isAuth:false,
     token:JSON.parse(localStorage.getItem("token"))||null,
-    user:JSON.parse(localStorage.getItem("user"))||{}
+    user:JSON.parse(localStorage.getItem("user"))||null
 }
 export const Loginreducer = (state = initlogin,action)=>{
      

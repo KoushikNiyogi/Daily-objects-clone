@@ -151,7 +151,7 @@ const Footer = () => {
                     <Ftable title="NETWORK" item={network} />
                 </Box>
                 <Box width={["100%", "100%", "40%", "40%"]} height={["280px", "280px", "300px", "300px"]} >
-                    <Flex height="50%" border="0.1px solid gray" flexDirection="column" justifyContent="center" paddingLeft="16%">
+                    <Flex height="50%" border="0.1px solid gray" flexDirection="column" justifyContent="center" textAlign="left" paddingLeft="16%">
                         <Heading fontSize="140%">FOLLOW US ON</Heading>
                         <Flex width="70%" justifyContent="space-between" alignItems="center" paddingTop="2%">
                             <FaInstagram size="40" />
@@ -162,7 +162,7 @@ const Footer = () => {
                         </Flex>
 
                     </Flex>
-                    <Flex height="50%" border="0.1px solid gray" flexDirection="column" justifyContent="center" paddingLeft={["8%", "8%", "10%", "16%"]}>
+                    <Flex height="50%" border="0.1px solid gray" flexDirection="column" textAlign="left" justifyContent="center" paddingLeft={["8%", "8%", "10%", "16%"]}>
                         <Heading fontSize="140%">DOWNLOAD OUR APP</Heading>
                         <Flex width="70%" justifyContent="space-between" alignItems="center" paddingTop="2%">
                             <Image src='https://images.dailyobjects.com/marche/icons/android.png?tr=cm-pad_resize,v-2,w-118,h-38,dpr-1' />
