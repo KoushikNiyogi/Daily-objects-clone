@@ -17,23 +17,21 @@ const Checkout = () => {
   
   
 
-  const{name, city,area, state, pin} = user[0].address;
   
 
   const HandleContinue=()=>{    
       Navigate("/payments")    
   }
  
-  console.log(name,city,state,pin)
   return <Box>
   <h1 id={styles.heading}>CHECKOUT</h1> 
   <Flex id={styles.flex}>
 
 <Box id={styles.left}>
           <p id={styles.shipping}>SHIPPING ADDRESS</p>
-          <Text>{"name"}</Text>
-          <Text>{`${"area"}, ${"city"}`}</Text>          
-          <Text>{`${"city"}, ${"state"} ${"pin"} `}</Text>
+          <Text>Kouhik Niyogi</Text>
+          <Text>Mahalakshmi layout, Maruthi nagar</Text>          
+          <Text>Bengaluru, Karnataka</Text>
           <Button width="80%" style={{ margin: "1rem 0",backgroundColor: "#20a87e" }} size='lg'  >Change</Button>
     </Box>
    

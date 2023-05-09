@@ -122,7 +122,7 @@ const ShoppingBag = () => {
         e.preventDefault()
         if(name!=="" && mobile!=="" && email!=="" && pin!=="" && city!=="" && state!==""  && country!=="" && building!=="" && area!==""){
           const address = {name, mobile, email, pin, city, state, country, building, area, landmark, gstin}
-          Navigate("/checkout")
+          Navigate("/CheckoutPage")
           //PostIt(address)
         }
         else{
