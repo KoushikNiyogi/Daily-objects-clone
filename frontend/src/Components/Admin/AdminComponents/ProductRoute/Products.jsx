@@ -110,7 +110,7 @@ export default function Products() {
               })
             )}
           </Box>
-          <Box margin={"auto"} m={"20px"}>
+          {/* <Box margin={"auto"} m={"20px"}>
             <Button
               m={"5px"}
               onClick={() => setPage((page) => page - 1)}
@@ -126,7 +126,7 @@ export default function Products() {
             >
               Next
             </Button>
-          </Box>
+          </Box> */}
         </Box>
       </div>
     </>

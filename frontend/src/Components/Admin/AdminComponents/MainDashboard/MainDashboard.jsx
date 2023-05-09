@@ -8,7 +8,7 @@ import { Box, HStack } from "@chakra-ui/react";
 const MainDashboard = () => {
   return (
     <div className="MainDash">
-      <HStack flexDirection={{ base: "column", "934px": "row" }}>
+      <HStack flexDirection={{ base: "column", md: "column", xl: "row" }}>
         <Box width={"80%"} height={"auto"}>
           <h1
             style={{
@@ -24,7 +24,7 @@ const MainDashboard = () => {
           <Table />
         </Box>
 
-        <Box width={"20%"} height={"auto"}>
+        <Box width={{base:"100%",xl:"20%"}} height={"auto"}>
           <h3>Updates</h3>
           <Right />
         </Box>

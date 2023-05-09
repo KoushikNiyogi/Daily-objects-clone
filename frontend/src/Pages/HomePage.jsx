@@ -4,6 +4,8 @@ import Navbar from "../Components/Navbar"
 import Footer from '../Components/Footer'
 
 
+
+
 const HomePage = () => {
   return (
     <Box>
@@ -104,6 +106,7 @@ const HomePage = () => {
       </Box>
       <Footer/>
     </Box>
+
   )
 }
 

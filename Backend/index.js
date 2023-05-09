@@ -18,7 +18,6 @@ app.use("/user", userRouter)
 app.use("/admin",adminRouter)
 app.use("/product", productRouter)
 app.use(auth)
-app.use(Logger)
 app.use("/cart",cartRoute)
 app.use("/wishlist",wishlistRoute)
 
@@ -26,7 +25,7 @@ app.get("/", (req, res) => {
   res.status(200).send("Home page");
 });
 
-app.listen(process.env.port, async () => {
+app.listen(8076, async () => {
   try {
     await connection;
     console.log("Connected to Mongo Atlas");
@@ -34,5 +33,5 @@ app.listen(process.env.port, async () => {
     console.log(err);
     console.log("Couldn't connect to Mongo Atlas");
   }
-  console.log(`Server started on port ${process.env.port}`);
+  console.log(`Server started on port 8076`);
 });

@@ -11,7 +11,6 @@ import Chart from "react-apexcharts";
 const Card = (props) => {
   const [expanded, setExpanded] = useState(false);
   return (
-    
     <AnimateSharedLayout>
       {expanded ? (
         <ExpandedCard param={props} setExpanded={() => setExpanded(false)} />
@@ -35,7 +34,6 @@ function CompactCard({ param, setExpanded }) {
       }}
       layoutId="expandableCard"
       onClick={setExpanded}
-      
     >
       <div className="radialBar">
         <CircularProgressbar
@@ -115,10 +113,10 @@ function ExpandedCard({ param, setExpanded }) {
       }}
       layoutId="expandableCard"
     >
-      <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "white" }}>
+      <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "red" }}>
         <UilTimes onClick={setExpanded} />
       </div>
-        <span>{param.title}</span>
+      <span>{param.title}</span>
       <div className="chartContainer">
         <Chart options={data.options} series={param.series} type="area" />
       </div>
