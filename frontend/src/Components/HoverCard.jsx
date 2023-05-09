@@ -3,6 +3,7 @@ import React from 'react'
 import Ftable from './Table'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import HoverCardSubMenu from './HoverCardSubMenu'
+import { Link } from "react-router-dom";
 const HoverCard = (props) => {
    const techarr = props.techarr
    const title = props.title
@@ -17,7 +18,7 @@ const HoverCard = (props) => {
       {
         techarr.map(ele=><MenuItem width="13%" display="block" textAlign="center"> 
          <Image src={ele.imgurl} width="100%" />
-         <HoverCardSubMenu menuarr={ele.item}/>
+         <Link to="/products"><HoverCardSubMenu menuarr={ele.item}/></Link>
         </MenuItem>)
       }
     </MenuList>

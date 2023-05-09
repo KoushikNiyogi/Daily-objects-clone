@@ -39,7 +39,7 @@ useEffect(() => {
   console.log("useeffect is running")
   dispatch(getSingleProduct(id))
   console.log("useeffect ended");
-}, [])
+}, [singleProduct])
   return (
 
     <Box mt={"50px"}>

@@ -44,7 +44,9 @@ text-align: center;
 .dropdown{
    position: relative;
 }
-
+.h2{
+   font-size: 90%;
+}
 .hovercard{
    position: absolute;
    left: 0%;
