@@ -1,0 +1,23 @@
+
+  .Table {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  @media screen and (max-width: 767px) {
+    .Table {
+      font-size: 14px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .Table {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .Table {
+      font-size: 18px;
+    }
+  }
