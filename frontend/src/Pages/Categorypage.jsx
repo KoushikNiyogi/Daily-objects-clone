@@ -21,6 +21,7 @@ export const Categorypage = ()=> {
 
   return(
     <div>
+      
        <CategoryNav/>
 
       <ProductList/>
