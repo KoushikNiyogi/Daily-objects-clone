@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import React, { useRef } from 'react'
 import HamMenu from './Drawer';
 import HoverCard from './HoverCard';
-
+import Logo from "../Components/Admin/images/daily_e.png";
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
@@ -146,7 +146,7 @@ const Navbar = () => {
     return (<Box className='main-navstack' display="flex" height={{ base: "8vh", md: "8vh", lg: "12vh" }} alignItems="center" justifyContent={["space-between", "space-between", "space-between", "space-around"]}>
         <HStack width={{ base: "20%", md: "8%", lg: "6%" }}>
             <Link to="/">
-                <Image src="https://images.dailyobjects.com/marche/icons/logo_named.png?tr=cm-pad_resize,v-2,w-135,h-27,dpr-1" />
+                <Image width="100%" src={Logo} />
             </Link>
         </HStack>
 
@@ -156,32 +156,32 @@ const Navbar = () => {
                 <HoverCard techarr={techarr} title="TECH" />
             </Box>
             <Box>
-                <HoverCard techarr={techarr} title="BAG & WALLETS"/>
+                <HoverCard techarr={techarr} title="BAG & WALLETS" />
             </Box>
             <Box>
-                <HoverCard techarr={techarr} title="WORK & ESSENTIAL"/>
+                <HoverCard techarr={techarr} title="WORK & ESSENTIAL" />
             </Box>
             <Box>
-                <HoverCard techarr={techarr} title="GIFTING"/>
+                <HoverCard techarr={techarr} title="GIFTING" />
             </Box>
             <Box>
-                <HoverCard techarr={techarr} title="COLLECION"/>
+                <HoverCard techarr={techarr} title="COLLECION" />
             </Box>
             <Box>
-                <HoverCard techarr={techarr} title="SHOP BY APPLE"/>
+                <HoverCard techarr={techarr} title="SHOP BY APPLE" />
             </Box>
             <Box>
-                <HoverCard techarr={techarr} title="NEW ARRIVALS"/>
+                <HoverCard techarr={techarr} title="NEW ARRIVALS" />
             </Box>
 
         </Flex>
         <Box display={["none", "none", "none", "flex"]} width="15%" justifyContent="space-between">
-            <CgShoppingCart className='cart-box' />
-            <FaUserAlt className='cart-box' />
-            <Search2Icon className='cart-box' />
+            <Link to="/ShoppingBagPage"><CgShoppingCart className='cart-box' /></Link>
+            <Link to="/dashboard"><FaUserAlt className='cart-box' /></Link>
+            <Link to="/SearchPage"><Search2Icon className='cart-box' /></Link>
         </Box>
         <Box display={["flex", "flex", "flex", "none"]}>
-            <HamMenu techarr={techarr}/>
+            <HamMenu techarr={techarr} />
         </Box>
 
     </Box>
