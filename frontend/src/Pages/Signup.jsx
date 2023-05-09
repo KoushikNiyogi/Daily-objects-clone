@@ -73,7 +73,7 @@ const SignupPage = () => {
   return (<Box>
     <Navbar />
     <Box width="100vw" paddingTop="2%" display="flex" justifyContent="center">
-      <Box boxShadow="rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" width={["90vw", "90vw", "80vw", "40vw"]} height={["60vh","60vh","55vh","82vh"]} textAlign="center" padding="2%">
+      <Box boxShadow="rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px" width={["90vw", "90vw", "80vw", "40vw"]} textAlign="center" padding="2%">
         <Heading as="h2" fontSize="120%">Create account here</Heading>
         {
           isloading ? <Spinner className='spinner' thickness='4px' speed='0.65s' emptyColor='gray.200' color='gree.500' size='xl' margin="auto" /> :
