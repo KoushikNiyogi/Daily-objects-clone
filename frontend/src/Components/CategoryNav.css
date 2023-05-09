@@ -38,6 +38,7 @@
     }
   }
 
+  
   @media screen and (max-width: 600px) {
     .category-main{
        display: grid;
