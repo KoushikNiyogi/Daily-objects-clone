@@ -14,7 +14,7 @@ export const addAddressAction = (token,addressobj, id) => (dispatch) =>{
 
     return axios({
         method: 'PATCH',
-        url: `http://localhost:8080/user/updateaddress/${id}`,
+        url: `https://pajamas-bonobo.cyclic.app/user/updateaddress/${id}`,
         data: address,
         headers: headers
       })

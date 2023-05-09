@@ -17,11 +17,12 @@ const Checkout = () => {
   const Navigate = useNavigate();
   
   
-  const{name, city,area, state, pin} = user.address.address;
+  const{name, city,area, state, pin} = user[0].address.address;
   
   const HandleContinue=()=>{    
       Navigate("/payments")    
   }
+  console.log(name,city,state,pin)
   return <Box>
   <h1 id={styles.heading}>CHECKOUT</h1> 
   <Flex id={styles.flex}>
