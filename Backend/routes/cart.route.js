@@ -23,16 +23,22 @@ cartRoute.get("/", async (req, res) => {
 })
 
 cartRoute.post("/add", async (req, res) => {
-    req.body.payment = false,
-    req.body.dispatch = false
-    const payload = req.body
+    req.body.payment = false;
+    req.body.dispatch = false;
+    req.body.quantity = 1;
+    const payload = req.body;
+    const post = await cartModel.findOne({ userId: req.body.userId,title : req.body.title });
+    if (post) {
+        res.send({ "msg": "product already exisists in Cart" })
+    } else {
     try {
         const newProduct = new cartModel(payload);
         await newProduct.save()
-        res.send({ msg: "Product Saved", newProduct: newProduct })
+        res.send({ msg: "Product Added to Cart", newProduct: newProduct })
     } catch (e) {
         res.send({ "msg": e.message })
     }
+   }
 })
 
 cartRoute.patch("/update/:id", async (req, res) => {

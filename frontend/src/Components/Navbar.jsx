@@ -9,44 +9,179 @@ import {
     Button,
     Box,
     Heading,
-    
+
 } from '@chakra-ui/react'
 import { CloseIcon, HamburgerIcon, Search2Icon, } from "@chakra-ui/icons";
 import { CgShoppingCart } from "react-icons/cg"
 import { FaUserAlt } from "react-icons/fa"
 import { Link } from "react-router-dom";
 import React, { useRef } from 'react'
-import Submenu from './Submenu';
 import HamMenu from './Drawer';
-
+import HoverCard from './HoverCard';
+import Logo from "../Components/Admin/images/daily_e.png";
 const Navbar = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
-    const navmenu = ["Men", "Women", "Kids", "Home & Living", "Studio"]
-    return (<Box className='main-navstack' bgColor={"white"}  zIndex={5} display="flex" height={{ base: "8vh", md: "8vh", lg: "12vh" }} position="fixed" overflow="hidden" justifyContent={["space-between", "space-between", "space-between", "space-around"]} top={"0"}>
+    const techarr = [
+        {
+            imgurl: "https://images.dailyobjects.com/marche/assets/images/other/phone-cases-s.png?tr=cm-pad_resize,v-2,dpr-1",
+            item: [
+                {
+                    name: "Apple"
+                },
+                {
+                    name: "Samsung"
+                },
+                {
+                    name: "Xiaomi"
+                },
+                {
+                    name: "One Plus"
+                },
+            ]
+        },
+        {
+            imgurl: "https://images.dailyobjects.com/marche/assets/images/other/laptop-sleeves-and-bags-s.png?tr=cm-pad_resize,v-2,dpr-1",
+            item: [
+                {
+                    name: "Zippered Sleevers"
+                },
+                {
+                    name: "Macbook hardcase"
+                },
+                {
+                    name: "Messenger Bags"
+                },
+                {
+                    name: "Bagpacks"
+                },
+            ]
+        },
+        {
+            imgurl: "https://images.dailyobjects.com/marche/assets/images/other/chargig-solutions.png?tr=cm-pad_resize,v-2,dpr-1",
+            item: [
+                {
+                    name: "Wireless chargers"
+                },
+                {
+                    name: "Apple watch chargers"
+                },
+                {
+                    name: "Cahrgers and cabels"
+                },
+                {
+                    name: "Charger station"
+                },
+            ]
+        },
+        {
+            imgurl: "https://images.dailyobjects.com/marche/assets/images/other/watch-accessories-s.png?tr=cm-pad_resize,v-2,dpr-1",
+            item: [
+                {
+                    name: "Apple Watchbands"
+                },
+                {
+                    name: "Apple Watchbands Chargers"
+                },
+                {
+                    name: "Universal Watchbands"
+                },
+                {
+                    name: "Apple Watch Cases"
+                },
+            ]
+        },
+        {
+            imgurl: "https://images.dailyobjects.com/marche/assets/images/other/stands-s.png?tr=cm-pad_resize,v-2,dpr-1",
+            item: [
+                {
+                    name: "Moblie"
+                },
+                {
+                    name: "Laptop"
+                },
+                {
+                    name: "Apple Watch"
+                },
+                {
+                    name: "i Pad"
+                },
+            ]
+        },
+        {
+            imgurl: "https://images.dailyobjects.com/marche/assets/images/other/organsiers-s.png?tr=cm-pad_resize,v-2,dpr-1",
+            item: [
+                {
+                    name: "Tech Kit"
+                },
+                {
+                    name: "Folio"
+                },
+                {
+                    name: "Pouches"
+                },
+                {
+                    name: "Cables"
+                },
+            ]
+        },
+        {
+            imgurl: "https://images.dailyobjects.com/marche/assets/images/other/other-accessories-s.png?tr=cm-pad_resize,v-2,dpr-1",
+            item: [
+                {
+                    name: "Screen Guards"
+                },
+                {
+                    name: "iPad Cases"
+                },
+                {
+                    name: "AirPod Cases"
+                },
+                {
+                    name: "AirTag Cases"
+                },
+            ]
+        }
+    ]
+    return (<Box className='main-navstack' display="flex" height={{ base: "8vh", md: "8vh", lg: "12vh" }} alignItems="center" justifyContent={["space-between", "space-between", "space-between", "space-around"]}>
         <HStack width={{ base: "20%", md: "8%", lg: "6%" }}>
             <Link to="/">
-                <Image src="https://images.dailyobjects.com/marche/icons/logo_named.png?tr=cm-pad_resize,v-2,w-135,h-27,dpr-1" />
+                <Image width="100%" src={Logo} />
             </Link>
         </HStack>
 
 
         <Flex display={["none", "none", "none", "flex"]} className='nav-menu' width="60%" >
-            <Heading as="h4">Tech</Heading>
-            <Heading as="h4">Bags & Wallets</Heading>
-            <Heading as="h4">Work Essentials</Heading>
-            <Heading as="h4">Gifting</Heading>
-            <Heading as="h4">Collections</Heading>
-            <Heading as="h4">Shop By Apple</Heading>
-            <Heading as="h4">New Arrivals</Heading>
+            <Box>
+                <HoverCard techarr={techarr} title="TECH" />
+            </Box>
+            <Box>
+                <HoverCard techarr={techarr} title="BAG & WALLETS" />
+            </Box>
+            <Box>
+                <HoverCard techarr={techarr} title="WORK & ESSENTIAL" />
+            </Box>
+            <Box>
+                <HoverCard techarr={techarr} title="GIFTING" />
+            </Box>
+            <Box>
+                <HoverCard techarr={techarr} title="COLLECION" />
+            </Box>
+            <Box>
+                <HoverCard techarr={techarr} title="SHOP BY APPLE" />
+            </Box>
+            <Box>
+                <HoverCard techarr={techarr} title="NEW ARRIVALS" />
+            </Box>
+
         </Flex>
         <Box display={["none", "none", "none", "flex"]} width="15%" justifyContent="space-between">
-            <CgShoppingCart className='cart-box' />
-            <FaUserAlt className='cart-box' />
-            <Search2Icon className='cart-box' />
+            <Link to="/ShoppingBagPage"><CgShoppingCart className='cart-box' /></Link>
+            <Link to="/dashboard"><FaUserAlt className='cart-box' /></Link>
+            <Link to="/SearchPage"><Search2Icon className='cart-box' /></Link>
         </Box>
         <Box display={["flex", "flex", "flex", "none"]}>
-            <HamMenu />
+            <HamMenu techarr={techarr} />
         </Box>
 
     </Box>

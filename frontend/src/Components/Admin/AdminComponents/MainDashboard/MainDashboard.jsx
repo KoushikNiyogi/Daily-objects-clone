@@ -24,7 +24,7 @@ const MainDashboard = () => {
           <Table />
         </Box>
 
-        <Box width={"20%"} height={"auto"}>
+        <Box width={{base:"100%",xl:"20%"}} height={"auto"}>
           <h3>Updates</h3>
           <Right />
         </Box>
