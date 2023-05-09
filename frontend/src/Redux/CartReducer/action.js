@@ -13,7 +13,7 @@ import{
 export const getSingleProduct =(id)=>(dispatch)=>{
       console.log("im called")
 
-      
+
       dispatch({ type: CART_REQUEST });
       axios({
         method: 'get',
@@ -22,7 +22,7 @@ export const getSingleProduct =(id)=>(dispatch)=>{
         .then((res) => {
           console.log(res)
           dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: res.data.Data })
-          localStorage.setItem("singleproduct", JSON.stringify(res.data.Data))
+          localStorage.setItem("singleproduct", JSON.stringify([res.data.Data]))
         })
         .catch((err) => {
           dispatch({ type: CART_FAILURE });

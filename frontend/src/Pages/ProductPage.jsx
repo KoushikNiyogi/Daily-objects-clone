@@ -44,27 +44,27 @@ useEffect(() => {
 
     <Box mt={"50px"}>
     {
-      singleProduct ? <Box>
+      singleProduct.length!=0 ? <Box>
       <Flex direction={{ base: "column", lg: "row" }} width={"80%"} margin={"auto"}>
         <Box backgroundColor={"#f7f7f7"}>
           <Box width="700px" height="650px">
-            <ImageSlider images={singleProduct.images} />
+            <ImageSlider images={singleProduct[0].images} />
           </Box>
         </Box>
         <Box pl={"20px"} textAlign={"start"}>
-          <Text fontSize={"2xl"}>{singleProduct.title}</Text>
+          <Text fontSize={"2xl"}>{singleProduct[0].title}</Text>
           <Flex alignItems={"center"}>
-            <Text fontSize={"2xl"} color={"black"} fontWeight={"bold"}>Rs.{singleProduct.price}</Text>
-            <Text ml={"10px"} textDecoration={"line-through"} fontSize={"xl"} color={"##989090"} fontWeight={"bold"}>{singleProduct.discounted_price}</Text>
+            <Text fontSize={"2xl"} color={"black"} fontWeight={"bold"}>Rs.{singleProduct[0].price}</Text>
+            <Text ml={"10px"} textDecoration={"line-through"} fontSize={"xl"} color={"##989090"} fontWeight={"bold"}>{singleProduct[0].discounted_price}</Text>
             <Text ml={"10px"} fontSize={"md"} color={"#989090"} fontWeight={"bold"}>Inclusive of all taxes</Text>
           </Flex>
           <Text fontSize={"lg"} color={"#20a87e"} fontWeight={"bold"}>COLOR</Text>
           <Divider m={"20px 0px"} />
           <Flex direction={"column"} cursor={"pointer"}  alignItems={"flex-start"} justifyContent={"center"}>
-            <Box width={"60px"} height={"60px"} border={"1px solid black"} borderRadius={"50%"} backgroundColor={singleProduct.color}></Box>
-            <Text fontWeight={"bold"} mt={"10px"} fontSize={"lg"}>{singleProduct.color}</Text>
+            <Box width={"60px"} height={"60px"} border={"1px solid black"} borderRadius={"50%"} backgroundColor={singleProduct[0].color}></Box>
+            <Text fontWeight={"bold"} mt={"10px"} fontSize={"lg"}>{singleProduct[0].color}</Text>
           </Flex>
-          <Button mt={"10px"} padding={"0 16px"} minWidth={"500px"} color={"white"} backgroundColor={"#20a87e"} onClick={()=>handleClick(singleProduct)}>Add to Cart</Button>
+          <Button mt={"10px"} padding={"0 16px"} minWidth={"500px"} color={"white"} backgroundColor={"#20a87e"} onClick={()=>handleClick(singleProduct[0])}>Add to Cart</Button>
           <Text mt={"10px"} fontSize={"lg"} color={"#e7787e"} fontWeight={"bold"}>EXITING OFFER</Text>
           <Flex mt={"10px"} justifyContent={"center"}>
             <BsTag size={"40px"}/>
@@ -102,11 +102,11 @@ useEffect(() => {
 
       <Box m={"50px 0"}>
         <Box>
-        { singleProduct.details!=undefined &&<Text textAlign={"center"} fontSize={"5xl"} fontWeight={"bold"}>DETAILS</Text>}
+        { singleProduct[0].details!=undefined &&<Text textAlign={"center"} fontSize={"5xl"} fontWeight={"bold"}>DETAILS</Text>}
 
         </Box>
         {
-          singleProduct.details!=undefined&&singleProduct.details.map((item,i)=>{
+          singleProduct[0].details!=undefined&&singleProduct[0].details.map((item,i)=>{
                if(i%2 == 0){
                 return <Flex w={"80%"} m={"auto"} direction={{base:"column-reverse",xl:"row"}}>
                    <Flex padding={"0 10px"} width={{base:"80%",xl:"60%"}} h={"500px"} justifyContent={"center"} alignItems={"center"} bgColor={"#f7f7f7"} color={"black"}>

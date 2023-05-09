@@ -12,7 +12,7 @@ import{
   const initialState = {
     isLoading : false,
     products : JSON.parse(localStorage.getItem("Cart"))||[],
-    singleProduct : JSON.parse(localStorage.getItem("singleproduct"))||{},
+    singleProduct : JSON.parse(localStorage.getItem("singleproduct"))||[],
     allcartProducts:[],
     isError : false
 }
@@ -25,7 +25,7 @@ export const reducer = (state = initialState,{type,payload})=>{
     }
     case GET_SINGLE_PRODUCT_SUCCESS : return {
         ...state,
-        singleProduct : payload,
+        singleProduct : [payload],
         isLoading : false,
     }    
     case ADD_CART_SUCCESS : return {
