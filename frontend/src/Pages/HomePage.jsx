@@ -20,18 +20,16 @@ const HomePage = () => {
         <Image src="https://images.dailyobjects.com/marche/assets/images/other/watchband-homepage-desktop-02.png?tr=cm-pad_resize,v-2,dpr-1" />
       </Box>
       <Box>
-        <Box width="100%" display="flex" height={["200px", "200px", "320px", "350px"]} border="1px solid red">
+        {/* <Box width="100%" display="flex" height={["200px", "200px", "320px", "350px"]} border="1px solid red">
           <Box>
             <Heading as="h2" className='h2' fontSize="140%">SHOP CATEGORIES</Heading>
             <Text>Now browse our selection of carefully curated products in sorted categories</Text>
           </Box>
-          {/* <Box width="70%" height="90%">
-            <Slider />
-          </Box> */}
-        </Box>
+      
+        </Box> */}
 
       </Box>
-      <Box width="100%" >
+      <Box width="100%" marginTop="4%" >
         <Image src="https://images.dailyobjects.com/marche/assets/images/other/messenger-bags-desktops.jpg?tr=cm-pad_crop,v-2,dpr-1" />
       </Box>
       <Box width="100%" display={["block", "block", "flex", "flex"]} justifyContent="space-around" padding="2%" className='item-card-box' gap="2%">
