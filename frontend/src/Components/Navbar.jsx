@@ -175,7 +175,7 @@ const Navbar = () => {
             </Box>
 
         </Flex>
-        <Box display={["none", "none", "none", "flex"]} width="15%" justifyContent="space-between">
+        <Box display={["none", "none", "none", "flex"]} width="15%" justifyContent="space-between" alignItems="center">
             <Link to="/ShoppingBagPage"><CgShoppingCart className='cart-box' /></Link>
             <Link to="/dashboard"><FaUserAlt className='cart-box' /></Link>
             <Link to="/SearchPage"><Search2Icon className='cart-box' /></Link>
