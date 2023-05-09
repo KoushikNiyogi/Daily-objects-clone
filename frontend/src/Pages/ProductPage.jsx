@@ -43,7 +43,7 @@ useEffect(() => {
   return (
 
     <Box mt={"50px"}>
-
+    {
       singleProduct ? <Box>
       <Flex direction={{ base: "column", lg: "row" }} width={"80%"} margin={"auto"}>
         <Box backgroundColor={"#f7f7f7"}>
@@ -136,7 +136,8 @@ useEffect(() => {
       </Box>
       </Box> : <Box></Box>
       
-    </Box>
+       }
+      </Box>
 
   )
 }
