@@ -87,6 +87,7 @@ form{
       display: block;       
   }
   #left,  #summary{
+    
       margin: auto;
       width:90%;
   }
