@@ -10,6 +10,7 @@ import Navbar from "../Components/Navbar"
 import Footer from "../Components/Footer"
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutUser } from '../Redux/UserLogin/userloginaction'
+import Myorder from './Myorder'
 const Dashboard = () => {
   const dispatch = useDispatch();
   const {token,isAuth,user} = useSelector(store => store.Loginreducer)
@@ -43,7 +44,7 @@ const Dashboard = () => {
     <Navbar/>
     <Box mt={"150px"}>
      <Text  fontFamily={"Trade Gothic LT Pro, sans-serif"} fontSize='5xl' fontWeight={"bold"} textAlign={"center"}>MY ACCOUNT</Text>
-      <Flex direction={{base:"column", xl:"row"}} borderTop={"1px solid #ededed"} height={"100vh"}>
+      <Flex direction={{base:"column", xl:"row"}} borderTop={"1px solid #ededed"} height={"100vh"} justifyContent={"flex-start"}>
         <Hide below='xl'>
           {
             token ? 
@@ -73,11 +74,13 @@ const Dashboard = () => {
         <Hide above='xl'>
           <DashboardDrawer/>
         </Hide>
-        <Box width={"80%"} margin={"auto"}>
+        <Flex width={"80%"}  alignItems={"flex-start"} justifyContent={"center"}>
           {
-            searchparams.get("page") == "wishlist" ? <Wishlist/> : <Box></Box>
+            searchparams.get("page") == "wishlist" ? <Wishlist/> :
+            searchparams.get("page") == "order" ? <Myorder/> :
+            <Box></Box>
           }
-        </Box>
+        </Flex>
       </Flex>
       
     </Box>

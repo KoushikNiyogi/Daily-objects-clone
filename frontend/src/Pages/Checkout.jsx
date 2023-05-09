@@ -12,24 +12,17 @@ const Checkout = () => {
 
   const {address} = useSelector(store=>store.AddressReducer)
   const {user} = useSelector(store=>store.Loginreducer)
-  const navigate = useNavigate();
+  // const {user} = useSelector(store=>store.CheckoutReducer) //not using checkout reducer as of now
   
-  const [userAddress, setuserAddress] = useState("")
-
+  const Navigate = useNavigate();
   
-  useEffect(()=>{
-    if(!address){      
-      setuserAddress(user.address)
-    }
-    else{
-      setuserAddress(address)
-    }
-
-  }, [])
   
-  const{name, city,area, state, pin} = userAddress
+  const{name, city,area, state, pin} = user[0].address.address;
   
-
+  const HandleContinue=()=>{    
+      Navigate("/payments")    
+  }
+  console.log(name,city,state,pin)
   return <Box>
   <h1 id={styles.heading}>CHECKOUT</h1> 
   <Flex id={styles.flex}>
@@ -41,17 +34,7 @@ const Checkout = () => {
           <Text as="p">{`${city}, ${state} ${pin} `}</Text>
           <Button width="80%" style={{ margin: "1rem 0",backgroundColor: "#20a87e" }} size='lg'  >Change</Button>
     </Box>
-    {/* const[name, setname] = useState("")
-    const[mobile, setmobile] = useState("")
-    const[email, setemail] = useState("")
-    const[pin, setpin] = useState("")
-    const[city, setcity] = useState("")
-    const[state, setstate] = useState("")
-    const[country, setcountry] = useState("")
-    const[building, setbuilding] = useState("")
-    const[area, setarea] = useState("")
-    const[landmark, setlandmark] = useState("")
-    const[gstin, setgstin] = useState("") */}
+   
 
 
                     <div id={styles.summary}>
@@ -80,7 +63,7 @@ const Checkout = () => {
                                 <p style={{color:"rgb(231, 125, 143)"}}>{`You Saved Rs.${totaldiscount}`}</p>
                             </div>
                         </div>
-                        <Button mt={3} style={{backgroundColor:"#20a87e"}}>
+                        <Button mt={3} style={{backgroundColor:"#20a87e"}} onClick={HandleContinue}>
                             CONTINUE
                         </Button>
                     </div>

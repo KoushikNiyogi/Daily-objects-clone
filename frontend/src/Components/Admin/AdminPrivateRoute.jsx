@@ -6,7 +6,7 @@ export const AdminPrivateRoute = ({ children }) => {
   const location = useLocation();
   const token = localStorage.getItem("adminToken");
 
-  return !isAuthadmin && (token == "" || token == undefined) ? (
+  return !isAuthadmin || token === "" || token == undefined || token == null ? (
     <Navigate to={"/adminlogin"} state={location.pathname} replace />
   ) : (
     children

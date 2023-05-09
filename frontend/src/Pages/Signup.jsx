@@ -33,6 +33,7 @@ const SignupPage = () => {
     let payload = { ...data, token: data.name }
     dispatch(usersignupaction(payload))
       .then((res) => {
+        console.log(res)
         if (res.payload.user) {
           toast({
             position: "top",
@@ -55,6 +56,7 @@ const SignupPage = () => {
         }
       })
       .catch((e) => {
+        console.log(e)
         toast({
           position: "top",
           title: `${e}`,

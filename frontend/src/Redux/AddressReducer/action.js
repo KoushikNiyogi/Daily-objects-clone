@@ -2,12 +2,33 @@ import { ADDRESS_REQUEST_FAILURE, ADDRESS_REQUEST_PENDING, POST_ADDRESS_SUCCESS 
 import axios from 'axios'
 //put the url
 
-export const addAddressAction = (address, id) => (dispatch) =>{
+export const addAddressAction = (token,addressobj, id) => (dispatch) =>{
+    console.log(addressobj);
+    const headers = {
+        Authorization: `${token}`
+      }; 
+    const address = {
+        address : addressobj
+    }
     dispatch({type : ADDRESS_REQUEST_PENDING})
 
-    return axios.patch(`https://pajamas-bonobo.cyclic.app/user          /${id}`, address)
-    .then(()=>dispatch({type: POST_ADDRESS_SUCCESS}))
-    .catch(()=>dispatch({type : ADDRESS_REQUEST_FAILURE}))
+    return axios({
+        method: 'PATCH',
+        url: `https://pajamas-bonobo.cyclic.app/user/updateaddress/${id}`,
+        data: address,
+        headers: headers
+      })
+
+    .then((res)=>{
+        dispatch({type: POST_ADDRESS_SUCCESS})
+        if(res.data.user!=undefined){
+        localStorage.setItem("user",JSON.stringify([res.data.user]))
+        }
+    })
+    .catch((err)=>{
+        dispatch({type : ADDRESS_REQUEST_FAILURE})
+        console.log(err)
+    })
 }
 
 
