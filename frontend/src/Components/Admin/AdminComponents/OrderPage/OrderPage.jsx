@@ -25,14 +25,13 @@ const OrderPage = () => {
   };
 
   const newData = {
-    payment: value,
+    dispatch: !value,
   };
 
   const getData = () => {
     axios
       .get(`https://pajamas-bonobo.cyclic.app/adminorder/`, config)
       .then((res) => {
-        console.log(res);
         setData(res.data.data);
       })
       .catch((error) => {
@@ -86,10 +85,11 @@ const OrderPage = () => {
             <Tr>
               <Th>UserID</Th>
               <Th>Products Name</Th>
-
+              <Th>Quantity</Th>
+              <Th>Total Amount OF Transaction</Th>
               <Th>Dispatch</Th>
               <Th>Status Of Order</Th>
-              <Th>Edit Order</Th>
+              <Th>Edit Order Dispatch</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -99,15 +99,17 @@ const OrderPage = () => {
                   <Tr key={el._id}>
                     <Td>{el.userId}</Td>
                     <Td>{el.title}</Td>
-
+                    <Td>{el.quantity}</Td>
+                    <Td>{el.price * el.quantity}</Td>
                     <Td>{el.dispatch ? "YES" : "NO"}</Td>
                     <Td>{el.payment ? "Successful" : "Pending"}</Td>
                     <Td>
                       <RadioGroup
                         onChange={() => {
                           handleChangePayment(el._id, newData);
+                          console.log(newData);
                         }}
-                        value={el.payment}
+                        value={el.dispatch}
                       >
                         <Stack direction="row">
                           <Radio value={false}>Pending</Radio>
