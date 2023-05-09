@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { filterProduct } from "../Redux/CategoryPage/Action";
 import {useDispatch, useSelector} from "react-redux";
 import { getProducts } from '../Redux/CategoryPage/Action';
+import { Box, Heading } from "@chakra-ui/react";
 
 export const CategoryNav = () => {
   const [searchParams, setSearchParam] = useSearchParams()
@@ -49,14 +50,18 @@ export const CategoryNav = () => {
   }, [category, location.search])
 
   return (
-    <div>
+    <div >
+
+      <img src="https://images.dailyobjects.com/marche/assets/images/other/offer-baners-updated-homepage-desktop.jpg?tr=cm-pad_crop,v-2,dpr-1" alt="" />
+     
       <div className='category-main'>
 
-        <div>
+       <div>
           <img onClick={()=> handleChange("")}
           src="https://images.dailyobjects.com/marche/icons/new-arrival/all.png?tr=cm-pad_resize,v-2,w-71,h-70,dpr-1" alt="" />
           <h3>ALL</h3>
-        </div>
+        </div> 
+
 
         <div>
           <img onClick={()=> handleChange("Watch")}
@@ -85,7 +90,7 @@ export const CategoryNav = () => {
 
 
 
-    </div>
+    </div> 
   )
 
 }
