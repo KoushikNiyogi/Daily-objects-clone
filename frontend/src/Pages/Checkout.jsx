@@ -3,6 +3,8 @@ import styles from '../Styling/checkout.module.css'
 import { useNavigate } from "react-router-dom";
 import {useSelector } from 'react-redux'
 import { useEffect, useState } from 'react';
+import Footer from '../Components/Footer';
+import Navbar from '../Components/Navbar';
 
 
 const Checkout = () => {
@@ -24,6 +26,8 @@ const Checkout = () => {
   }
  
   return <Box>
+    <Navbar/>
+    <Box>
   <h1 id={styles.heading}>CHECKOUT</h1> 
   <Flex id={styles.flex}>
 
@@ -70,7 +74,8 @@ const Checkout = () => {
                     
 
     </Flex>
-
+    </Box>
+    <Footer/>
     </Box>
   }
 

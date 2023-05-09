@@ -7,6 +7,8 @@ import { useNavigate, useParams } from "react-router-dom"
 import {BsTag} from "react-icons/bs"
 import {GoGift} from "react-icons/go"
 import ImageSliderAuto from '../Components/ProductPageComponents/ImageSliderAuto';
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 const Images = [
  "https://images.dailyobjects.com/marche/feature-banner/pangea-collection-16-desktop.jpg?tr=cm-pad_crop,v-2,dpr-1",
@@ -41,7 +43,8 @@ useEffect(() => {
   console.log("useeffect ended");
 }, [singleProduct])
   return (
-
+    <Box>
+      <Navbar/>
     <Box mt={"50px"}>
     {
       singleProduct.length!=0 ? <Box>
@@ -136,9 +139,10 @@ useEffect(() => {
       </Box>
       </Box> : <Box></Box>
       
-       }
+    }
       </Box>
-
+     <Footer/>
+     </Box>
   )
 }
 

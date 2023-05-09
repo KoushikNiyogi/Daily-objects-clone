@@ -14,6 +14,8 @@ import {
 
 import {UpdatePaymentAction} from "../Redux/PaymentReducer/action"
 import { GetAllCartProductsAction } from "../Redux/CartReducer/action";
+import Footer from "../Components/Footer";
+import Navbar from "../Components/Navbar";
   
 
 function Payments() {
@@ -71,7 +73,8 @@ function Payments() {
     },[])
     console.log(allcartProducts)
     return (
-      
+      <Box>
+        <Navbar/>
         <Box>
             <Center><Text id={styles.heading} fontSize={{ base: '25px', md: '35px', lg: '35px' }} fontWeight={"bold"}  mb={5}>CHECKOUT</Text></Center>
         <Flex id={styles.flex}>
@@ -126,6 +129,8 @@ function Payments() {
 
 
    </Flex> 
+   </Box>
+   <Footer/>
    </Box>
     )
   }

@@ -7,7 +7,8 @@ import CombinedFilter_sort from "../Components/SearchPage.jsx/CombinedFilter_sor
 import { Button } from "@chakra-ui/react"
 import {useDispatch, useSelector} from "react-redux";
 import { getProducts } from '../Redux/CategoryPage/Action';
-
+import Navbar from "../Components/Navbar"
+import Footer from "../Components/Footer"
 
 
 export const Categorypage = ()=> {
@@ -21,10 +22,11 @@ export const Categorypage = ()=> {
 
   return(
     <div>
-      
+      <Navbar/>
        <CategoryNav/>
 
       <ProductList/>
+      <Footer/>
     </div>
    
 

@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addAddressAction } from "../Redux/AddressReducer/action"
 import { useNavigate } from 'react-router-dom'
 import { GetAllCartProductsAction, UpdateCartProductAction, deleteCartProductAction } from '../Redux/CartReducer/action'
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 
 
 
@@ -138,6 +140,7 @@ const ShoppingBag = () => {
 
   return (
     <div>
+      <Navbar/>
         <div>
             <img src="https://images.dailyobjects.com/marche/assets/images/other/offer-baners-updated-homepage-desktop.jpg?tr=cm-pad_crop,v-2,dpr-1" alt="" />
         </div>
@@ -270,7 +273,7 @@ const ShoppingBag = () => {
     </ModalBody>
     </ModalContent>
 </Modal>
-
+     <Footer/>
     </div>
   )
 }

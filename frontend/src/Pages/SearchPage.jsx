@@ -17,6 +17,8 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { getSearchProducts } from '../Redux/SearchPageReducer/Action';
 import SearchProductCard from '../Components/SearchPage.jsx/SearchProductCard';
 import CombinedFilter_sort from '../Components/SearchPage.jsx/CombinedFilter_sort';
+import Footer from '../Components/Footer';
+import Navbar from '../Components/Navbar';
 
 const SearchPage = () => {
   const [state, setState] = React.useState("");
@@ -62,6 +64,8 @@ const SearchPage = () => {
   },[location.search])
   return (
     <Box>
+      <Navbar/>
+    <Box>
       <Stack width={"70%"} margin={"150px auto"} spacing={4}>
 
         {/* If you add the size prop to `InputGroup`, it'll pass it to all its children. */}
@@ -97,6 +101,8 @@ const SearchPage = () => {
         }
       
       </Box>
+    </Box>
+    <Footer/>
     </Box>
   )
 }
