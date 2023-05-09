@@ -52,8 +52,9 @@ const Navbar = () => {
   const [page, setPage] = useState(1);
   const [count, setCount] = useState();
   const toast = useToast();
-
+  const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
   const nevigate = useNavigate();
+
   const logout = () => {
     localStorage.setItem("isAuth", false);
     toast({
@@ -61,14 +62,12 @@ const Navbar = () => {
       status: "success",
       position: "top",
     });
-    localStorage.setItem("adminToken", "");
+    localStorage.removeItem("adminToken", "");
     nevigate("/adminlogin");
   };
 
   //   https://awful-pear-bedclothes.cyclic.app/
 
-  const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
-  console.log(isAuthadmin);
   const getData = (page) => {
     setStatus(false);
     axios
@@ -91,6 +90,9 @@ const Navbar = () => {
   useEffect(() => {
     //  console.log(data)
     getData(page);
+    if (!isAuthadmin) {
+      nevigate("/adminlogin");
+    }
   }, [page]);
 
   const handleSearch = () => {
@@ -109,13 +111,15 @@ const Navbar = () => {
         position="fixed"
         width={"100%"}
         zIndex="100"
+        h="auto"
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <Box width={"10%"} p={"0.5rem"}>
-            <RouterLink to={"/admindashboard"}>
-              <Image width={"95%"} m={"auto"} src={Logo} />
+          <HStack width={{ base: "23%", md: "18%", lg: "9%" }}>
+            <RouterLink to="/admindashboard">
+              <Image width="100%" src={Logo} />
             </RouterLink>
-          </Box>
+          </HStack>
+
           <HStack spacing={8} alignItems={"center"}>
             <HStack
               as={"nav"}
