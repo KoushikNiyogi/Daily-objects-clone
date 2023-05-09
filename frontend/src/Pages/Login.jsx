@@ -53,7 +53,7 @@ const LoginPage = () => {
         })
         navigate(location.state, { replace: true })
         localStorage.setItem("token", JSON.stringify(res.payload.token))
-        localStorage.setItem("user", JSON.stringify(res.payload.user));
+        localStorage.setItem("user", JSON.stringify([res.payload.user]));
       }
       else {
         toast({

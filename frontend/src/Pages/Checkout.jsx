@@ -6,12 +6,11 @@ import { useEffect, useState } from 'react';
 
 
 const Checkout = () => {
-
+  const [user,setUser] = useState(JSON.parse(localStorage.getItem("user"))||[])
   var orderSummary = JSON.parse(localStorage.getItem("orderSummary"))
   const {totalqty, totaldiscount, grandtotal, priceWODiscount} = orderSummary
 
   const {address} = useSelector(store=>store.AddressReducer)
-  const {user} = useSelector(store=>store.Loginreducer)
   // const {user} = useSelector(store=>store.CheckoutReducer) //not using checkout reducer as of now
   
   const Navigate = useNavigate();
@@ -24,6 +23,7 @@ const Checkout = () => {
   const HandleContinue=()=>{    
       Navigate("/payments")    
   }
+ 
   console.log(name,city,state,pin)
   return <Box>
   <h1 id={styles.heading}>CHECKOUT</h1> 
