@@ -17,7 +17,7 @@ const Checkout = () => {
   const Navigate = useNavigate();
   
   
-  const{name, city,area, state, pin} = user[0].address.address;
+  const{name, city,area, state, pin} = user[0].address;
   
   const HandleContinue=()=>{    
       Navigate("/payments")    
