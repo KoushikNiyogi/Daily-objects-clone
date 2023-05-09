@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./HomePage";
@@ -19,11 +18,9 @@ import ShoppingBag from "./ShoppingBag";
 import Checkout from "./Checkout";
 import Payments from "./Payments";
 
-
 const MainRoutes = () => {
   return (
     <Routes>
-
       <Route path="/" element={<HomePage />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
@@ -42,11 +39,8 @@ const MainRoutes = () => {
 
       {/* ALL ADMIN ROUTES ARE HERE  */}
 
-
-
       <Route path="/orderpage" element={<OrderPage />} />
       {/* <Route path="/adminlogin" element={<AdminLogin />} /> */}
-
 
       <Route
         path="/admindashboard"
@@ -90,7 +84,6 @@ const MainRoutes = () => {
         }
       />
       <Route path="/adminlogin" element={<AdminLogin />} />
-
 
       <Route
         path="*"
