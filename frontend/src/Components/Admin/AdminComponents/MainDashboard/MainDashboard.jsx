@@ -4,8 +4,17 @@ import Table from "../Tables/Tables";
 import "./MainDashboard.css";
 import Right from "../Right/Right";
 import { Box, HStack } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const MainDashboard = () => {
+  const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
+  const nevigate = useNavigate();
+
+  if (!isAuthadmin) {
+    nevigate("/adminlogin");
+  }
+
   return (
     <div className="MainDash">
       <HStack flexDirection={{ base: "column", md: "column", xl: "row" }}>
@@ -24,7 +33,7 @@ const MainDashboard = () => {
           <Table />
         </Box>
 
-        <Box width={{base:"100%",xl:"20%"}} height={"auto"}>
+        <Box width={{ base: "100%", xl: "20%" }} height={"auto"}>
           <h3>Updates</h3>
           <Right />
         </Box>
