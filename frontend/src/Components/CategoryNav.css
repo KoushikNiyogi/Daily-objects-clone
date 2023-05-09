@@ -32,13 +32,14 @@
        display: grid;
        grid-template-columns: repeat(3,1fr);
         
+       
     }
     .category-main>div{
         margin: 20px;
     }
   }
 
-  
+
   @media screen and (max-width: 600px) {
     .category-main{
        display: grid;
