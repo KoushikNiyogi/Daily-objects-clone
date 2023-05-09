@@ -4,7 +4,7 @@ import styles from "../Styling/bag.module.css"
 import {
     Input,
     Button,
-    Box,
+    div,
     useDisclosure,   
     Center,
     Modal,
@@ -90,6 +90,8 @@ const ShoppingBag = () => {
 
     }
 
+    
+
       
     useEffect(()=>{
         let Qty=0
@@ -130,6 +132,9 @@ const ShoppingBag = () => {
     const btnRef = React.useRef(null)
 
     console.log(userID,user)
+
+    
+
   return (
     <div>
         <div>
@@ -170,7 +175,7 @@ const ShoppingBag = () => {
                 </div>
                 <div id={styles.right}> {/* right */}
                     <div id={styles.rightInside}>
-                        <div className={styles.flexIt} id={styles.blueBox}>{/* blue, flex */}
+                        <div className={styles.flexIt} id={styles.bluediv}>{/* blue, flex */}
                             <div class={styles.first}>
                                 <div className={styles.icon}><img src="https://images.dailyobjects.com/marche/assets/images/other/gift-icon.png?tr=cm-pad_resize,v-2" alt="gift" /></div>
                                 <div><h2>MAKE IT A GIFT INR 500</h2></div>
@@ -242,12 +247,12 @@ const ShoppingBag = () => {
       <Input variant = 'flushed' label=''  m = {3} id='first-name' placeholder='Full name *' onChange={(e)=>setname(e.target.value)}/>
       <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Mobile *'  onChange={(e)=>setmobile(e.target.value)}/>
       <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Email Address *'  onChange={(e)=>setemail(e.target.value)}/>
-      <Box display='flex' justifyContent="space-evenly">
+      <div display='flex' justifyContent="space-evenly">
         <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Pincode *'  onChange={(e)=>setpin(e.target.value)}/>
         <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='City *' onChange={(e)=>setcity(e.target.value)} />
         <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='State *'  onChange={(e)=>setstate(e.target.value)}/>
         <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Country *'  onChange={(e)=>setcountry(e.target.value)}/>
-      </Box>
+      </div>
       <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Flat No/Building, Street Name *'  onChange={(e)=>setbuilding(e.target.value)}/>
       <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Area/Locality *'  onChange={(e)=>setarea(e.target.value)}/>
       <Input variant = 'flushed' label='' m = {3} id='last-name' placeholder='Landmark' onChange={(e)=>setlandmark(e.target.value)}/>

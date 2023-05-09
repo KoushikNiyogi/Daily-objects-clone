@@ -43,3 +43,106 @@ form{
 
 
 
+
+
+
+@media screen and (max-width: 1280px) {  
+  *{
+      font-size: x-large;
+  } 
+}
+
+@media screen and (max-width: 1024px) {  
+  *{
+      font-size: x-large;
+  }
+  #left,  #summary{
+      margin: auto;
+      width:90%;
+      /* height:500px; */
+  }        
+}
+
+
+@media screen and (max-width: 912px) {  
+  *{
+      font-size: xx-large;
+  }  
+  #flex{
+      display: block;        
+  }
+  #left,  #summary{
+      margin: auto;
+      width:90%;
+  }
+  
+}
+
+
+@media screen and (max-width: 820px) {
+  *{
+      font-size: xx-large;
+  }
+ #flex{
+      display: block;       
+  }
+  #left,  #summary{
+      margin: auto;
+      width:90%;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  *{
+      font-size: large;
+  }
+ #flex{
+      display: block;       
+  }
+  #left,  #summary{
+      margin: auto;
+      width:90%;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  *{
+    font-size: x-large;
+}
+ #flex{
+      display: block;   
+          
+  }
+  #left,  #summary{
+      margin: auto;
+      width:100%;
+  }
+  
+}
+
+@media screen and (max-width: 375px) {
+  *{
+      font-size: large;
+  }
+ #flex{
+      display: block;                  
+  }
+  #left,  #summary{
+      margin: auto;
+      width:100%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  *{
+      font-size: medium;
+  }
+ #flex{
+      display: block;                  
+  }
+  #left,  #summary{
+      margin: auto;
+      width:100%;
+  }
+}
+
