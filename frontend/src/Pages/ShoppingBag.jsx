@@ -122,7 +122,8 @@ const ShoppingBag = () => {
         e.preventDefault()
         if(name!=="" && mobile!=="" && email!=="" && pin!=="" && city!=="" && state!==""  && country!=="" && building!=="" && area!==""){
           const address = {name, mobile, email, pin, city, state, country, building, area, landmark, gstin}
-          PostIt(address)
+          Navigate("/checkout")
+          //PostIt(address)
         }
         else{
           alert("Please fill all the details")

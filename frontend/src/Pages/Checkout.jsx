@@ -31,9 +31,9 @@ const Checkout = () => {
 
 <Box id={styles.left}>
           <p id={styles.shipping}>SHIPPING ADDRESS</p>
-          <Text>{name}</Text>
-          <Text>{`${area}, ${city}`}</Text>          
-          <Text>{`${city}, ${state} ${pin} `}</Text>
+          <Text>{"name"}</Text>
+          <Text>{`${"area"}, ${"city"}`}</Text>          
+          <Text>{`${"city"}, ${"state"} ${"pin"} `}</Text>
           <Button width="80%" style={{ margin: "1rem 0",backgroundColor: "#20a87e" }} size='lg'  >Change</Button>
     </Box>
    
