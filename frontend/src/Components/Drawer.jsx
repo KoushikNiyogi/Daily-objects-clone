@@ -1,12 +1,19 @@
-import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, IconButton, Input, Link, Stack, useDisclosure, VStack } from '@chakra-ui/react'
+import { Box, Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Heading, IconButton, Input, Link, Stack, useDisclosure, VStack } from '@chakra-ui/react'
 import React, { useRef } from 'react'
+import {useSelector} from "react-redux"
 import { CloseIcon, HamburgerIcon, Search2Icon, } from "@chakra-ui/icons";
 import Submenu from './Submenu';
 const HamMenu = (props) => {
   const techarr = props.techarr
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = useRef()
-
+  const user = useSelector(store=>store.Loginreducer.user)
+  if(user){
+    console.log("hi")
+  }
+  else{
+    console.log("np")
+  }
   return (<Box>
     <IconButton icon={<HamburgerIcon />}
     //   display={{ md: "none" }}
@@ -14,7 +21,6 @@ const HamMenu = (props) => {
       onClick={isOpen ? onClose : onOpen}
     />
     <Drawer
-     
       isOpen={isOpen}
       placement='right'
       onClose={onClose}
@@ -34,6 +40,9 @@ const HamMenu = (props) => {
               <Submenu title="SHOP BY APPLE" techarr={techarr}/>
               <Submenu title="NEW ARRIVAL" techarr={techarr}/>
           </VStack>
+         {
+           user?<Heading>{user.name}</Heading>:<Button width="100%">Login</Button>
+         }
         </DrawerBody>
       </DrawerContent>
     </Drawer>

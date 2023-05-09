@@ -1,6 +1,7 @@
 import { Box, Heading, Image, Text } from '@chakra-ui/react'
 import React from 'react'
 import Navbar from "../Components/Navbar"
+import Footer from '../Components/Footer'
 
 
 const HomePage = () => {
@@ -101,6 +102,7 @@ const HomePage = () => {
           <Image src="https://images.dailyobjects.com/marche/assets/images/other/reviews-desktop-updated-23.png?tr=cm-pad_resize,v-2,dpr-1"/>
         </Box>
       </Box>
+      <Footer/>
     </Box>
   )
 }

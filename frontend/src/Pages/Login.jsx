@@ -22,8 +22,6 @@ const LoginPage = () => {
     const { name, value } = e.target
     setData({ ...data, [name]: value })
   }
-  let tokendata = JSON.parse(localStorage.getItem("token")) || []
-  let userId = JSON.parse(localStorage.getItem("userid")) || ""
 
   const navigate = useNavigate()
   const onSubmit = (e, data) => {

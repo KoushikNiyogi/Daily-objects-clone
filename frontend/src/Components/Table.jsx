@@ -7,9 +7,9 @@ const Ftable = (props) => {
     const str = props.item
 
     return (
-        <Box width="100%" height="100%">
-            <Heading fontSize="90%">{props.tile ? <h2>{props.title}</h2>:<img src={props.image}/>}</Heading>
-            <Box marginTop="10px" fontSize="90%">
+        <Box width="100%" height="100%" paddingLeft="3%">
+            {props.tile ?<Heading fontSize="90%">{props.title}</Heading>:<img src={props.image}/>}
+            <Box marginTop="10px" fontSize="90%" textAlign="left">
                 {
                     str.map(ele => <h2>{ele.name}</h2>)
                 }
