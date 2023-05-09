@@ -7,11 +7,9 @@ const productSchema = mongoose.Schema({
   brand: String,
   details: Array,
   category: String,
-  offer: String,
   discounted_price: String,
   description: String,
   price: String,
-  adminId: String,
 });
 
 const productModel = mongoose.model("product", productSchema);
