@@ -111,12 +111,12 @@ const Navbar = () => {
         zIndex="100"
       >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+          <Box width={"10%"} p={"0.5rem"}>
+            <RouterLink to={"/admindashboard"}>
+              <Image width={"95%"} m={"auto"} src={Logo} />
+            </RouterLink>
+          </Box>
           <HStack spacing={8} alignItems={"center"}>
-            <Box width={"10%"}>
-              <RouterLink to={"/admindashboard"}>
-                <Image width={"100%"} src={Logo} />
-              </RouterLink>
-            </Box>
             <HStack
               as={"nav"}
               spacing={4}
@@ -126,7 +126,7 @@ const Navbar = () => {
                 <NavLink key={link}>{link}</NavLink>
               ))}
             </HStack>
-            <Box width={"50%"}>
+            <Box width={"50%"} display={["none", "none", "none", "flex"]}>
               <Input
                 width={"50%"}
                 value={text}
