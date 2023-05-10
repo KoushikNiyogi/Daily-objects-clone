@@ -33,9 +33,15 @@ const Checkout = () => {
 
 <Box id={styles.left}>
           <p id={styles.shipping}>SHIPPING ADDRESS</p>
-          <Text>Kouhik Niyogi</Text>
-          <Text>Mahalakshmi layout, Maruthi nagar</Text>          
-          <Text>Bengaluru, Karnataka</Text>
+          <Text>{user[0].address.name}</Text>
+          <Flex justifyContent="center">
+           <Text mr={"10px"}>{user[0].address.building}</Text>
+           <Text>{user[0].address.area}</Text>
+          </Flex>          
+          <Flex justifyContent="center">
+           <Text mr={"10px"}>{user[0].address.city}</Text>
+           <Text>{user[0].address.state}</Text>
+          </Flex>
           <Button width="80%" style={{ margin: "1rem 0",backgroundColor: "#20a87e" }} size='lg'  >Change</Button>
     </Box>
    

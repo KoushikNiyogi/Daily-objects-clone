@@ -3,7 +3,7 @@ import axios from 'axios'
 //put the url
 
 export const addAddressAction = (token,addressobj, id) => (dispatch) =>{
-    console.log(addressobj);
+    console.log(addressobj,id);
     const headers = {
         Authorization: `${token}`
       }; 
