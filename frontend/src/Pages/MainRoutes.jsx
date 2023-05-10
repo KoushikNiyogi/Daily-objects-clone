@@ -34,13 +34,17 @@ const MainRoutes = () => {
         <ShoppingBag />
       </PrivateRoute>
       } />
-      <Route path="/CheckoutPage" element={<Checkout />} />
-      <Route path="/payments" element={<Payments />} />
-      <Route path="/admindashboard" element={<Admin />}></Route>
-      <Route path="/allproducts" element={<Products />}></Route>
-      <Route path="/addproduct" element={<AddProduct />}></Route>
-      <Route path="/allusers" element={<Users />}></Route>
-      <Route path="/orderpage" element={<OrderPage />}></Route>
+      <Route path="/CheckoutPage" element={
+       <PrivateRoute>
+        <Checkout />
+       </PrivateRoute>
+      } />
+      <Route path="/payments" element={
+       <PrivateRoute>
+        <Payments />
+       </PrivateRoute>
+      } />
+    
 
       {/* ALL ADMIN ROUTES ARE HERE  */}
 
