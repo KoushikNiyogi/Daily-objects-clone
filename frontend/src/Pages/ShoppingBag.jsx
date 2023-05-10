@@ -65,7 +65,7 @@ const ShoppingBag = () => {
       if(!userAddress){
         onOpen() 
       }
-      else{        
+     else{        
         Navigate("/CheckoutPage")
       }
       const orderSummary = {
@@ -117,6 +117,7 @@ const ShoppingBag = () => {
     const PostIt = (address) =>{
         dispatch(addAddressAction(token,address, user[0]._id))
         .then((res)=>Navigate("/CheckoutPage"))
+        .catch((err)=>alert(err));
     }
   
   
@@ -124,8 +125,7 @@ const ShoppingBag = () => {
         e.preventDefault()
         if(name!=="" && mobile!=="" && email!=="" && pin!=="" && city!=="" && state!==""  && country!=="" && building!=="" && area!==""){
           const address = {name, mobile, email, pin, city, state, country, building, area, landmark, gstin}
-          Navigate("/CheckoutPage")
-          //PostIt(address)
+          PostIt(address)
         }
         else{
           alert("Please fill all the details")
