@@ -17,6 +17,7 @@ import { AdminPrivateRoute } from "../Components/Admin/AdminPrivateRoute";
 import ShoppingBag from "./ShoppingBag";
 import Checkout from "./Checkout";
 import Payments from "./Payments";
+import { PrivateRoute } from "../Components/SearchPage.jsx/PrivateRoute";
 
 const MainRoutes = () => {
   return (
@@ -28,7 +29,11 @@ const MainRoutes = () => {
       <Route path="/products" element={<Categorypage />} />
       <Route path="/products/:id" element={<ProductPage />} />
       <Route path="/SearchPage" element={<SearchPage />} />
-      <Route path="/ShoppingBagPage" element={<ShoppingBag />} />
+      <Route path="/ShoppingBagPage" element={
+      <PrivateRoute>
+        <ShoppingBag />
+      </PrivateRoute>
+      } />
       <Route path="/CheckoutPage" element={<Checkout />} />
       <Route path="/payments" element={<Payments />} />
       <Route path="/admindashboard" element={<Admin />}></Route>

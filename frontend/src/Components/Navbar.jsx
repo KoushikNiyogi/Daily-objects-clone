@@ -19,7 +19,9 @@ import React, { useRef } from 'react'
 import HamMenu from './Drawer';
 import HoverCard from './HoverCard';
 import Logo from "../Components/Admin/images/daily_e.png";
+import { useSelector } from 'react-redux';
 const Navbar = () => {
+    const {token} = useSelector((store)=>store.Loginreducer);
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
     const techarr = [
