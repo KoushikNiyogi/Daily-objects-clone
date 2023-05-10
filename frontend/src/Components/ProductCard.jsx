@@ -16,11 +16,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import {addToWishlist} from "../Redux/WishlistReducer/action"
 // import "../Pages/Styles/ProductCardCss"
   
-  export const ProductCard=({_id,images,item ,title , price, discounted_price,offer })=> {
+  export const ProductCard=({item})=> {
     const {isAuth,token} = useSelector(store => store.Loginreducer)
     // const image1 = item.images[0];
     // const image2 = item.images[1];
     // const [image, setImage] = React.useState(image1);
+    const image1 = item.images[0];
+    const image2 = item.images[1];
+    const [image, setImage] = React.useState(image1);
     const Navigate = useNavigate();
     const dispatch = useDispatch();  
     const toast = useToast()
@@ -31,16 +34,16 @@ import {addToWishlist} from "../Redux/WishlistReducer/action"
       console.log(obj);
       delete obj["_id"];
       if(token){
-       dispatch(addToWishlist(token,obj,item,toast))
+       dispatch(addToWishlist(token,obj,toast))
       }else{
         Navigate("/login",{replace:true,state:"/categorypage"})
       }
     }
 
     const handleclick = () => {
-      Navigate(`/products/${_id}`)
+      Navigate(`/products/${item._id}`)
     }
-
+    console.log(item)
     return (
 
 
@@ -86,7 +89,7 @@ import {addToWishlist} from "../Redux/WishlistReducer/action"
               height={230}
               width={"100%"}
               objectFit={'cover'}
-              src={images}
+              src={image}
               // onMouseEnter={() => setImage(image2)}
               // onMouseOut={() => setImage(image1)}
             />
@@ -95,21 +98,17 @@ import {addToWishlist} from "../Redux/WishlistReducer/action"
           <Stack pt={5} align={'center'}>
           
             <Text fontSize={'medium'} fontFamily={'body'} fontWeight={500}>
-              {title}
+              {item.title}
             </Text>
             <Stack direction={'row'} align={'center'}>
               <Text fontWeight={400} fontSize={'xl'}>
-               RS.{price}
+               RS.{item.price}
               </Text>
               <Text textDecoration={'line-through'} color={'gray.600'}>
-                Rs.{discounted_price}
+                Rs.{item.discounted_price}
               </Text>
             </Stack>
-            <Stack direction={'row'} align={'center'}>
-              <Text fontWeight={500} fontSize={'xl'}>
-              {offer}
-              </Text>
-            </Stack>
+             item.offer!=undefined&&<Text fontSize={"md"} color={"red"}>{item.offer}</Text>
            
           </Stack>
         </Box>

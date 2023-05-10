@@ -27,7 +27,7 @@ export const ProductList = () => {
         <Flex direction={{base:"column-reverse",lg:"row"}}>
       <SimpleGrid className='filter-product' w={{base:"100%",lg:filter ? "80%" : "100%"}} transition={"0.5s"} id='product_grid' columns={{ base: 1, md: 2, lg: 4 }} gap={"10px"} padding={"10px"} >
           {Products.length > 0 && Products.map((el)=>{
-                  return <ProductCard key={el.id} {...el} />
+                  return <ProductCard key={el.id} item = {el} />
               })
           }
         </SimpleGrid>

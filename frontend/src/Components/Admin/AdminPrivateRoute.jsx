@@ -14,11 +14,12 @@ import { Navigate, useLocation } from "react-router-dom";
 // };
 
 export const AdminPrivateRoute = ({ children }) => {
-  const isAuth = useSelector((store) => store.adminloginReducer.isAuth);
+  const {isAuth,token} = useSelector((store) => store.adminloginReducer);
   const location = useLocation();
-  return !isAuth ? (
-    <Navigate to={"/adminlogin"} state={location.pathname} replace />
-  ) : (
-    children
-  );
+  console.log("admin private route called",location.pathname,token);
+  if(token==""){
+    return <Navigate to={"/adminlogin"} state={location.pathname} replace />
+  }
+  return children
+  
 };

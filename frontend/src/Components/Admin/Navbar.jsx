@@ -24,7 +24,8 @@ import { useToast } from "@chakra-ui/toast";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import Logo from "./images/daily_e.png";
 import AdminHamMenu from "./AdminComponents/AdminDrawer/AdminDrawer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../Redux/AdminLogin/adminloginaction";
 const Links = [""];
 
 const NavLink = ({ children }) => (
@@ -54,15 +55,16 @@ const Navbar = () => {
   const toast = useToast();
   const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
   const nevigate = useNavigate();
+  const dispatch = useDispatch();
 
   const logout = () => {
-    localStorage.setItem("isAuth", false);
+    dispatch(logoutUser)
     toast({
       title: "Logout successful",
       status: "success",
       position: "top",
     });
-    localStorage.removeItem("adminToken", "");
+    localStorage.removeItem("adminToken");
     nevigate("/adminlogin");
   };
 

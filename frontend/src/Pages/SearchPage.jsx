@@ -81,7 +81,7 @@ const SearchPage = () => {
       <Box>
 
         {
-          isLoading ? <Spinner color={"blue"} size={"4xl"} zIndex={"3"} /> :
+          isLoading ? <Spinner color={"blue"} size={"400px"} zIndex={"3"} /> :
             <Box>
               <Flex justifyContent={"flex-end"} marginRight={"20px"}>
                 <Button onClick={()=>setFilter(prev=>!prev)}>Filter </Button>

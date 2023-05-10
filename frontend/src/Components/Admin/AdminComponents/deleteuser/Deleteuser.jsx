@@ -38,9 +38,7 @@ function DeleteUser({ id, getData }) {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [overlay, setOverlay] = React.useState(<OverlayOne />);
-  const handleRefresh = () => {
-    window.location.reload();
-  };
+  
   const Delete = (_id) => {
     // console.log(_id)
     // window.location.reload();
@@ -62,7 +60,7 @@ function DeleteUser({ id, getData }) {
           isClosable: true,
           duration: 5000,
         });
-        handleRefresh();
+       
       })
       .catch((error) => {
         console.log("error", error);

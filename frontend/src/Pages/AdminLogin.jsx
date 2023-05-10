@@ -10,6 +10,7 @@ import {
   Heading,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,24 +19,25 @@ import { login } from "../Redux/AdminLogin/adminloginaction";
 import Navbar from "../Components/Admin/Navbar";
 
 export default function AdminLogin() {
+  const {token} = useSelector((store)=>store.adminloginReducer)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-
+  const toast = useToast();
   const dispatch = useDispatch();
 
   const userData = {
     email,
     password,
   };
-
+  
   const handleLogin = () => {
-    dispatch(login(userData)).then(() => {
-      navigate(location.state, { replace: true });
+    dispatch(login(userData,toast)).then((res) => {
+      navigate(`/admindashboard`, { replace: true });
     });
   };
-
+  console.log(token)
   return (
     <Box>
       <Navbar />

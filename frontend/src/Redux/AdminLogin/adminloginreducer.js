@@ -2,13 +2,14 @@ import {
   LOGIN_FAILURE,
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
+  LOGOUT_SUCCESS,
 } from "./adminloginactiontype";
 
 let initialState = {
   isLoading: false,
   isError: false,
   isAuth: false,
-  token: "",
+  token: localStorage.getItem("adminToken")||"",
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -19,7 +20,12 @@ export const reducer = (state = initialState, { type, payload }) => {
       return { ...state, isLoading: false, isAuth: true, token: payload };
     case LOGIN_FAILURE:
       return { ...state, isLoading: false, isError: true };
-    default:
+     case LOGOUT_SUCCESS:return{
+      ...state,
+      isAuth:false,
+      token:""
+     }
+      default:
       return state;
   }
 };
