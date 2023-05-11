@@ -21,9 +21,6 @@ import {addToWishlist} from "../Redux/WishlistReducer/action"
     // const image1 = item.images[0];
     // const image2 = item.images[1];
     // const [image, setImage] = React.useState(image1);
-    const image1 = item.images[0];
-    const image2 = item.images[1];
-    const [image, setImage] = React.useState(image1);
     const Navigate = useNavigate();
     const dispatch = useDispatch();  
     const toast = useToast()
@@ -43,7 +40,6 @@ import {addToWishlist} from "../Redux/WishlistReducer/action"
     const handleclick = () => {
       Navigate(`/products/${item._id}`)
     }
-    console.log(item)
     return (
 
 
@@ -89,9 +85,8 @@ import {addToWishlist} from "../Redux/WishlistReducer/action"
               height={230}
               width={"100%"}
               objectFit={'cover'}
-              src={image}
-              // onMouseEnter={() => setImage(image2)}
-              // onMouseOut={() => setImage(image1)}
+              src={item.images[0]}
+             
             />
              
           </Box>
