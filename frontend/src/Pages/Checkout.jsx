@@ -8,7 +8,8 @@ import Navbar from '../Components/Navbar';
 
 
 const Checkout = () => {
-  const [user,setUser] = useState(JSON.parse(localStorage.getItem("user"))||[])
+  const {user} = useSelector(store => store.Loginreducer);
+  const [user1,setUser] = useState(JSON.parse(localStorage.getItem("user"))||[])
   var orderSummary = JSON.parse(localStorage.getItem("orderSummary"))
   const {totalqty, totaldiscount, grandtotal, priceWODiscount} = orderSummary
 
@@ -24,6 +25,7 @@ const Checkout = () => {
   const HandleContinue=()=>{    
       Navigate("/payments")    
   }
+  console.log(user1,user)
  
   return <Box>
     <Navbar/>
