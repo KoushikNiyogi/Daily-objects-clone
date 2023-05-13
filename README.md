@@ -15,59 +15,59 @@ To get started with the project, you will need to clone the repository to your P
 - CSS
 - JavaScript
 - React
--React-Router-Dom
--Redux
--React-Redux
--Chakra UI
--Bootstrap
--Styled Components
+- React-Router-Dom
+- Redux
+- React-Redux
+- Chakra UI
+- Bootstrap
+- Styled Components
 
 ## Backend
--Express
--Mongodb
--Mongoose
--Cors
--Dotenv
+- Express
+- Mongodb
+- Mongoose
+- Cors
+- Dotenv
 
 # Pages
-Home Page
-SignUp and Login
-Products Page
-Product Description
-Product Dashboard
-Cart Page
-Payment and Checkout Page
-Admin Page
+- Home Page
+- SignUp and Login
+- Products Page
+- Product Description
+- Product Dashboard
+- Cart Page
+- Payment and Checkout Page
+- Admin Page
 
 # Features
-Home Page
-Login and Signup - protected routes functionality.
-Shopping Page - View Products by categories, filter and sort functionality.
-Product Description Page.
-Cart Page - Add and delete from cart functionality.
-Payment and Checkout Page.
-Used Redux for centralizing logic and manage state.
-Used Backend for All the Crud Operations
+- Home Page
+- Login and Signup - protected routes functionality.
+- Shopping Page - View Products by categories, filter and sort functionality.
+- Product Description Page.
+- Cart Page - Add and delete from cart functionality.
+- Payment and Checkout Page.
+- - Used Redux for centralizing logic and manage state.
+- Used Backend for All the Crud Operations
 
 # Functionalities
-Slider on Home Page.
-Login and Registration.
-View Products by categories.
-Filter products.
-Sort by Price.
-Add to Cart.
-Deleting from Cart.
-Payment.
+- - Slider on Home Page.
+- Login and Registration.
+- View Products by categories.
+- Filter products.
+- Sort by Price.
+- Add to Cart.
+- Deleting from Cart.
+- - - Payment.
 
 # Challenges
 One of the challenges faced during the development of this project was creating a generic Category page and filter component for multiple categories.
 
 # Contribution
-Koushik Niyogi
-Prashant Sathawane
-Rajesh Pradhan
-Neha Phadtare
-Uddesh Jaiswal
+- Koushik Niyogi
+- Prashant Sathawane
+- Rajesh Pradhan
+- Neha Phadtare
+- Uddesh Jaiswal
 
 # Deployed Link :- https://daily-essential-koushikniyogi.vercel.app/
 
