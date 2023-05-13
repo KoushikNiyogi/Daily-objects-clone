@@ -1,10 +1,10 @@
-#FastDeal (Clone of SnapDeal)
+# FastDeal (Clone of SnapDeal)
 FastDeal is an e-commerce website that specializes in clothing. Users can sign up and browse through a variety of products, add them to their cart, and proceed to checkout. Payment and shipping information can be provided at checkout, and once the payment is processed, users will be redirected to the homepage.
 
-#Getting Started
+# Getting Started
 To get started with the project, you will need to clone the repository to your PC .
 
-#Tech Stack
+# Tech Stack
 Frontend
 HTML
 CSS
@@ -17,14 +17,14 @@ Chakra UI
 Bootstrap
 Styled Components
 
-#Backend
+# Backend
 Express
 Mongodb
 Mongoose
 Cors
 Dotenv
 
-#Pages
+# Pages
 Home Page
 SignUp and Login
 Products Page
@@ -32,7 +32,7 @@ Product Description
 Cart Page
 Payment and Checkout Page
 
-#Features
+# Features
 Home Page
 Login and Signup - protected routes functionality.
 Shopping Page - View Products by categories, filter, sort, and pagination functionality.
@@ -41,7 +41,7 @@ Cart Page - Add and delete from cart functionality.
 Payment and Checkout Page.
 Used Redux for centralizing logic and manage state.
 
-#Functionalities
+# Functionalities
 Slider on Home Page.
 Login and Registration.
 View Products by categories.
@@ -51,21 +51,21 @@ Add to Cart.
 Deleting from Cart.
 Payment.
 
-#Challenges
+# Challenges
 One of the challenges faced during the development of this project was creating a generic Category page and filter component for multiple categories.
 
-#Features to be Implemented in Future
+# Features to be Implemented in Future
 Wishlist Page and functionality.
 Order management on admin side.
 
-#Contribution
+# Contribution
 Koushik Niyogi
 Prashant Sathawane
 Rajesh Pradhan
 Neha Phadtare
 Uddesh Jaiswal
 
-#Deployed Link :- https://fast-deal.vercel.app/
+# Deployed Link :- https://fast-deal.vercel.app/
 
-#screenshot
+# screenshot
 Image
