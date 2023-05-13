@@ -72,4 +72,5 @@ One of the challenges faced during the development of this project was creating 
 # Deployed Link :- https://daily-essential-koushikniyogi.vercel.app/
 
 # screenshot
+![Uploading Screenshot (36).png…]()
 
