@@ -8,24 +8,24 @@ You can look forward to a carefully-crafted range of products, made from long-la
 To get started with the project, you will need to clone the repository to your PC .
 
 # Tech Stack
-Frontend
-HTML /n
-CSS
-JavaScript
-React
-React-Router-Dom
-Redux
-React-Redux
-Chakra UI
-Bootstrap
-Styled Components
+##Frontend
+-HTML /n
+-CSS
+-JavaScript
+-React
+-React-Router-Dom
+-Redux
+-React-Redux
+-Chakra UI
+-Bootstrap
+-Styled Components
 
-# Backend
-Express
-Mongodb
-Mongoose
-Cors
-Dotenv
+## Backend
+-Express
+-Mongodb
+-Mongoose
+-Cors
+-Dotenv
 
 # Pages
 Home Page
