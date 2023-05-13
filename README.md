@@ -1,5 +1,8 @@
-# FastDeal (Clone of SnapDeal)
-FastDeal is an e-commerce website that specializes in clothing. Users can sign up and browse through a variety of products, add them to their cart, and proceed to checkout. Payment and shipping information can be provided at checkout, and once the payment is processed, users will be redirected to the homepage.
+# Daily Essential (Clone of Daily Object)
+
+Daily Essential is an e-commerce website that was Founded in 2012, Daily Essential is a design-obsessed lifestyle accessories brand committed to making your everyday carry #lessordinary.
+
+You can look forward to a carefully-crafted range of products, made from long-lasting materials, with designs that stand out and make your life easy. With Daily Essential, let your lifestyle reflect your sensibilities as you go on to make your every day #lessordinary.
 
 # Getting Started
 To get started with the project, you will need to clone the repository to your PC .
@@ -29,17 +32,20 @@ Home Page
 SignUp and Login
 Products Page
 Product Description
+Product Dashboard
 Cart Page
 Payment and Checkout Page
+Admin Page
 
 # Features
 Home Page
 Login and Signup - protected routes functionality.
-Shopping Page - View Products by categories, filter, sort, and pagination functionality.
+Shopping Page - View Products by categories, filter and sort functionality.
 Product Description Page.
 Cart Page - Add and delete from cart functionality.
 Payment and Checkout Page.
 Used Redux for centralizing logic and manage state.
+Used Backend for All the Crud Operations
 
 # Functionalities
 Slider on Home Page.
@@ -54,10 +60,6 @@ Payment.
 # Challenges
 One of the challenges faced during the development of this project was creating a generic Category page and filter component for multiple categories.
 
-# Features to be Implemented in Future
-Wishlist Page and functionality.
-Order management on admin side.
-
 # Contribution
 Koushik Niyogi
 Prashant Sathawane
@@ -65,7 +67,7 @@ Rajesh Pradhan
 Neha Phadtare
 Uddesh Jaiswal
 
-# Deployed Link :- https://fast-deal.vercel.app/
+# Deployed Link :- https://daily-essential-koushikniyogi.vercel.app/
 
 # screenshot
-Image
+
