@@ -46,18 +46,18 @@ To get started with the project, you will need to clone the repository to your P
 - Product Description Page.
 - Cart Page - Add and delete from cart functionality.
 - Payment and Checkout Page.
-- - Used Redux for centralizing logic and manage state.
+- Used Redux for centralizing logic and manage state.
 - Used Backend for All the Crud Operations
 
 # Functionalities
-- - Slider on Home Page.
+- Slider on Home Page.
 - Login and Registration.
 - View Products by categories.
 - Filter products.
 - Sort by Price.
 - Add to Cart.
 - Deleting from Cart.
-- - - Payment.
+- Payment.
 
 # Challenges
 One of the challenges faced during the development of this project was creating a generic Category page and filter component for multiple categories.
