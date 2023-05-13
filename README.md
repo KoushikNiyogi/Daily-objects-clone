@@ -72,7 +72,21 @@ One of the challenges faced during the development of this project was creating 
 # Deployed Link :- https://daily-essential-koushikniyogi.vercel.app/
 
 # screenshot
+
+## Landing Page
 ![Uploading Screenshot (36).png…](https://github.com/KoushikNiyogi/tough-request-5163/assets/112868723/e3d4d9f2-7eb6-4f5f-8b19-c54994c6eeca)
+
+## Product Page
+![Uploading Screenshot (37).png…](https://github.com/KoushikNiyogi/tough-request-5163/assets/112868723/a99817a5-f8bb-422a-a6bc-228553062bf7)
+
+## Single Product Page
+![Screenshot (38)](https://github.com/KoushikNiyogi/tough-request-5163/assets/112868723/91500ce6-36de-40bb-9b8b-a9c470a7eb3a)
+
+## Cart Page
+![Screenshot (39)](https://github.com/KoushikNiyogi/tough-request-5163/assets/112868723/85efccec-63ea-4dca-9e5b-732f1a3b1923)
+
+
+
 
 
 
