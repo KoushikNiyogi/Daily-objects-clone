@@ -72,7 +72,7 @@ One of the challenges faced during the development of this project was creating 
 # Deployed Link :- https://daily-essential-koushikniyogi.vercel.app/
 
 # screenshot
-![Uploading Screenshot (36).png…](https://user-images.githubusercontent.com/106387298/229424021-47925d6e-8cd8-4a21-8f4a-8e8378d9e511.png)
-![image](https://user-images.githubusercontent.com/106387298/229424021-47925d6e-8cd8-4a21-8f4a-8e8378d9e511.png)
+![Uploading Screenshot (36).png…](![Screenshot (36)](https://github.com/KoushikNiyogi/tough-request-5163/assets/112868723/e3d4d9f2-7eb6-4f5f-8b19-c54994c6eeca))
+
 
 
