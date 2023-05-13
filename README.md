@@ -9,7 +9,7 @@ To get started with the project, you will need to clone the repository to your P
 
 # Tech Stack
 ##Frontend
--HTML /n
+-HTML "/n"
 -CSS
 -JavaScript
 -React
