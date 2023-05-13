@@ -85,6 +85,8 @@ One of the challenges faced during the development of this project was creating 
 ## Cart Page
 ![Screenshot (39)](https://github.com/KoushikNiyogi/tough-request-5163/assets/112868723/85efccec-63ea-4dca-9e5b-732f1a3b1923)
 
+## Payment Page
+![Screenshot (40)](https://github.com/KoushikNiyogi/tough-request-5163/assets/112868723/de86f3f9-527d-4e2a-9c98-fd937b413a8d)
 
 
 
