@@ -9,12 +9,12 @@ To get started with the project, you will need to clone the repository to your P
 
 # Tech Stack
 
-##Frontend
+## Frontend
 
--HTML 
--CSS
--JavaScript
--React
+- HTML 
+- CSS
+- JavaScript
+- React
 -React-Router-Dom
 -Redux
 -React-Redux
