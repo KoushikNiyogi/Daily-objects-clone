@@ -18,10 +18,11 @@ Bootstrap
 Styled Components
 
 #Backend
-MongoDd
-
-cyclic server
-https://calm-blue-cobra-wig.cyclic.app/
+Express
+Mongodb
+Mongoose
+Cors
+Dotenv
 
 #Pages
 Home Page
