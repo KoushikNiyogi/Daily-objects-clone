@@ -67,7 +67,7 @@ One of the challenges faced during the development of this project was creating 
 - Prashant Sathawane
 - Rajesh Pradhan
 - Neha Phadtare
-- Uddesh Jaiswal
+- Uddeshy Jaiswal
 
 # Deployed Link :- https://daily-essential-koushikniyogi.vercel.app/
 
