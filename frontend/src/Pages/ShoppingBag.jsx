@@ -116,7 +116,10 @@ const ShoppingBag = () => {
        
     const PostIt = (address) =>{
         dispatch(addAddressAction(token,address, user[0]._id))
-        .then((res)=>Navigate("/CheckoutPage"))
+        .then((res)=>{
+          console.log(res)
+          Navigate("/CheckoutPage")
+        })
         .catch((err)=>alert(err));
     }
   

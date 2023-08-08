@@ -14,11 +14,10 @@ export const addAddressAction = (token,addressobj, id) => (dispatch) =>{
 
     return axios({
         method: 'PATCH',
-        url: `https://pajamas-bonobo.cyclic.app/user/updateaddress/${id}`,
+        url: `https://blue-amused-meerkat.cyclic.app/user/updateaddress/${id}`,
         data: address,
         headers: headers
       })
-
     .then((res)=>{
         console.log(res);
         dispatch({type: POST_ADDRESS_SUCCESS})

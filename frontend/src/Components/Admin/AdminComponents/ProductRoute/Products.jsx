@@ -43,11 +43,11 @@ export default function Products() {
   const [count, setCount] = useState();
 
   //   https://awful-pear-bedclothes.cyclic.app/
-  // https://pajamas-bonobo.cyclic.app/product
+  // https://blue-amused-meerkat.cyclic.app/product
   const getData = (page) => {
     setStatus(false);
     axios
-      .get(`https://pajamas-bonobo.cyclic.app/product`)
+      .get(`https://blue-amused-meerkat.cyclic.app/product`)
       .then((res) => {
         console.log(res);
         setData(res.data.Data);

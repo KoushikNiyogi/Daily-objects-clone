@@ -49,7 +49,7 @@ function DeleteProduct({ id, getData }) {
       };
 
       const response = await axios.delete(
-        `https://pajamas-bonobo.cyclic.app/product/delete/${_id}`,
+        `https://blue-amused-meerkat.cyclic.app/product/delete/${_id}`,
         config
       );
 

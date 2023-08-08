@@ -13,7 +13,7 @@ export const getSearchProducts = (params)=>(dispatch)=>{
       console.log(obj);
       dispatch({ type: SEARCH_PRODUCT_REQUEST });
       axios
-        .get(`https://pajamas-bonobo.cyclic.app/product/search`, obj)
+        .get(`https://blue-amused-meerkat.cyclic.app/product/search`, obj)
         .then((res) => {
           console.log(res);
           localStorage.setItem("searchpage",JSON.stringify(res.data.Data))

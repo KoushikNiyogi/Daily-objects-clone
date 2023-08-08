@@ -9,7 +9,7 @@ export const getProducts = (params)=> async(dispatch) => {
       console.log(obj);
       dispatch({ type: GET_PRODUCTS_REQUEST });
       axios
-        .get(`https://pajamas-bonobo.cyclic.app/product/`, obj)
+        .get(`https://blue-amused-meerkat.cyclic.app/product/`, obj)
         .then((res) => {
             console.log(res)
           localStorage.setItem("categorypage",JSON.stringify(res.data.Data))

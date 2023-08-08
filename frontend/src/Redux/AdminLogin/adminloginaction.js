@@ -31,7 +31,7 @@ export const login = (userData,toast) => (dispatch) => {
   dispatch(loginRequest());
 
   return axios
-    .post(`https://pajamas-bonobo.cyclic.app/admin/login`, userData)
+    .post(`https://blue-amused-meerkat.cyclic.app/admin/login`, userData)
     .then((res) => {
       console.log(res);
       toast({

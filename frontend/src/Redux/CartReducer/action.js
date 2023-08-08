@@ -17,7 +17,7 @@ export const getSingleProduct =(id)=>(dispatch)=>{
       dispatch({ type: CART_REQUEST });
       axios({
         method: 'get',
-        url: `https://pajamas-bonobo.cyclic.app/product/singleproduct/${id}`,
+        url: `https://blue-amused-meerkat.cyclic.app/product/singleproduct/${id}`,
       })
         .then((res) => {
           console.log(res)
@@ -39,7 +39,7 @@ export const addProductCart = (token, item, toast) => (dispatch) => {
   dispatch({ type: CART_REQUEST});
   axios({
     method: 'post',
-    url: `https://pajamas-bonobo.cyclic.app/cart/add`,
+    url: `https://blue-amused-meerkat.cyclic.app/cart/add`,
     data: data,
     headers: headers
   })
@@ -71,7 +71,7 @@ export const GetAllCartProductsAction = (token,id) => (dispatch)  => {
   dispatch({ type: CART_REQUEST });
   axios({
     method: 'GET',
-    url: `https://pajamas-bonobo.cyclic.app/cart`,
+    url: `https://blue-amused-meerkat.cyclic.app/cart`,
     data:{
       userId
     },
@@ -100,7 +100,7 @@ export const deleteCartProductAction =(token,id)=>(dispatch)=>{
 
   return axios({
     method: 'delete',
-    url: `https://pajamas-bonobo.cyclic.app/cart/delete/${id}`,
+    url: `https://blue-amused-meerkat.cyclic.app/cart/delete/${id}`,
     headers: headers
   })
     .then((res) => {
@@ -126,7 +126,7 @@ export const UpdateCartProductAction = (token,val, id)=>(dispatch)=>{
   dispatch({type:  CART_REQUEST})
   return axios({
     method: 'patch',
-    url: `https://pajamas-bonobo.cyclic.app/cart/update/${id}`,
+    url: `https://blue-amused-meerkat.cyclic.app/cart/update/${id}`,
     data: data,
     headers: headers
   })
@@ -142,4 +142,4 @@ export const UpdateCartProductAction = (token,val, id)=>(dispatch)=>{
 }
 
 
-// https://pajamas-bonobo.cyclic.app/cart
+// https://blue-amused-meerkat.cyclic.app/cart

@@ -14,7 +14,7 @@ const Users = () => {
   const [data, setData] = useState([]);
   const [product, setProduct] = useState("");
 
-  // https://pajamas-bonobo.cyclic.app/
+  // https://blue-amused-meerkat.cyclic.app/
 
   const getData = async () => {
     setStatus(false);
@@ -22,7 +22,7 @@ const Users = () => {
     try {
       let res = await axios({
         method: "GET",
-        url: `https://pajamas-bonobo.cyclic.app/user/`,
+        url: `https://blue-amused-meerkat.cyclic.app/user/`,
         headers: {
           Authorization: `${localStorage.getItem("adminToken")}`,
         },

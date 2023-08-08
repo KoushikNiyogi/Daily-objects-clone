@@ -43,7 +43,7 @@ function DeleteUser({ id, getData }) {
     // console.log(_id)
     // window.location.reload();
     axios
-      .delete(`https://pajamas-bonobo.cyclic.app/user/delete/${_id}`, {
+      .delete(`https://blue-amused-meerkat.cyclic.app/user/delete/${_id}`, {
         headers: {
           Authorization: `${localStorage.getItem("adminToken")}`,
         },

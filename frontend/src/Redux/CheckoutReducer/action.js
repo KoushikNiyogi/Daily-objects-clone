@@ -9,7 +9,7 @@ import axios from "axios"
     };
     return axios({
       method: 'GET',
-      url: `https://pajamas-bonobo.cyclic.app/user/`,
+      url: `https://blue-amused-meerkat.cyclic.app/user/`,
       data: {userId},
       headers: headers
     })

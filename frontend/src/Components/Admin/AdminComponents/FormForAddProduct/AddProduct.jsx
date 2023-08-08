@@ -68,7 +68,7 @@ const AddProduct = () => {
     discounted_price: +dis_Price,
     stock: stock,
   };
-  // https://pajamas-bonobo.cyclic.app/product/add
+  // https://blue-amused-meerkat.cyclic.app/product/add
 
   // const isAuthadmin = useSelector((store) => store.adminloginReducer.isAuth);
 
@@ -76,7 +76,7 @@ const AddProduct = () => {
     console.log(products);
     axios({
       method: "POST",
-      url: `https://pajamas-bonobo.cyclic.app/product/add`,
+      url: `https://blue-amused-meerkat.cyclic.app/product/add`,
       data: products,
       headers: {
         Authorization: `${localStorage.getItem("adminToken")}`,

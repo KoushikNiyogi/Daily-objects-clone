@@ -11,7 +11,7 @@ export const UpdatePaymentAction = (token, id)=>(dispatch)=>{
   dispatch({type:  EDIT_PAYMENT_REQUEST})
   return axios({
     method: 'patch',
-    url: `https://pajamas-bonobo.cyclic.app/cart/update/${id}`,
+    url: `https://blue-amused-meerkat.cyclic.app/cart/update/${id}`,
     data: {
       payment : true
     },
@@ -30,4 +30,4 @@ export const UpdatePaymentAction = (token, id)=>(dispatch)=>{
 }
 
 
-// https://pajamas-bonobo.cyclic.app/cart
+// https://blue-amused-meerkat.cyclic.app/cart

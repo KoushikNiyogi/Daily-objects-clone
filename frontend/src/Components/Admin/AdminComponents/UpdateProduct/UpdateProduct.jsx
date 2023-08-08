@@ -55,12 +55,12 @@ function UpdateProduct({ id, getData }) {
     price: +price,
     stock: +stock,
   };
-  // https://pajamas-bonobo.cyclic.app/product/delete/${_id}
+  // https://blue-amused-meerkat.cyclic.app/product/delete/${_id}
   const Update = (_id) => {
     console.log(id);
     axios({
       method: "PATCH",
-      url: `https://pajamas-bonobo.cyclic.app/product/update/${_id}`,
+      url: `https://blue-amused-meerkat.cyclic.app/product/update/${_id}`,
       data: newData,
       headers: {
         Authorization: `${localStorage.getItem("adminToken")}`,
